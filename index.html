@@ -54,7 +54,6 @@
       background: linear-gradient(135deg, var(--accent), #7CF9E6); color:#081524; border: none;
       box-shadow: 0 10px 40px rgba(46,247,208,0.5);
     }
-    .btn-accent:hover { transform: translateY(-1.5px) scale(1.01); }
     .hero { padding: 72px 0 40px; text-align: center; }
     .title {
       font-size: clamp(32px, 5vw, 56px);
@@ -103,6 +102,8 @@
       background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08);
       color:#CFD5DD;
     }
+    .lang-select { display:flex; align-items:center; gap:8px; }
+    select { background: rgba(255,255,255,0.08); color: var(--text); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 8px 10px; }
     @media (max-width: 900px){
       .cards, .steps { grid-template-columns: 1fr; }
       .cta { flex-direction: column; gap: 10px; }
@@ -117,75 +118,62 @@
         <div class="brand-badge">S</div>
         <div>SPEC88</div>
       </div>
-      <div>
-        <a class="btn" href="#how">Funktion</a>
-        <a class="btn" href="#early">Frühzugang</a>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <a class="btn" href="#how" data-i18n="nav_how">Funktion</a>
+        <a class="btn" href="#early" data-i18n="nav_early">Frühzugang</a>
+        <div class="lang-select">
+          <label for="langSel" class="muted" id="langLabel">Sprache</label>
+          <select id="langSel" aria-label="Language selector">
+            <option value="de">Deutsch</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="zh">中文</option>
+            <option value="ru">Русский</option>
+          </select>
+        </div>
       </div>
     </div>
   </header>
 
   <main class="container">
     <section class="hero">
-      <div class="badge-row">
-        <span class="badge">SSL geschützt</span>
-        <span class="badge">10.000+ Interessenten (Platzhalter)</span>
-        <span class="badge">Mehrsprachig</span>
+      <div class="badge-row" id="badges">
+        <span class="badge" data-i18n="badge_ssl">SSL geschützt</span>
+        <span class="badge" data-i18n="badge_waitlist">10.000+ Interessenten (Platzhalter)</span>
+        <span class="badge" data-i18n="badge_multi">Mehrsprachig</span>
       </div>
-      <h1 class="title">Starte dein Business in Minuten mit AI</h1>
-      <p class="subtitle">Gib deine Idee ein oder einen Link – SPEC88 baut dir automatisch deinen Shop, Inhalte und Werbeanzeigen. Ohne Code. Ohne Agentur.</p>
+      <h1 class="title" data-i18n="hero_title">Starte dein Business in Minuten mit AI</h1>
+      <p class="subtitle" data-i18n="hero_subtitle">Gib deine Idee ein oder einen Link – SPEC88 baut dir automatisch deinen Shop, Inhalte und Werbeanzeigen. Ohne Code. Ohne Agentur.</p>
       <div class="cta">
-        <a class="btn btn-accent" href="#early">🚀 Frühzugang sichern</a>
-        <a class="btn" href="#how">So funktioniert’s</a>
+        <a class="btn btn-accent" href="#early" data-i18n="cta_primary">🚀 Frühzugang sichern</a>
+        <a class="btn" href="#how" data-i18n="cta_secondary">So funktioniert’s</a>
       </div>
     </section>
 
     <section class="section">
-      <div class="cards">
-        <div class="card">
-          <h3>Kein Tech-Stress</h3>
-          <p>Shop, Produkttexte, Bilder & Ads werden automatisch generiert – du klickst nur „Veröffentlichen“.</p>
-        </div>
-        <div class="card">
-          <h3>Schnell zu Umsatz</h3>
-          <p>Von der Idee zum live Shop in Minuten. Teste mehrere Produkte ohne Wochen an Setup.</p>
-        </div>
-        <div class="card">
-          <h3>Global bereit</h3>
-          <p>Deutsch, Englisch, Spanisch, Russisch – Inhalte werden automatisch lokalisiert.</p>
-        </div>
+      <div class="cards" id="featureCards">
+        <!-- JS will inject translated cards -->
       </div>
     </section>
 
     <section id="how" class="section">
-      <h2 style="text-align:center; margin:0 0 16px; font-size:28px;">Wie es funktioniert</h2>
-      <div class="steps">
-        <div class="step">
-          <strong>1) Idee eingeben</strong>
-          <p>Schreibe dein Produkt in 1–2 Sätzen oder füge einen Link ein.</p>
-        </div>
-        <div class="step">
-          <strong>2) AI baut deinen Shop</strong>
-          <p>Design, Texte, Bilder & erste Ads werden erstellt. Du passt an, was du willst.</p>
-        </div>
-        <div class="step">
-          <strong>3) Live gehen</strong>
-          <p>Veröffentliche deinen Shop & starte mit Inhalten/Ads. Fertig.</p>
-        </div>
+      <h2 style="text-align:center; margin:0 0 16px; font-size:28px;" data-i18n="how_title">Wie es funktioniert</h2>
+      <div class="steps" id="howSteps">
+        <!-- JS will inject translated steps -->
       </div>
     </section>
 
     <section id="early" class="section">
-      <h2 style="text-align:center; margin:0 0 8px; font-size:28px;">Hol dir den Frühzugang</h2>
-      <p class="muted" style="text-align:center; margin:0 0 16px;">Trag deine E-Mail ein – wir laden dich in die Beta ein.</p>
+      <h2 style="text-align:center; margin:0 0 8px; font-size:28px;" data-i18n="early_title">Hol dir den Frühzugang</h2>
+      <p class="muted" style="text-align:center; margin:0 0 16px;" id="early_desc">Trag deine E‑Mail ein – wir laden dich in die Beta ein.</p>
       <form class="email" action="https://formspree.io/f/mvgqewzy" method="POST" onsubmit="return onSubmit(this)">
-        <input type="hidden" name="source" value="spec88-landing">
+        <input type="hidden" name="source" value="spec88-cool-multilang">
         <div class="row">
-          <input type="email" name="email" placeholder="deine@email.de" required>
-          <button class="btn btn-accent" type="submit">Frühzugang sichern</button>
+          <input type="email" name="email" id="emailInput" placeholder="deine@email.de" required>
+          <button class="btn btn-accent" type="submit" id="submitBtn">Frühzugang sichern</button>
         </div>
-        <p class="muted" style="margin-top:10px;">
-          <label><input type="checkbox" required> Ich stimme zu, E-Mails zum Beta-Start zu erhalten.</label>
-        </p>
+        <p class="muted" style="margin-top:10px;" id="consent"><label><input type="checkbox" required> Ich stimme zu, E‑Mails zum Beta‑Start zu erhalten.</label></p>
       </form>
     </section>
   </main>
@@ -193,19 +181,257 @@
   <footer>
     <div class="container" style="display:flex; align-items:center; justify-content:space-between;">
       <div>© 2025 SPEC88</div>
-      <div>
-        <a href="#" aria-label="Twitter">Twitter</a>
-      </div>
+      <div id="footerLinks"><a href="#how">Funktion</a> · <a href="#early">Frühzugang</a></div>
     </div>
   </footer>
 
   <script>
     function onSubmit(form){
-      var btn = form.querySelector('button[type="submit"]');
+      var btn = form.querySelector('button[type=\"submit\"]');
       btn.disabled = true;
       btn.textContent = 'Sende…';
       return true;
     }
+
+    const t = {
+      de: {
+        langLabel: "Sprache",
+        nav_how: "Funktion",
+        nav_early: "Frühzugang",
+        badge_ssl: "SSL geschützt",
+        badge_waitlist: "10.000+ Interessenten (Platzhalter)",
+        badge_multi: "Mehrsprachig",
+        hero_title: "Starte dein Business in Minuten mit AI",
+        hero_subtitle: "Gib deine Idee ein oder einen Link – SPEC88 baut dir automatisch deinen Shop, Inhalte und Werbeanzeigen. Ohne Code. Ohne Agentur.",
+        cta_primary: "🚀 Frühzugang sichern",
+        cta_secondary: "So funktioniert’s",
+        features: [
+          ["Kein Tech‑Stress", "Shop, Produkttexte, Bilder & Ads werden automatisch generiert – du klickst nur „Veröffentlichen“."] ,
+          ["Schnell zu Umsatz", "Von der Idee zum live Shop in Minuten. Teste mehrere Produkte ohne Wochen an Setup."],
+          ["Global bereit", "Englisch, Deutsch, Spanisch, Französisch, Chinesisch, Russisch – Inhalte automatisch lokalisiert."]
+        ],
+        how_title: "Wie es funktioniert",
+        steps: [
+          ["1) Idee eingeben", "Beschreibe dein Produkt in 1–2 Sätzen oder füge einen Link ein."],
+          ["2) AI baut deinen Shop", "Design, Texte, Bilder & erste Ads werden erstellt. Du passt an, was du willst."],
+          ["3) Live gehen", "Shop veröffentlichen & mit Inhalten/Ads starten. Fertig."]
+        ],
+        early_title: "Hol dir den Frühzugang",
+        early_desc: "Trag deine E‑Mail ein – wir laden dich in die Beta ein.",
+        email_placeholder: "deine@email.de",
+        submit: "Frühzugang sichern",
+        consent: "Ich stimme zu, E‑Mails zum Beta‑Start zu erhalten.",
+        footer: 'Funktion · Frühzugang'
+      },
+      en: {
+        langLabel: "Language",
+        nav_how: "How it works",
+        nav_early: "Early access",
+        badge_ssl: "SSL secured",
+        badge_waitlist: "10,000+ on waitlist (placeholder)",
+        badge_multi: "Multilingual",
+        hero_title: "Launch your business in minutes with AI",
+        hero_subtitle: "Enter your idea or a product link — SPEC88 automatically builds your store, content and ads. No code. No agency.",
+        cta_primary: "🚀 Get Early Access",
+        cta_secondary: "How it works",
+        features: [
+          ["No tech hassle", "Store, product copy, images & ads are auto‑generated — you just click “Publish”."] ,
+          ["Fast to revenue", "From idea to live store in minutes. Test multiple products without weeks of setup."],
+          ["Global ready", "English, German, Spanish, French, Chinese, Russian — content localized automatically."]
+        ],
+        how_title: "How it works",
+        steps: [
+          ["1) Input your idea", "Describe your product in 1–2 sentences or paste a link."],
+          ["2) AI builds your store", "Design, copy, images & starter ads are created. You adjust anything."],
+          ["3) Go live", "Publish your store & launch with content/ads. Done."]
+        ],
+        early_title: "Get Early Access",
+        early_desc: "Enter your email — we’ll invite you to the beta.",
+        email_placeholder: "you@example.com",
+        submit: "Get Early Access",
+        consent: "I agree to receive emails about the beta.",
+        footer: 'How it works · Early access'
+      },
+      es: {
+        langLabel: "Idioma",
+        nav_how: "Cómo funciona",
+        nav_early: "Acceso anticipado",
+        badge_ssl: "SSL seguro",
+        badge_waitlist: "10.000+ en lista de espera (provisional)",
+        badge_multi: "Multilingüe",
+        hero_title: "Lanza tu negocio en minutos con IA",
+        hero_subtitle: "Introduce tu idea o un enlace de producto — SPEC88 crea automáticamente tu tienda, contenido y anuncios. Sin código. Sin agencia.",
+        cta_primary: "🚀 Acceso anticipado",
+        cta_secondary: "Cómo funciona",
+        features: [
+          ["Sin complicaciones técnicas", "La tienda, textos, imágenes y anuncios se generan automáticamente — solo haces clic en “Publicar”."] ,
+          ["Rápido a ingresos", "De la idea a la tienda en vivo en minutos. Prueba varios productos sin semanas de configuración."],
+          ["Listo para el mundo", "Inglés, alemán, español, francés, chino, ruso — contenido localizado automáticamente."]
+        ],
+        how_title: "Cómo funciona",
+        steps: [
+          ["1) Ingresa tu idea", "Describe tu producto en 1–2 frases o pega un enlace."],
+          ["2) La IA crea tu tienda", "Se generan diseño, textos, imágenes y anuncios iniciales. Puedes ajustar todo."],
+          ["3) Lanza", "Publica tu tienda y lanza con contenido/anuncios. Listo."]
+        ],
+        early_title: "Obtén acceso anticipado",
+        early_desc: "Ingresa tu correo — te invitaremos a la beta.",
+        email_placeholder: "tu@correo.com",
+        submit: "Obtener acceso",
+        consent: "Acepto recibir correos sobre la beta.",
+        footer: 'Cómo funciona · Acceso'
+      },
+      fr: {
+        langLabel: "Langue",
+        nav_how: "Comment ça marche",
+        nav_early: "Accès anticipé",
+        badge_ssl: "Sécurisé SSL",
+        badge_waitlist: "10 000+ en liste d’attente (provisoire)",
+        badge_multi: "Multilingue",
+        hero_title: "Lance ton entreprise en quelques minutes avec l’IA",
+        hero_subtitle: "Saisis ton idée ou un lien produit — SPEC88 crée automatiquement ta boutique, ton contenu et tes annonces. Sans code. Sans agence.",
+        cta_primary: "🚀 Accès anticipé",
+        cta_secondary: "Comment ça marche",
+        features: [
+          ["Zéro galère technique", "Boutique, textes, images et annonces générés automatiquement — tu cliques juste « Publier »."] ,
+          ["Rapide vers le revenu", "De l’idée à la boutique en ligne en minutes. Teste plusieurs produits sans semaines de setup."],
+          ["Prêt pour le monde", "Anglais, allemand, espagnol, français, chinois, russe — contenu localisé automatiquement."]
+        ],
+        how_title: "Comment ça marche",
+        steps: [
+          ["1) Entre ton idée", "Décris ton produit en 1–2 phrases ou colle un lien."],
+          ["2) L’IA construit ta boutique", "Design, textes, images et premières annonces créés. Tu ajustes tout."],
+          ["3) Mets en ligne", "Publie ta boutique et lance avec contenu/annonces. Fini."]
+        ],
+        early_title: "Obtiens l’accès anticipé",
+        early_desc: "Entre ton e‑mail — on t’invite à la bêta.",
+        email_placeholder: "toi@email.com",
+        submit: "Obtenir l’accès",
+        consent: "J’accepte de recevoir des e‑mails concernant la bêta.",
+        footer: 'Fonctionnement · Accès'
+      },
+      zh: {
+        langLabel: "语言",
+        nav_how: "工作原理",
+        nav_early: "申请内测",
+        badge_ssl: "SSL 安全",
+        badge_waitlist: "超 10,000 人等待（占位）",
+        badge_multi: "多语言",
+        hero_title: "用 AI 在几分钟内启动你的业务",
+        hero_subtitle: "输入你的想法或产品链接——SPEC88 会自动生成商店、内容和广告。无需代码，无需代理。",
+        cta_primary: "🚀 申请内测",
+        cta_secondary: "工作原理",
+        features: [
+          ["无需技术烦恼", "商店、文案、图片与广告自动生成——你只需点击“发布”。"],
+          ["快速变现", "从想法到上线仅需几分钟。无需数周搭建即可测试多个产品。"],
+          ["面向全球", "英语、德语、西班牙语、法语、中文、俄语——内容自动本地化。"]
+        ],
+        how_title: "工作原理",
+        steps: [
+          ["1) 输入你的想法", "用 1–2 句话描述产品，或粘贴一个链接。"],
+          ["2) AI 构建你的商店", "自动生成设计、文案、图片与初始广告。你可以随意调整。"],
+          ["3) 上线", "发布商店并用内容/广告启动。完成。"]
+        ],
+        early_title: "申请内测",
+        early_desc: "输入邮箱——我们会邀请你加入内测。",
+        email_placeholder: "you@example.com",
+        submit: "申请内测",
+        consent: "我同意接收有关内测的电子邮件。",
+        footer: "工作原理 · 内测"
+      },
+      ru: {
+        langLabel: "Язык",
+        nav_how: "Как это работает",
+        nav_early: "Ранний доступ",
+        badge_ssl: "SSL защищено",
+        badge_waitlist: "10 000+ в листе ожидания (черновик)",
+        badge_multi: "Многоязычный",
+        hero_title: "Запусти бизнес за минуты с ИИ",
+        hero_subtitle: "Введи идею или ссылку на продукт — SPEC88 автоматически создаст магазин, контент и рекламу. Без кода. Без агентства.",
+        cta_primary: "🚀 Ранний доступ",
+        cta_secondary: "Как это работает",
+        features: [
+          ["Без техно‑боли", "Магазин, тексты, изображения и объявления генерируются автоматически — тебе нужно лишь нажать «Опубликовать»."] ,
+          ["Быстрый доход", "От идеи до живого магазина за минуты. Тестируй несколько продуктов без недель настройки."],
+          ["Готов к миру", "Английский, немецкий, испанский, французский, китайский, русский — контент локализуется автоматически."]
+        ],
+        how_title: "Как это работает",
+        steps: [
+          ["1) Введи идею", "Опиши продукт в 1–2 предложениях или вставь ссылку."],
+          ["2) ИИ создаёт магазин", "Создаются дизайн, тексты, изображения и стартовые объявления. Можно всё настроить."],
+          ["3) В эфир", "Опубликуй магазин и запусти контент/рекламу. Готово."]
+        ],
+        early_title: "Получить ранний доступ",
+        early_desc: "Введи e‑mail — пригласим в бету.",
+        email_placeholder: "you@example.com",
+        submit: "Получить доступ",
+        consent: "Согласен получать письма о бете.",
+        footer: "Как это работает · Доступ"
+      }
+    };
+
+    function applyLang(lang){
+      const L = t[lang] || t['de'];
+      document.documentElement.lang = lang;
+      // header
+      document.getElementById('langLabel').textContent = L.langLabel;
+      document.querySelector('[data-i18n=\"nav_how\"]').textContent = L.nav_how;
+      document.querySelector('[data-i18n=\"nav_early\"]').textContent = L.nav_early;
+      // badges
+      document.querySelector('[data-i18n=\"badge_ssl\"]').textContent = L.badge_ssl;
+      document.querySelector('[data-i18n=\"badge_waitlist\"]').textContent = L.badge_waitlist;
+      document.querySelector('[data-i18n=\"badge_multi\"]').textContent = L.badge_multi;
+      // hero
+      document.querySelector('[data-i18n=\"hero_title\"]').textContent = L.hero_title;
+      document.querySelector('[data-i18n=\"hero_subtitle\"]').textContent = L.hero_subtitle;
+      document.querySelector('[data-i18n=\"cta_primary\"]').textContent = L.cta_primary;
+      document.querySelector('[data-i18n=\"cta_secondary\"]').textContent = L.cta_secondary;
+      // features
+      const fc = document.getElementById('featureCards'); fc.innerHTML = '';
+      L.features.forEach(([h, p]) => {
+        const div = document.createElement('div');
+        div.className = 'card';
+        div.innerHTML = `<h3>${h}</h3><p>${p}</p>`;
+        fc.appendChild(div);
+      });
+      // how
+      document.querySelector('[data-i18n=\"how_title\"]').textContent = L.how_title;
+      const steps = document.getElementById('howSteps'); steps.innerHTML = '';
+      L.steps.forEach(([h, p]) => {
+        const div = document.createElement('div');
+        div.className = 'step';
+        div.innerHTML = `<strong>${h}</strong><p>${p}</p>`;
+        steps.appendChild(div);
+      });
+      // early
+      document.querySelector('[data-i18n=\"early_title\"]').textContent = L.early_title;
+      document.getElementById('early_desc').textContent = L.early_desc;
+      document.getElementById('emailInput').placeholder = L.email_placeholder;
+      document.getElementById('submitBtn').textContent = L.submit;
+      document.getElementById('consent').innerHTML = `<label><input type="checkbox" required> ${L.consent}</label>`;
+      // footer
+      document.getElementById('footerLinks').innerHTML = L.footer.replace('·', '·').split('·').map((s,i)=> i===0?`<a href="#how">${s.trim()}</a>`:`<a href="#early">${s.trim()}</a>`).join(' · ');
+    }
+
+    // init language
+    (function(){
+      const sel = document.getElementById('langSel');
+      const url = new URL(window.location.href);
+      const param = url.searchParams.get('lang');
+      const stored = localStorage.getItem('spec88_lang');
+      const sys = (navigator.language || 'de').slice(0,2).toLowerCase();
+      const pick = param || stored || (t[sys] ? sys : 'de');
+      sel.value = pick;
+      applyLang(pick);
+      sel.addEventListener('change', (e)=>{
+        const lang = e.target.value;
+        localStorage.setItem('spec88_lang', lang);
+        const u = new URL(window.location.href);
+        u.searchParams.set('lang', lang);
+        history.replaceState(null, '', u.toString());
+        applyLang(lang);
+      });
+    })();
   </script>
 </body>
 </html>
