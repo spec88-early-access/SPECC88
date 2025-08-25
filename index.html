@@ -140,7 +140,6 @@
   <script>
     function onSubmit(form){const b=form.querySelector('button[type="submit"]');b.disabled=true;b.textContent='…';return true;}
 
-    // Übersetzungen (EN default)
     const t={
       en:{langLabel:"Language",nav_how:"How it works",nav_early:"Early access",nav_agents:"🤖 Try Agents",
         badge_ssl:"SSL secured",badge_multi:"Multilingual",badge_waitlist:"10,000+ on waitlist (placeholder)",
@@ -171,67 +170,8 @@
                ["3) Nutzen & verfeinern","Live‑Vorschau, Export oder Deploy – danach iterieren."]],
         early_title:"Frühzugang sichern",early_desc:"E‑Mail eintragen – wir laden dich in die Beta ein.",
         email_placeholder:"deine@email.de",submit:"Frühzugang sichern",consent:"Ich stimme E‑Mails zur Beta zu.",
-        footer:"So funktioniert’s · Frühzugang · Agents"},
-      es:{langLabel:"Idioma",nav_how:"Cómo funciona",nav_early:"Acceso anticipado",nav_agents:"🤖 Probar Agents",
-        badge_ssl:"SSL seguro",badge_multi:"Multilingüe",badge_waitlist:"10.000+ en lista (provisional)",
-        hero_title:"Genera herramientas de IA para tu negocio en minutos",
-        hero_subtitle:"De apps de reserva a sitios web — SPEC88 construye lo que necesitas.",
-        cta_primary:"🤖 Probar la primera herramienta",cta_secondary:"Cómo funciona",
-        features:[["Sin código ni agencia","SPEC88 monta componentes y textos — listo para publicar."],
-                  ["Rápido a valor","De la idea a una herramienta funcional en minutos."],
-                  ["Salidas flexibles","Landing pages, formularios de reserva, secuencias de email."]],
-        how_title:"Cómo funciona",
-        steps:[["1) Indica tu objetivo","Describe la herramienta que necesitas."],
-               ["2) La IA la ensambla","SPEC88 genera el layout, el copy y el flujo base."],
-               ["3) Úsala y mejora","Vista previa, exportar o desplegar — luego iterar."]],
-        early_title:"Acceso anticipado",early_desc:"Deja tu correo — te invitaremos a la beta.",
-        email_placeholder:"tu@correo.com",submit:"Obtener acceso",consent:"Acepto recibir correos sobre la beta.",
-        footer:"Cómo funciona · Acceso anticipado · Agents"},
-      fr:{langLabel:"Langue",nav_how:"Comment ça marche",nav_early:"Accès anticipé",nav_agents:"🤖 Essayer Agents",
-        badge_ssl:"Sécurisé SSL",badge_multi:"Multilingue",badge_waitlist:"10 000+ en liste (provisoire)",
-        hero_title:"Génère des outils IA pour ton entreprise en quelques minutes",
-        hero_subtitle:"Des apps de réservation aux sites web — SPEC88 construit ce dont tu as besoin.",
-        cta_primary:"🤖 Essayer le premier outil",cta_secondary:"Comment ça marche",
-        features:[["Sans code ni agence","SPEC88 assemble composants et textes — prêt à publier."],
-                  ["Rapide à la valeur","De l’idée à l’outil fonctionnel en minutes."],
-                  ["Sorties flexibles","Landing pages, formulaires, séquences d’e‑mails."]],
-        how_title:"Comment ça marche",
-        steps:[["1) Décris ton objectif","Explique l’outil nécessaire (réservation, site, e‑mails)."],
-               ["2) L’IA assemble","SPEC88 génère layout, textes et workflow de base."],
-               ["3) Utilise & itère","Aperçu, export ou déploiement — puis itération."]],
-        early_title:"Accès anticipé",early_desc:"Entre ton e‑mail — on t’invite à la bêta.",
-        email_placeholder:"toi@email.com",submit:"Obtenir l’accès",consent:"J’accepte les e‑mails de bêta.",
-        footer:"Comment ça marche · Accès anticipé · Agents"},
-      zh:{langLabel:"语言",nav_how:"工作原理",nav_early:"申请内测",nav_agents:"🤖 试用 Agents",
-        badge_ssl:"SSL 安全",badge_multi:"多语言",badge_waitlist:"超过 10,000 等待（占位）",
-        hero_title:"几分钟为你的业务生成 AI 工具",
-        hero_subtitle:"从预约应用到网站——SPEC88 构建你所需要的。",
-        cta_primary:"🤖 试用首个工具",cta_secondary:"工作原理",
-        features:[["无需代码与代理","SPEC88 组合组件与文案——可直接发布。"],
-                  ["快速获得价值","从想法到可用工具仅需数分钟。"],
-                  ["灵活输出","落地页、预约表单、邮件序列——起步套件。"]],
-        how_title:"工作原理",
-        steps:[["1) 说明你的目标","描述你需要的工具（预约、网站、邮件等）。"],
-               ["2) AI 组装工具","SPEC88 生成布局、文案与基础流程。"],
-               ["3) 使用并迭代","预览、导出或部署，然后持续优化。"]],
-        early_title:"申请内测",early_desc:"留下邮箱——我们将邀请你加入内测。",
-        email_placeholder:"you@example.com",submit:"申请内测",consent:"我同意接收有关内测的邮件。",
-        footer:"工作原理 · 申请内测 · Agents"},
-      ru:{langLabel:"Язык",nav_how:"Как это работает",nav_early:"Ранний доступ",nav_agents:"🤖 Попробовать Agents",
-        badge_ssl:"SSL защищено",badge_multi:"Многоязычный",badge_waitlist:"10 000+ в листе ожидания (черновик)",
-        hero_title:"Создавай AI‑инструменты для бизнеса за минуты",
-        hero_subtitle:"От приложений для бронирования до сайтов — SPEC88 делает то, что нужно.",
-        cta_primary:"🤖 Попробовать первый инструмент",cta_secondary:"Как это работает",
-        features:[["Без кода и агентств","SPEC88 собирает компоненты и тексты — сразу к публикации."],
-                  ["Быстро к ценности","От идеи до рабочего инструмента за минуты."],
-                  ["Гибкие результаты","Лендинги, формы брони, e‑mail последовательности."]],
-        how_title:"Как это работает",
-        steps:[["1) Сформулируй цель","Опиши нужный инструмент (бронирование, сайт, письма)."],
-               ["2) ИИ собирает","SPEC88 генерирует макет, тексты и базовый поток."],
-               ["3) Используй и дорабатывай","Превью, экспорт или деплой — далее итерации."]],
-        early_title:"Ранний доступ",early_desc:"Введи e‑mail — пригласим в бету.",
-        email_placeholder:"you@example.com",submit:"Получить доступ",consent:"Согласен получать письма о бете.",
-        footer:"Как это работает · Ранний доступ · Agents"}
+        footer:"So funktioniert’s · Frühzugang · Agents"}
+      /* (Weitere Sprachen kannst du später ergänzen) */
     };
 
     function applyLang(lang){
@@ -252,17 +192,11 @@
       document.querySelector('[data-i18n="cta_secondary"]').textContent=L.cta_secondary;
       // Features
       const fc=document.getElementById('featureCards'); fc.innerHTML='';
-      L.features.forEach(([h,p])=>{
-        const d=document.createElement('div'); d.className='card';
-        d.innerHTML=`<h3>${h}</h3><p>${p}</p>`; fc.appendChild(d);
-      });
+      L.features.forEach(([h,p])=>{const d=document.createElement('div');d.className='card';d.innerHTML=`<h3>${h}</h3><p>${p}</p>`;fc.appendChild(d);});
       // Steps
       document.querySelector('[data-i18n="how_title"]').textContent=L.how_title;
       const hs=document.getElementById('howSteps'); hs.innerHTML='';
-      L.steps.forEach(([h,p])=>{
-        const d=document.createElement('div'); d.className='step';
-        d.innerHTML=`<strong>${h}</strong><p>${p}</p>`; hs.appendChild(d);
-      });
+      L.steps.forEach(([h,p])=>{const d=document.createElement('div');d.className='step';d.innerHTML=`<strong>${h}</strong><p>${p}</p>`;hs.appendChild(d);});
       // Early access
       document.querySelector('[data-i18n="early_title"]').textContent=L.early_title;
       document.getElementById('early_desc').textContent=L.early_desc;
@@ -271,8 +205,7 @@
       document.getElementById('consent').innerHTML=`<label><input type="checkbox" required> ${L.consent}</label>`;
       // Footer
       const [f1,f2,f3]=L.footer.split('·').map(s=>s.trim());
-      document.getElementById('footerLinks').innerHTML =
-        `<a href="#how">${f1}</a> · <a href="#early">${f2}</a> · <a href="agents.html">${f3}</a>`;
+      document.getElementById('footerLinks').innerHTML = `<a href="#how">${f1}</a> · <a href="#early">${f2}</a> · <a href="agents.html">${f3}</a>`;
     }
 
     (function(){
