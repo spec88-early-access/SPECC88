@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>SPEC88 • Agents</title>
 
-  <!-- Tailwind (nur CDN, läuft auf GitHub Pages) -->
+  <!-- Tailwind (CDN, läuft auf GitHub Pages) -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Fonts -->
@@ -14,17 +14,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    :root { --bg:#090E16; --bg2:#0A2540; --accent:#2EF7D0; --muted:rgba(255,255,255,.65); }
+    :root { --bg:#090E16; --bg2:#0A2540; --accent:#2EF7D0; --muted:rgba(255,255,255,.70); }
     *{box-sizing:border-box}
     body{font-family:'Inter',system-ui,Arial;background:radial-gradient(1300px 900px at 10% -10%,#112B4E,var(--bg2)) no-repeat,var(--bg);color:#fff}
     .glass{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter:saturate(160%) blur(10px)}
     .soft{box-shadow:0 10px 40px rgba(0,0,0,.35)}
     .accent-grad{background:linear-gradient(135deg,var(--accent),#86FFE8); color:#071523}
-    .ring-soft{box-shadow:0 0 0 3px rgba(46,247,208,.18)}
-    .badge{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14)}
     .muted{color:var(--muted)}
+    .badge{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14)}
     .code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
-    .hint{border-left:3px solid var(--accent); padding-left:.75rem}
+    .copy{cursor:pointer}
   </style>
 </head>
 <body>
@@ -38,11 +37,11 @@
         <div class="hidden md:flex items-center gap-2">
           <span class="badge rounded-full px-2.5 py-1 text-xs text-white/80">No code</span>
           <span class="badge rounded-full px-2.5 py-1 text-xs text-white/80">Self‑hostable ready</span>
-          <span class="badge rounded-full px-2.5 py-1 text-xs text-white/80">Fast preview</span>
+          <span class="badge rounded-full px-2.5 py-1 text-xs text-white/80">Export HTML/JSON</span>
         </div>
       </div>
       <nav class="flex items-center gap-2">
-        <a href="./" class="glass soft rounded-xl px-3 py-1.5 text-sm hover:bg-white/10">← Back to landing</a>
+        <a href="./" class="glass rounded-xl px-3 py-1.5 text-sm hover:bg-white/10">← Back to landing</a>
       </nav>
     </div>
   </header>
@@ -55,8 +54,8 @@
           Build <span class="text-[var(--accent)]">AI Agents</span> for your business in minutes
         </h1>
         <p class="muted mt-3 max-w-2xl">
-          Describe what your agent should do — SPEC88 assembles the workflow, draft copy and UI.  
-          Works great for reservations, lead qualification, email follow‑ups, website helpers and more.
+          Describe what your agent should do — SPEC88 assembles the workflow, draft copy and UI.
+          Great for reservations, lead qualification, email follow‑ups, website helpers & more.
         </p>
         <div class="mt-4 flex flex-wrap gap-2">
           <span class="badge rounded-full px-2.5 py-1 text-xs text-white/80">Reservations</span>
@@ -65,140 +64,215 @@
           <span class="badge rounded-full px-2.5 py-1 text-xs text-white/80">Email</span>
         </div>
       </div>
+      <!-- Prompt Coach -->
       <div class="md:col-span-2 glass soft rounded-2xl p-4">
-        <div class="text-sm font-semibold text-white/80 mb-2">Quick How‑To</div>
-        <div class="hint text-sm text-white/90">
-          <p class="mb-2"><b>1)</b> Sag <i>klar</i>, was passieren soll (Ziel).</p>
-          <p class="mb-2"><b>2)</b> Nenne <i>Inputs</i> & Regeln (Daten, Grenzen, Ton).</p>
-          <p class="mb-2"><b>3)</b> Definiere <i>Outputs</i> (z. B. Formular, E‑Mail, Seite).</p>
-          <p class="mb-0"><b>Tipp:</b> Wenn dir Formulierungen schwerfallen, frag kurz <u>ChatGPT</u>, dir einen präzisen Prompt zu bauen – 1:1 hier einfügen.</p>
+        <div class="text-sm font-semibold text-white/80 mb-2">Prompt Coach</div>
+        <div class="text-sm">
+          <div class="border-l-4 border-[var(--accent)] pl-3">
+            <p class="mb-2"><b>1)</b> Ziel klar nennen (Was soll passieren?).</p>
+            <p class="mb-2"><b>2)</b> Inputs & Regeln (Daten, Grenzen, Ton, Marke).</p>
+            <p class="mb-0"><b>3)</b> Outputs definieren (Form, E‑Mails, Seite, Chat‑Flow).</p>
+          </div>
+          <p class="muted mt-3">
+            Tipp: Wenn dir Formulierungen schwerfallen, hol dir in <b>ChatGPT</b> in 30 Sekunden einen präzisen Prompt (beschreibe kurz Ziel & Kontext),
+            kopiere ihn hier rein – fertig.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Main: Builder + Guidance -->
-  <main class="mx-auto max-w-7xl px-4 pb-12 grid gap-6 md:grid-cols-5">
+  <!-- Main -->
+  <main class="mx-auto max-w-7xl px-4 pb-12 grid gap-6 lg:grid-cols-5">
     <!-- Builder -->
-    <section class="md:col-span-3 glass soft rounded-2xl p-5">
+    <section class="lg:col-span-3 glass soft rounded-2xl p-5">
       <div class="flex items-center justify-between">
         <h2 class="text-lg font-semibold text-white/80">Create your Agent</h2>
-        <div class="text-xs muted">Demo preview (no server calls)</div>
+        <div class="text-xs muted">Local preview (no server calls)</div>
       </div>
 
-      <div class="mt-3 grid gap-4">
+      <div class="mt-4 grid gap-4">
+        <!-- Blueprint -->
         <div>
-          <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Agent Prompt</label>
-          <textarea id="prompt" rows="6"
-            class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2 outline-none focus:ring-2 ring-soft"
-            placeholder="Example: Build a reservation agent for a small café with 12 tables, open 10:00–22:00. Collect name, party size, date/time, phone. Confirm via email. Show available slots dynamically.">
-          </textarea>
+          <label class="block text-xs uppercase tracking-wide text-white/60 mb-2">Blueprint</label>
+          <div class="grid sm:grid-cols-3 gap-2">
+            <button data-blue="Reservations" class="blue btn border border-white/10 rounded-xl px-3 py-2 text-left hover:bg-white/10">☕ Reservations</button>
+            <button data-blue="Website Helper" class="blue btn border border-white/10 rounded-xl px-3 py-2 text-left hover:bg-white/10">🖥 Website Helper</button>
+            <button data-blue="Lead Qualification" class="blue btn border border-white/10 rounded-xl px-3 py-2 text-left hover:bg-white/10">🧭 Lead Qualification</button>
+            <button data-blue="Email Follow-up" class="blue btn border border-white/10 rounded-xl px-3 py-2 text-left hover:bg-white/10">✉️ Email Follow‑up</button>
+            <button data-blue="Custom" class="blue btn border border-white/10 rounded-xl px-3 py-2 text-left hover:bg-white/10">🧩 Custom</button>
+          </div>
         </div>
 
+        <!-- Business basics -->
         <div class="grid md:grid-cols-3 gap-3">
           <div>
-            <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Goal</label>
-            <select id="goal" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2">
-              <option>Reservations</option>
-              <option>Website Helper</option>
-              <option>Lead Qualification</option>
-              <option>Email Follow-up</option>
-            </select>
+            <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Business name</label>
+            <input id="biz" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2" placeholder="e.g., Golden Bean Café"/>
           </div>
           <div>
-            <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Model (display)</label>
-            <select id="model" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2">
-              <option>gpt-4.1-mini</option>
-              <option>gpt-4.1</option>
-              <option>gpt-4o</option>
-              <option>mistral-large</option>
-              <option>llama-3.1</option>
-            </select>
+            <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Industry</label>
+            <input id="industry" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2" placeholder="Café / Restaurant / Agency …"/>
           </div>
           <div>
-            <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Tone</label>
-            <select id="tone" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2">
-              <option>Professional</option>
-              <option>Friendly</option>
-              <option>Concise</option>
-              <option>Salesy</option>
-            </select>
+            <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Contact email</label>
+            <input id="email" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2" placeholder="you@business.com"/>
           </div>
         </div>
 
+        <!-- Prompt parts -->
+        <div class="grid md:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Goal</label>
+            <textarea id="goal" rows="3" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2"
+              placeholder="What should the agent achieve? (e.g., manage table reservations incl. email confirmation)"></textarea>
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Inputs (one per line)</label>
+            <textarea id="inputs" rows="3" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2"
+              placeholder="name&#10;party size&#10;date/time&#10;phone"></textarea>
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Rules (one per line)</label>
+            <textarea id="rules" rows="3" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2"
+              placeholder="friendly & concise tone&#10;avoid double bookings&#10;respect opening hours 10:00–22:00"></textarea>
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Outputs (tick)</label>
+            <div class="glass rounded-xl p-3 flex flex-wrap gap-3 text-sm">
+              <label class="inline-flex items-center gap-2"><input type="checkbox" id="out_form" class="accent-teal-300" checked><span>Form</span></label>
+              <label class="inline-flex items-center gap-2"><input type="checkbox" id="out_emails" class="accent-teal-300" checked><span>Email sequence</span></label>
+              <label class="inline-flex items-center gap-2"><input type="checkbox" id="out_page" class="accent-teal-300"><span>Landing page</span></label>
+              <label class="inline-flex items-center gap-2"><input type="checkbox" id="out_chat" class="accent-teal-300"><span>Chat script</span></label>
+              <label class="inline-flex items-center gap-2"><input type="checkbox" id="out_sheet" class="accent-teal-300"><span>Spreadsheet stub</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tools / model -->
         <div class="grid md:grid-cols-2 gap-3">
           <div class="glass rounded-xl p-3">
             <div class="text-xs uppercase tracking-wide text-white/60 mb-2">Tools</div>
-            <div class="flex flex-wrap gap-2 text-sm">
-              <label class="inline-flex items-center gap-2"><input type="checkbox" class="accent-teal-300" checked id="tool_web"/><span>Web Search</span></label>
-              <label class="inline-flex items-center gap-2"><input type="checkbox" class="accent-teal-300" id="tool_http"/><span>HTTP/API</span></label>
-              <label class="inline-flex items-center gap-2"><input type="checkbox" class="accent-teal-300" id="tool_email"/><span>Email Draft</span></label>
-              <label class="inline-flex items-center gap-2"><input type="checkbox" class="accent-teal-300" id="tool_sheet"/><span>Spreadsheet</span></label>
+            <div class="flex flex-wrap gap-3 text-sm">
+              <label class="inline-flex items-center gap-2"><input type="checkbox" id="tool_web" class="accent-teal-300" checked><span>Web search</span></label>
+              <label class="inline-flex items-center gap-2"><input type="checkbox" id="tool_http" class="accent-teal-300"><span>HTTP/API</span></label>
+              <label class="inline-flex items-center gap-2"><input type="checkbox" id="tool_email" class="accent-teal-300"><span>Email draft</span></label>
+              <label class="inline-flex items-center gap-2"><input type="checkbox" id="tool_sheet" class="accent-teal-300"><span>Spreadsheet</span></label>
             </div>
           </div>
           <div class="glass rounded-xl p-3">
-            <div class="text-xs uppercase tracking-wide text-white/60 mb-2">Outputs</div>
-            <div class="flex flex-wrap gap-2 text-sm">
-              <label class="inline-flex items-center gap-2"><input type="checkbox" class="accent-teal-300" checked id="out_form"/><span>Form</span></label>
-              <label class="inline-flex items-center gap-2"><input type="checkbox" class="accent-teal-300" checked id="out_emails"/><span>Email Sequence</span></label>
-              <label class="inline-flex items-center gap-2"><input type="checkbox" class="accent-teal-300" id="out_page"/><span>Landing Page</span></label>
+            <div class="grid md:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Model (display)</label>
+                <select id="model" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2">
+                  <option>gpt-4.1-mini</option><option>gpt-4.1</option><option>gpt-4o</option>
+                  <option>mistral-large</option><option>llama-3.1</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Tone</label>
+                <select id="tone" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2">
+                  <option>Professional</option><option>Friendly</option><option>Concise</option><option>Salesy</option>
+                </select>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="flex flex-wrap items-center gap-3">
-          <button id="generate" class="accent-grad rounded-xl px-4 py-2 font-semibold hover:opacity-90 transition">Generate Preview</button>
-          <span id="status" class="text-sm muted"></span>
+        <!-- Prompt compose -->
+        <div class="grid md:grid-cols-2 gap-3">
+          <div>
+            <button id="compose" class="accent-grad rounded-xl px-4 py-2 font-semibold hover:opacity-90 transition">Compose Prompt</button>
+            <span id="status" class="ml-3 text-sm muted"></span>
+            <textarea id="prompt" rows="8" class="mt-2 w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2 code"
+              placeholder='Structured prompt will appear here…'></textarea>
+            <div class="mt-2 flex gap-2">
+              <button data-copy="#prompt" class="copy glass rounded-xl px-3 py-1.5 text-sm hover:bg-white/10">Copy Prompt</button>
+              <a id="openChat" target="_blank" class="glass rounded-xl px-3 py-1.5 text-sm hover:bg-white/10">Open in ChatGPT</a>
+            </div>
+          </div>
+          <div>
+            <button id="previewBtn" class="accent-grad rounded-xl px-4 py-2 font-semibold hover:opacity-90 transition">Generate Preview</button>
+            <div id="saveLoad" class="mt-2 flex flex-wrap gap-2">
+              <button id="save" class="glass rounded-xl px-3 py-1.5 text-sm hover:bg-white/10">Save Agent</button>
+              <button id="exportJson" class="glass rounded-xl px-3 py-1.5 text-sm hover:bg-white/10">Export JSON</button>
+              <button id="exportHtml" class="glass rounded-xl px-3 py-1.5 text-sm hover:bg-white/10">Export HTML</button>
+            </div>
+          </div>
         </div>
 
-        <!-- Preview -->
-        <div id="preview" class="hidden mt-3 grid gap-3">
-          <div class="glass rounded-xl p-4">
-            <div class="text-sm font-semibold text-white/80 mb-2">Agent Summary</div>
-            <div id="sum" class="text-sm whitespace-pre-wrap"></div>
+        <!-- PREVIEW -->
+        <div id="preview" class="hidden mt-4 grid gap-4">
+          <div class="glass rounded-2xl p-4">
+            <div class="flex items-center justify-between">
+              <div class="text-sm font-semibold text-white/80">Agent Summary</div>
+              <button data-copy="#sum" class="copy glass rounded-md px-2 py-1 text-xs hover:bg-white/10">Copy</button>
+            </div>
+            <pre id="sum" class="code text-sm whitespace-pre-wrap"></pre>
           </div>
-          <div class="glass rounded-xl p-4">
+
+          <div class="glass rounded-2xl p-4">
             <div class="text-sm font-semibold text-white/80 mb-2">Planned Steps</div>
             <ol id="steps" class="list-decimal pl-5 text-sm"></ol>
           </div>
-          <div class="glass rounded-xl p-4">
-            <div class="text-sm font-semibold text-white/80 mb-2">Sample Output (Email #1)</div>
-            <div id="sample" class="text-sm"></div>
+
+          <div id="formWrap" class="hidden glass rounded-2xl p-4">
+            <div class="flex items-center justify-between">
+              <div class="text-sm font-semibold text-white/80">Generated Form (HTML)</div>
+              <button data-copy="#formHtml" class="copy glass rounded-md px-2 py-1 text-xs hover:bg-white/10">Copy HTML</button>
+            </div>
+            <div id="formMount" class="mt-3"></div>
+            <textarea id="formHtml" class="mt-3 w-full code text-xs rounded-xl border border-white/10 bg-black/30 p-2" rows="6" readonly></textarea>
+          </div>
+
+          <div id="emailsWrap" class="hidden glass rounded-2xl p-4">
+            <div class="flex items-center justify-between">
+              <div class="text-sm font-semibold text-white/80">Email Sequence (3)</div>
+              <button data-copy="#emailsHtml" class="copy glass rounded-md px-2 py-1 text-xs hover:bg-white/10">Copy</button>
+            </div>
+            <div id="emails" class="mt-2 grid md:grid-cols-3 gap-3"></div>
+            <textarea id="emailsHtml" class="mt-3 w-full code text-xs rounded-xl border border-white/10 bg-black/30 p-2" rows="8" readonly></textarea>
+          </div>
+
+          <div id="pageWrap" class="hidden glass rounded-2xl p-4">
+            <div class="flex items-center justify-between">
+              <div class="text-sm font-semibold text-white/80">Landing Hero (snippet)</div>
+              <button data-copy="#pageHtml" class="copy glass rounded-md px-2 py-1 text-xs hover:bg-white/10">Copy</button>
+            </div>
+            <div id="pageMount" class="mt-2"></div>
+            <textarea id="pageHtml" class="mt-3 w-full code text-xs rounded-xl border border-white/10 bg-black/30 p-2" rows="6" readonly></textarea>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Guidance -->
-    <aside class="md:col-span-2 grid gap-6">
+    <!-- Saved Agents + Examples -->
+    <aside class="lg:col-span-2 grid gap-6">
       <section class="glass soft rounded-2xl p-5">
-        <h3 class="text-lg font-semibold text-white/90">How to write a great Agent Prompt</h3>
-        <p class="muted mt-2">Bau deinen Prompt wie ein Mini‑Briefing. Nutze dieses Format:</p>
-        <div class="mt-3 glass rounded-xl p-3 code text-sm">
-{ "goal": "What should the agent achieve?",
-  "inputs": ["What data will the user provide?"],
-  "rules": ["Constraints, tone, brand voice"],
-  "outputs": ["What should be produced (form, emails, page)"] }
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-semibold text-white/90">Saved Agents</h3>
+          <button id="clearAll" class="glass rounded-md px-2 py-1 text-xs hover:bg-white/10">Clear all</button>
         </div>
-        <p class="muted mt-3">
-          <b>Shortcut:</b> Wenn du unsicher bist, bitte kurz <u>ChatGPT</u>, dir so einen Prompt zu schreiben.
-          Formuliere nur dein Ziel & Kontext – kopiere das Ergebnis hier rein. Fertig.
-        </p>
+        <div id="saved" class="mt-3 grid gap-3"></div>
       </section>
 
       <section class="glass soft rounded-2xl p-5">
         <h3 class="text-lg font-semibold text-white/90">Prompt Examples (click to use)</h3>
         <div class="mt-3 grid gap-3">
-          <button class="ex glass rounded-xl p-3 text-left hover:bg-white/10 transition text-sm" data-text="Build a reservation agent for a 12-table café (10:00–22:00). Collect name, party size, date/time, phone. Confirm by email with friendly tone. Show available slots and prevent double bookings. Outputs: form + 3 email sequence.">
+          <button class="ex glass rounded-xl p-3 text-left hover:bg-white/10 transition text-sm"
+            data-text="Build a reservation agent for a 12-table café (10:00–22:00). Collect name, party size, date/time, phone. Confirm by email with friendly tone. Show available slots and prevent double bookings. Outputs: form + 3 email sequence.">
             ☕ Café Reservations
           </button>
-          <button class="ex glass rounded-xl p-3 text-left hover:bg-white/10 transition text-sm" data-text="Create a website helper agent for a home services business. Gather service type, ZIP, preferred date, phone. Reply with a clean quote and a follow-up email. Outputs: form + landing hero copy + 2 emails.">
+          <button class="ex glass rounded-xl p-3 text-left hover:bg-white/10 transition text-sm"
+            data-text="Create a website helper agent for a home services business. Gather service type, ZIP, preferred date, phone. Reply with a clean quote and a follow-up email. Outputs: form + landing hero + 2 emails.">
             🏠 Service Website Helper
           </button>
-          <button class="ex glass rounded-xl p-3 text-left hover:bg-white/10 transition text-sm" data-text="Lead qualification agent for a B2B agency. Ask budget range, team size, timeline, pain points. Score lead (A/B/C) and prepare a tailored intro email. Outputs: form + spreadsheet stub + intro email.">
+          <button class="ex glass rounded-xl p-3 text-left hover:bg-white/10 transition text-sm"
+            data-text="Lead qualification agent for a B2B agency. Ask budget range, team size, timeline, pain points. Score lead (A/B/C) and prepare a tailored intro email. Outputs: form + spreadsheet stub + intro email.">
             🧭 Lead Qualification
           </button>
-          <button class="ex glass rounded-xl p-3 text-left hover:bg-white/10 transition text-sm" data-text="Email follow‑up agent for an online course. Detect which lesson the user stopped at, send gentle reminder, include 3 bullet benefits, and a single CTA. Outputs: 3‑step email sequence.">
+          <button class="ex glass rounded-xl p-3 text-left hover:bg-white/10 transition text-sm"
+            data-text="Email follow‑up agent for an online course. Detect which lesson the user stopped at, send gentle reminder, include 3 bullet benefits, and a single CTA. Outputs: 3‑step email sequence.">
             ✉️ Email Follow‑ups
           </button>
         </div>
@@ -212,83 +286,299 @@
   </footer>
 
   <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // Utils
+    const $ = (sel)=> document.querySelector(sel);
+    const $$ = (sel)=> Array.from(document.querySelectorAll(sel));
+    const val = (id)=> document.getElementById(id).value.trim();
+    const lines = (id)=> val(id).split('\n').map(s=>s.trim()).filter(Boolean);
+    const setHtml = (el, html)=> { el.innerHTML = html; };
+    const setText = (el, text)=> { el.textContent = text; };
+    const dl = (filename, text) => {
+      const blob = new Blob([text], {type: 'text/plain'});
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = filename; a.click();
+      setTimeout(()=>URL.revokeObjectURL(a.href), 1000);
+    };
+    const uid = ()=> Math.random().toString(36).slice(2,10);
 
-    // Fill textarea from example buttons
-    document.querySelectorAll('.ex').forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        document.getElementById('prompt').value = btn.dataset.text || '';
-        document.getElementById('prompt').focus();
+    // Year
+    $('#year').textContent = new Date().getFullYear();
+
+    // Blueprint quick fill
+    $$('.blue').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const b = btn.dataset.blue;
+        if(b==='Reservations'){
+          $('#goal').value = 'Manage table reservations incl. confirmation emails and slot control.';
+          $('#inputs').value = 'name\nparty size\ndate/time\nphone';
+          $('#rules').value = 'friendly & concise tone\navoid double bookings\nrespect opening hours 10:00–22:00';
+          $('#out_form').checked = true; $('#out_emails').checked = true; $('#out_page').checked = false; $('#out_chat').checked=false; $('#out_sheet').checked=false;
+        } else if(b==='Website Helper'){
+          $('#goal').value = 'Collect service requests and generate quotes with follow-up email.';
+          $('#inputs').value = 'name\nservice type\nZIP\npreferred date\nphone';
+          $('#rules').value = 'professional tone\nclear pricing ranges\nask clarifying questions if data is missing';
+          $('#out_form').checked = true; $('#out_emails').checked = true; $('#out_page').checked = true;
+        } else if(b==='Lead Qualification'){
+          $('#goal').value = 'Qualify B2B leads by budget, team size, timeline, pain points; output score.';
+          $('#inputs').value = 'name\ncompany\nbudget range\nteam size\ntimeline\npain points';
+          $('#rules').value = 'concise tone\nno jargon\nscore A/B/C based on readiness';
+          $('#out_form').checked = true; $('#out_emails').checked = true; $('#out_sheet').checked = true;
+        } else if(b==='Email Follow-up'){
+          $('#goal').value = 'Send a 3‑step email sequence to re‑engage users who paused a course.';
+          $('#inputs').value = 'name\nlast lesson\nemail';
+          $('#rules').value = 'friendly, encouraging tone\none CTA per email\n3 bullet benefits per message';
+          $('#out_emails').checked = true; $('#out_form').checked = false; $('#out_page').checked = false; $('#out_sheet').checked=false; $('#out_chat').checked=false;
+        } else {
+          // Custom – leave as is
+        }
+      });
+    });
+
+    // Fill from examples
+    $$('.ex').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        $('#prompt').value = btn.dataset.text || '';
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     });
 
-    // Tiny local preview (no API calls)
-    const $ = (id)=>document.getElementById(id);
-    $('generate').addEventListener('click', ()=>{
-      const prompt = $('prompt').value.trim();
-      const goal   = $('goal').value;
-      const model  = $('model').value;
-      const tone   = $('tone').value;
+    // Copy buttons
+    document.addEventListener('click', (e)=>{
+      const btn = e.target.closest('.copy');
+      if(!btn) return;
+      const target = btn.getAttribute('data-copy');
+      const el = document.querySelector(target);
+      navigator.clipboard.writeText(el.value || el.textContent || '').then(()=>{
+        btn.textContent = 'Copied!';
+        setTimeout(()=> btn.textContent = 'Copy' , 1200);
+      });
+    });
 
-      if(!prompt){
-        $('status').textContent = 'Please add a prompt first.';
-        $('status').classList.add('text-red-300'); return;
-      }
-      $('status').classList.remove('text-red-300');
-      $('status').textContent = 'Generating preview…';
+    // Compose prompt
+    $('#compose').addEventListener('click', ()=>{
+      const prompt = JSON.stringify({
+        business: { name: val('biz') || 'Business', industry: val('industry') || 'General', contact: val('email') || '' },
+        goal: val('goal') || 'Describe the business goal here',
+        inputs: lines('inputs'),
+        rules: lines('rules'),
+        outputs: {
+          form: $('#out_form').checked,
+          emails: $('#out_emails').checked,
+          page: $('#out_page').checked,
+          chat: $('#out_chat').checked,
+          sheet: $('#out_sheet').checked
+        },
+        tools: {
+          web_search: $('#tool_web').checked,
+          http_request: $('#tool_http').checked,
+          email_draft: $('#tool_email').checked,
+          spreadsheet: $('#tool_sheet').checked
+        },
+        model: $('#model').value,
+        tone: $('#tone').value
+      }, null, 2);
 
+      $('#prompt').value = prompt;
+      $('#status').textContent = 'Prompt composed.';
+      const q = encodeURIComponent("Turn this into a perfect agent instruction:\n\n"+prompt);
+      $('#openChat').href = "https://chat.openai.com/?q="+q;
+    });
+
+    // Generate Preview (deterministisch, lokal)
+    $('#previewBtn').addEventListener('click', ()=>{
+      const biz = val('biz') || 'Your Business';
+      const goal = val('goal') || 'Business goal';
+      const model = $('#model').value;
+      const tone = $('#tone').value;
+      const inputs = lines('inputs');
+      const rules = lines('rules');
+
+      // Summary
       const tools = [
-        $('tool_web').checked && 'Web Search',
-        $('tool_http').checked && 'HTTP/API',
-        $('tool_email').checked && 'Email Draft',
-        $('tool_sheet').checked && 'Spreadsheet'
+        $('#tool_web').checked && 'Web Search',
+        $('#tool_http').checked && 'HTTP/API',
+        $('#tool_email').checked && 'Email Draft',
+        $('#tool_sheet').checked && 'Spreadsheet'
       ].filter(Boolean);
 
       const outs = [
-        $('out_form').checked && 'Form',
-        $('out_emails').checked && 'Email Sequence',
-        $('out_page').checked && 'Landing Page'
+        $('#out_form').checked && 'Form',
+        $('#out_emails').checked && 'Email Sequence',
+        $('#out_page').checked && 'Landing Page',
+        $('#out_chat').checked && 'Chat Script',
+        $('#out_sheet').checked && 'Spreadsheet Stub'
       ].filter(Boolean);
 
-      // Summary
-      $('sum').textContent =
-        `Goal: ${goal}\nModel: ${model} • Tone: ${tone}\nTools: ${tools.join(', ')||'(none)'}\nOutputs: ${outs.join(', ')||'(none)'}\n—\nPrompt:\n${prompt}`;
+      setText($('#sum'),
+`Business: ${biz}
+Goal: ${goal}
+Model: ${model} • Tone: ${tone}
+Tools: ${tools.join(', ')||'(none)'}
+Outputs: ${outs.join(', ')||'(none)'}
+Rules: ${rules.join(' | ')||'(none)'}
+Inputs: ${inputs.join(', ')||'(none)'}
+— Preview is locally generated (no external calls).`);
 
-      // Steps (mock plan)
+      // Steps
       const steps = [
-        `Parse intent & entities from prompt`,
-        tools.includes('Web Search') ? `Do scoped research (sources summary)` : null,
-        outs.includes('Form') ? `Draft form fields & validations` : null,
-        outs.includes('Email Sequence') ? `Generate 3‑step email sequence (${tone})` : null,
-        outs.includes('Landing Page') ? `Compose hero copy & sections` : null,
-        `Assemble deliverables & show preview`
+        'Parse intent & entities',
+        inputs.length ? `Map inputs (${inputs.join(', ')}) to fields & validation` : null,
+        $('#tool_web').checked ? 'Scoped research (sources summary)' : null,
+        $('#out_form').checked ? 'Draft form + confirm email' : null,
+        $('#out_emails').checked ? `Generate 3‑step email sequence (${tone})` : null,
+        $('#out_page').checked ? 'Compose hero & sections' : null,
+        $('#out_chat').checked ? 'Outline chat intents & responses' : null,
+        $('#out_sheet').checked ? 'Create sheet schema (CSV/JSON stub)' : null,
+        'Assemble deliverables & show preview'
       ].filter(Boolean);
 
-      const list = $('steps'); list.innerHTML = '';
-      steps.forEach(s=>{
-        const li = document.createElement('li'); li.textContent = s; list.appendChild(li);
-      });
+      const stepsEl = $('#steps'); stepsEl.innerHTML = '';
+      steps.forEach(s=>{ const li=document.createElement('li'); li.textContent=s; stepsEl.appendChild(li); });
 
-      // Sample email
-      $('sample').innerHTML =
-        `<div class="glass rounded-lg p-3">
-           <div class="text-white/80 font-semibold mb-1">Subject:</div>
-           <div class="mb-2">Welcome to your new ${goal} agent 🎉</div>
-           <div class="text-white/80 font-semibold mb-1">Body:</div>
-           <div class="leading-relaxed">
-             Hi there,<br/>
-             your agent is set up to handle <b>${goal}</b> with a <i>${tone.toLowerCase()}</i> tone.
-             We’ll collect the right inputs, automate responses, and keep everything tidy.
-             <br/><br/>Ready to test? Add a sample request and watch the flow.
-             <br/><br/>— SPEC88
-           </div>
-         </div>`;
+      // Form
+      const formFields = inputs.map(name=>{
+        const id = name.toLowerCase().replace(/[^a-z0-9]+/g,'_');
+        return `<label class="block text-sm mb-1">${name}</label>
+<input class="w-full rounded-lg border border-white/10 bg-black/30 px-3 py-2 mb-2" name="${id}" placeholder="${name}"/>`;
+      }).join('\n');
 
-      $('preview').classList.remove('hidden');
-      $('status').textContent = 'Preview ready.';
+      const formHtml = `<form class="glass rounded-xl p-3">
+${formFields}
+<button class="accent-grad rounded-lg px-3 py-2 font-semibold">Submit</button>
+</form>`;
+
+      if($('#out_form').checked){
+        $('#formWrap').classList.remove('hidden');
+        setHtml($('#formMount'), formHtml);
+        $('#formHtml').value = formHtml;
+      } else {
+        $('#formWrap').classList.add('hidden');
+      }
+
+      // Emails
+      if($('#out_emails').checked){
+        $('#emailsWrap').classList.remove('hidden');
+        const subjects = [
+          `Welcome to ${biz} — your agent is ready`,
+          `${biz}: Next steps to get value fast`,
+          `Quick check: is your ${biz} agent delivering?`
+        ];
+        const emails = subjects.map((sub,i)=>`
+<div class="glass rounded-lg p-3">
+  <div class="text-white/80 font-semibold mb-1">Subject:</div>
+  <div class="mb-2">${sub}</div>
+  <div class="text-white/80 font-semibold mb-1">Body:</div>
+  <div class="leading-relaxed text-sm">
+    Hi,<br/>we set up your agent to handle <b>${goal}</b> with a <i>${tone.toLowerCase()}</i> tone.
+    ${i===0?'You can start by submitting a sample request.':'Here are two ways to get value today.'}
+    <br/><br/>— SPEC88
+  </div>
+</div>`).join('\n');
+
+        setHtml($('#emails'), emails);
+        $('#emailsHtml').value = emails.replace(/<br\/>/g,'\n');
+      } else {
+        $('#emailsWrap').classList.add('hidden');
+      }
+
+      // Landing hero
+      if($('#out_page').checked){
+        $('#pageWrap').classList.remove('hidden');
+        const hero = `
+<div class="text-3xl font-extrabold mb-2">${biz} — AI Agent</div>
+<p class="muted mb-3">From idea to workflow in minutes. ${goal}</p>
+<a class="inline-block accent-grad rounded-lg px-4 py-2 font-semibold">Try now</a>`;
+        setHtml($('#pageMount'), hero);
+        $('#pageHtml').value = hero;
+      } else {
+        $('#pageWrap').classList.add('hidden');
+      }
+
+      $('#preview').classList.remove('hidden');
+      $('#status').textContent = 'Preview ready.';
     });
+
+    // Save / Load
+    const STORAGE = 'spec88_agents_v1';
+    const loadAll = ()=> { try{ return JSON.parse(localStorage.getItem(STORAGE)||'[]'); } catch { return []; } };
+    const saveAll = (arr)=> localStorage.setItem(STORAGE, JSON.stringify(arr));
+
+    function repaintSaved(){
+      const list = loadAll();
+      const wrap = $('#saved'); wrap.innerHTML = '';
+      if(list.length===0){ wrap.innerHTML = '<div class="text-sm muted">No agents saved yet.</div>'; return; }
+      list.forEach(a=>{
+        const card = document.createElement('div');
+        card.className = 'glass rounded-xl p-3';
+        card.innerHTML = `
+<div class="flex items-start justify-between gap-2">
+  <div>
+    <div class="font-semibold">${a.name}</div>
+    <div class="text-xs muted">${a.model} • ${a.tone} • ${new Date(a.ts).toLocaleString()}</div>
+  </div>
+  <div class="flex gap-2">
+    <button data-id="${a.id}" class="load glass rounded-md px-2 py-1 text-xs hover:bg-white/10">Load</button>
+    <button data-id="${a.id}" class="del glass rounded-md px-2 py-1 text-xs hover:bg-white/10">Delete</button>
+  </div>
+</div>
+<div class="mt-2 text-xs muted line-clamp-3">${(a.prompt||'').slice(0,200)}…</div>`;
+        wrap.appendChild(card);
+      });
+    }
+
+    $('#save').addEventListener('click', ()=>{
+      const name = (val('biz') || 'Agent') + ' • ' + ($('#model').value);
+      const item = {
+        id: uid(), ts: Date.now(),
+        name, model: $('#model').value, tone: $('#tone').value,
+        prompt: $('#prompt').value
+      };
+      const arr = loadAll(); arr.unshift(item); saveAll(arr); repaintSaved();
+    });
+
+    document.addEventListener('click', (e)=>{
+      if(e.target.matches('.del')){
+        const id = e.target.getAttribute('data-id');
+        const arr = loadAll().filter(x=>x.id!==id); saveAll(arr); repaintSaved();
+      }
+      if(e.target.matches('.load')){
+        const id = e.target.getAttribute('data-id');
+        const a = loadAll().find(x=>x.id===id); if(!a) return;
+        $('#prompt').value = a.prompt || '';
+        window.scrollTo({top:0,behavior:'smooth'});
+      }
+    });
+
+    $('#clearAll').addEventListener('click', ()=>{ saveAll([]); repaintSaved(); });
+
+    // Export
+    $('#exportJson').addEventListener('click', ()=>{
+      const data = {
+        business: val('biz'), industry: val('industry'), contact: val('email'),
+        goal: val('goal'), inputs: lines('inputs'), rules: lines('rules'),
+        outputs: { form: $('#out_form').checked, emails: $('#out_emails').checked, page: $('#out_page').checked, chat: $('#out_chat').checked, sheet: $('#out_sheet').checked },
+        tools: { web_search: $('#tool_web').checked, http_request: $('#tool_http').checked, email_draft: $('#tool_email').checked, spreadsheet: $('#tool_sheet').checked },
+        model: $('#model').value, tone: $('#tone').value,
+        prompt: $('#prompt').value
+      };
+      dl('spec88_agent.json', JSON.stringify(data, null, 2));
+    });
+
+    $('#exportHtml').addEventListener('click', ()=>{
+      const bundle = `
+<!-- FORM -->
+${$('#formHtml').value || '<!-- no form selected -->'}
+
+<!-- EMAILS -->
+${$('#emailsHtml').value || '<!-- no emails selected -->'}
+
+<!-- HERO -->
+${$('#pageHtml').value || '<!-- no hero selected -->'}
+`;
+      dl('spec88_outputs.html', bundle);
+    });
+
+    // init
+    repaintSaved();
   </script>
 </body>
 </html>
