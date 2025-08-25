@@ -3,289 +3,292 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>SPEC88 • Agents (MVP)</title>
+  <title>SPEC88 • Agents</title>
 
-  <!-- Tailwind für das Styling aus deinem Design -->
+  <!-- Tailwind (nur CDN, läuft auf GitHub Pages) -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- React 18 + Babel (damit JSX direkt im Browser funktioniert) -->
-  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Grund-Background wie auf der Landing -->
   <style>
-    body{background:linear-gradient(135deg,#0A2540,#090E16);color:#fff}
-    .shadow-soft{box-shadow:0 8px 30px rgba(0,0,0,.25)}
+    :root { --bg:#090E16; --bg2:#0A2540; --accent:#2EF7D0; --muted:rgba(255,255,255,.65); }
+    *{box-sizing:border-box}
+    body{font-family:'Inter',system-ui,Arial;background:radial-gradient(1300px 900px at 10% -10%,#112B4E,var(--bg2)) no-repeat,var(--bg);color:#fff}
+    .glass{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter:saturate(160%) blur(10px)}
+    .soft{box-shadow:0 10px 40px rgba(0,0,0,.35)}
+    .accent-grad{background:linear-gradient(135deg,var(--accent),#86FFE8); color:#071523}
+    .ring-soft{box-shadow:0 0 0 3px rgba(46,247,208,.18)}
+    .badge{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14)}
+    .muted{color:var(--muted)}
+    .code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+    .hint{border-left:3px solid var(--accent); padding-left:.75rem}
   </style>
 </head>
 <body>
-  <div id="root"></div>
 
-  <!-- Deine Agent-App (browserfreundlich, ohne Imports/TypeScript) -->
-  <script type="text/babel">
-    const { useEffect, useMemo, useRef, useState } = React;
+  <!-- Header -->
+  <header class="sticky top-0 z-30 border-b border-white/10 bg-black/30 backdrop-blur">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
+      <div class="flex items-center gap-3">
+        <div class="h-9 w-9 rounded-2xl accent-grad grid place-items-center font-extrabold">S</div>
+        <div class="text-lg font-semibold tracking-tight">SPEC88 • Agents</div>
+        <div class="hidden md:flex items-center gap-2">
+          <span class="badge rounded-full px-2.5 py-1 text-xs text-white/80">No code</span>
+          <span class="badge rounded-full px-2.5 py-1 text-xs text-white/80">Self‑hostable ready</span>
+          <span class="badge rounded-full px-2.5 py-1 text-xs text-white/80">Fast preview</span>
+        </div>
+      </div>
+      <nav class="flex items-center gap-2">
+        <a href="./" class="glass soft rounded-xl px-3 py-1.5 text-sm hover:bg-white/10">← Back to landing</a>
+      </nav>
+    </div>
+  </header>
 
-    // ---------- Utils ----------
-    const uid = () => Math.random().toString(36).slice(2,10);
-    const now = () => new Date().toISOString();
-    const cls = (...v) => v.filter(Boolean).join(" ");
-    const STORAGE_KEY = "spec88_agents_state_v1";
-    const delay = (ms) => new Promise(r=>setTimeout(r,ms));
+  <!-- Hero -->
+  <section class="mx-auto max-w-7xl px-4 pt-10 pb-6">
+    <div class="grid gap-6 md:grid-cols-5">
+      <div class="md:col-span-3">
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">
+          Build <span class="text-[var(--accent)]">AI Agents</span> for your business in minutes
+        </h1>
+        <p class="muted mt-3 max-w-2xl">
+          Describe what your agent should do — SPEC88 assembles the workflow, draft copy and UI.  
+          Works great for reservations, lead qualification, email follow‑ups, website helpers and more.
+        </p>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="badge rounded-full px-2.5 py-1 text-xs text-white/80">Reservations</span>
+          <span class="badge rounded-full px-2.5 py-1 text-xs text-white/80">Websites</span>
+          <span class="badge rounded-full px-2.5 py-1 text-xs text-white/80">CRM</span>
+          <span class="badge rounded-full px-2.5 py-1 text-xs text-white/80">Email</span>
+        </div>
+      </div>
+      <div class="md:col-span-2 glass soft rounded-2xl p-4">
+        <div class="text-sm font-semibold text-white/80 mb-2">Quick How‑To</div>
+        <div class="hint text-sm text-white/90">
+          <p class="mb-2"><b>1)</b> Sag <i>klar</i>, was passieren soll (Ziel).</p>
+          <p class="mb-2"><b>2)</b> Nenne <i>Inputs</i> & Regeln (Daten, Grenzen, Ton).</p>
+          <p class="mb-2"><b>3)</b> Definiere <i>Outputs</i> (z. B. Formular, E‑Mail, Seite).</p>
+          <p class="mb-0"><b>Tipp:</b> Wenn dir Formulierungen schwerfallen, frag kurz <u>ChatGPT</u>, dir einen präzisen Prompt zu bauen – 1:1 hier einfügen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    const loadPersist = () => {
-      try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{"agents":[]}'); }
-      catch { return { agents: [] }; }
-    };
-    const savePersist = (data) => { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch {} };
+  <!-- Main: Builder + Guidance -->
+  <main class="mx-auto max-w-7xl px-4 pb-12 grid gap-6 md:grid-cols-5">
+    <!-- Builder -->
+    <section class="md:col-span-3 glass soft rounded-2xl p-5">
+      <div class="flex items-center justify-between">
+        <h2 class="text-lg font-semibold text-white/80">Create your Agent</h2>
+        <div class="text-xs muted">Demo preview (no server calls)</div>
+      </div>
 
-    // ---------- Tool Stubs (safe im Browser) ----------
-    async function toolInvoke(id, input){
-      await delay(400);
-      if(id==="web_search") return `WebSearch Results for "${input.query}":\n- (demo) Result A\n- (demo) Result B`;
-      if(id==="http_request") return `HTTP (demo) GET ${input.url} → 200 OK (stub body)`;
-      if(id==="email_stub") return `Email drafted (demo) to ${input.to||"user@example.com"} with subject "${input.subject||"Hi"}".`;
-      if(id==="spreadsheet_stub") return `Spreadsheet (demo) created with ${input.rows?.length||0} rows.`;
-      return "(unknown tool)";
-    }
+      <div class="mt-3 grid gap-4">
+        <div>
+          <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Agent Prompt</label>
+          <textarea id="prompt" rows="6"
+            class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2 outline-none focus:ring-2 ring-soft"
+            placeholder="Example: Build a reservation agent for a small café with 12 tables, open 10:00–22:00. Collect name, party size, date/time, phone. Confirm via email. Show available slots dynamically.">
+          </textarea>
+        </div>
 
-    // ---------- Runner (deterministischer Mock) ----------
-    async function runAgentTask(agent, prompt, onStep){
-      onStep({ id: uid(), type: "message", content: `Starting run at ${now()}…`, ts: Date.now() });
-      onStep({ id: uid(), type: "thought", content: `Goal: ${agent.objective}`, ts: Date.now() });
-      onStep({ id: uid(), type: "thought", content: `User prompt: ${prompt}`, ts: Date.now() });
+        <div class="grid md:grid-cols-3 gap-3">
+          <div>
+            <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Goal</label>
+            <select id="goal" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2">
+              <option>Reservations</option>
+              <option>Website Helper</option>
+              <option>Lead Qualification</option>
+              <option>Email Follow-up</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Model (display)</label>
+            <select id="model" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2">
+              <option>gpt-4.1-mini</option>
+              <option>gpt-4.1</option>
+              <option>gpt-4o</option>
+              <option>mistral-large</option>
+              <option>llama-3.1</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Tone</label>
+            <select id="tone" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2">
+              <option>Professional</option>
+              <option>Friendly</option>
+              <option>Concise</option>
+              <option>Salesy</option>
+            </select>
+          </div>
+        </div>
 
-      if(agent.tools.includes("web_search") && /research|find|suche|recherch/i.test(prompt)){
-        onStep({ id: uid(), type: "action", content: "web_search(query)", ts: Date.now() });
-        const obs = await toolInvoke("web_search", { query: prompt });
-        onStep({ id: uid(), type: "observation", content: obs, ts: Date.now() });
-      }
-
-      if(agent.tools.includes("http_request") && /(http|fetch|api)/i.test(prompt)){
-        onStep({ id: uid(), type: "action", content: "http_request(url)", ts: Date.now() });
-        const obs = await toolInvoke("http_request", { url: "https://api.example.com/demo" });
-        onStep({ id: uid(), type: "observation", content: obs, ts: Date.now() });
-      }
-
-      const summary = `\nModel: ${agent.model} · Temp: ${agent.temperature}\nTools used: ${agent.tools.join(", ") || "(none)"}\n—\nBased on the above, here is a concise plan:\n1) Clarify requirements.\n2) Draft outputs.\n3) Deliver assets.\n`;
-      await delay(250);
-      onStep({ id: uid(), type: "message", content: summary, ts: Date.now() });
-    }
-
-    // ---------- UI Primitives ----------
-    const Pill = ({children}) => <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-white/80">{children}</span>;
-    const Label = ({children}) => <label className="text-xs uppercase tracking-wide text-white/60">{children}</label>;
-    const Field = ({children}) => <div className="space-y-1">{children}</div>;
-
-    // ---------- App ----------
-    function AgentStudio(){
-      const [agents,setAgents] = useState(()=>loadPersist().agents);
-      const [selectedId,setSelectedId] = useState(agents[0]?.id ?? null);
-      const [runSteps,setRunSteps] = useState([]);
-      const [task,setTask] = useState("");
-      const [isRunning,setIsRunning] = useState(false);
-
-      useEffect(()=>{ savePersist({agents}); },[agents]);
-      useEffect(()=>{ if(!selectedId && agents[0]) setSelectedId(agents[0].id); },[agents,selectedId]);
-
-      function addAgent(){
-        const a = {
-          id: uid(),
-          name: `Agent ${agents.length + 1}`,
-          objective: "Build & automate business workflows (SPEC88)",
-          model: "gpt-4.1-mini",
-          temperature: 0.2,
-          tools: ["web_search"]
-        };
-        setAgents(prev=>[a,...prev]);
-        setSelectedId(a.id);
-      }
-      function removeAgent(id){
-        setAgents(prev=>prev.filter(x=>x.id!==id));
-        if(selectedId===id) setSelectedId(null);
-      }
-      function updateAgent(id,patch){
-        setAgents(prev=>prev.map(a => a.id===id ? {...a,...patch} : a));
-      }
-      const selected = useMemo(()=>agents.find(a=>a.id===selectedId)||null,[agents,selectedId]);
-
-      async function run(){
-        if(!selected || !task.trim()) return;
-        setIsRunning(true);
-        setRunSteps([]);
-        const push = (s)=>setRunSteps(prev=>[...prev,s]);
-        try{ await runAgentTask(selected, task.trim(), push); }
-        catch(e){ push({ id: uid(), type:"error", content:String(e?.message||e), ts: Date.now() }); }
-        finally{ setIsRunning(false); }
-      }
-
-      return (
-        <div className="min-h-screen w-full bg-gradient-to-br from-[#0A2540] to-[#090E16] text-white">
-          <header className="sticky top-0 z-20 border-b border-white/10 bg-black/30 backdrop-blur">
-            <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
-              <div className="flex items-center gap-3">
-                <div className="h-9 w-9 rounded-2xl bg-white/10"></div>
-                <div className="text-xl font-semibold tracking-tight">SPEC88 • Agents</div>
-                <div className="hidden items-center gap-2 sm:flex">
-                  <Pill>Lifetime License ready</Pill>
-                  <Pill>No vendor lock‑in</Pill>
-                  <Pill>Self‑hostable</Pill>
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <a href="./" className="rounded-2xl border border-white/10 bg-white/5 px-3 py-1.5 text-sm">← Back</a>
-                <button onClick={addAgent} className="rounded-2xl bg-white px-3 py-1.5 text-sm font-semibold text-black transition hover:scale-[1.02] hover:bg-white/90">+ New Agent</button>
-              </div>
+        <div class="grid md:grid-cols-2 gap-3">
+          <div class="glass rounded-xl p-3">
+            <div class="text-xs uppercase tracking-wide text-white/60 mb-2">Tools</div>
+            <div class="flex flex-wrap gap-2 text-sm">
+              <label class="inline-flex items-center gap-2"><input type="checkbox" class="accent-teal-300" checked id="tool_web"/><span>Web Search</span></label>
+              <label class="inline-flex items-center gap-2"><input type="checkbox" class="accent-teal-300" id="tool_http"/><span>HTTP/API</span></label>
+              <label class="inline-flex items-center gap-2"><input type="checkbox" class="accent-teal-300" id="tool_email"/><span>Email Draft</span></label>
+              <label class="inline-flex items-center gap-2"><input type="checkbox" class="accent-teal-300" id="tool_sheet"/><span>Spreadsheet</span></label>
             </div>
-          </header>
-
-          <main className="mx-auto grid max-w-7xl gap-4 px-4 py-6 md:grid-cols-3">
-            {/* Left: Agents */}
-            <section className="space-y-3 md:col-span-1">
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-4 shadow-soft">
-                <h2 className="mb-2 text-sm font-semibold tracking-wide text-white/80">Your Agents</h2>
-                <div className="space-y-2">
-                  {agents.length===0 && <div className="text-sm text-white/60">No agents yet. Create one to get started.</div>}
-                  {agents.map(a=>(
-                    <button key={a.id} onClick={()=>setSelectedId(a.id)}
-                      className={cls("w-full rounded-xl border px-3 py-2 text-left", selectedId===a.id ? "border-white/40 bg-white/10" : "border-white/10 hover:bg-white/5")}>
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <div className="font-medium">{a.name}</div>
-                          <div className="text-xs text-white/60">{a.model} • {a.tools.length} tools</div>
-                        </div>
-                        <button onClick={(e)=>{e.stopPropagation(); removeAgent(a.id);}}
-                          className="rounded-lg px-2 py-1 text-xs text-white/60 hover:bg-white/10 hover:text-white/90">Delete</button>
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {selected && (
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-4 shadow-soft">
-                  <h3 className="mb-3 text-sm font-semibold tracking-wide text-white/80">Agent Settings</h3>
-                  <div className="space-y-3">
-                    <Field>
-                      <Label>Name</Label>
-                      <input className="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2 outline-none ring-white/10 focus:ring"
-                        value={selected.name} onChange={(e)=>updateAgent(selected.id,{name:e.target.value})}/>
-                    </Field>
-                    <Field>
-                      <Label>Objective</Label>
-                      <textarea rows={3} className="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2 outline-none ring-white/10 focus:ring"
-                        value={selected.objective} onChange={(e)=>updateAgent(selected.id,{objective:e.target.value})}/>
-                    </Field>
-                    <div className="grid grid-cols-2 gap-3">
-                      <Field>
-                        <Label>Model</Label>
-                        <select className="w-full rounded-xl border border-white/10 bg.black/30 px-3 py-2 bg-black/30"
-                          value={selected.model} onChange={(e)=>updateAgent(selected.id,{model:e.target.value})}>
-                          <option value="gpt-4o">gpt-4o</option>
-                          <option value="gpt-4.1">gpt-4.1</option>
-                          <option value="gpt-4.1-mini">gpt-4.1-mini</option>
-                          <option value="llama-3.1">llama-3.1</option>
-                          <option value="mistral-large">mistral-large</option>
-                        </select>
-                      </Field>
-                      <Field>
-                        <Label>Temperature</Label>
-                        <input type="range" min={0} max={1} step={0.05} value={selected.temperature}
-                          onChange={(e)=>updateAgent(selected.id,{temperature:Number(e.target.value)})} className="w-full"/>
-                        <div className="text-xs text-white/60">{Number(selected.temperature).toFixed(2)}</div>
-                      </Field>
-                    </div>
-                    <Field>
-                      <Label>Tools</Label>
-                      <div className="flex flex-wrap gap-2">
-                        {["web_search","http_request","email_stub","spreadsheet_stub"].map(t=>{
-                          const active = selected.tools.includes(t);
-                          return (
-                            <button key={t} onClick={()=>{
-                              const set = new Set(selected.tools);
-                              active ? set.delete(t) : set.add(t);
-                              updateAgent(selected.id, { tools: Array.from(set) });
-                            }} className={cls("rounded-full border px-3 py-1 text-xs", active ? "border-white/40 bg-white/10" : "border-white/10 hover:bg-white/5")} title={t}>
-                              {t}
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </Field>
-                  </div>
-                </div>
-              )}
-            </section>
-
-            {/* Right: Runner */}
-            <section className="space-y-3 md:col-span-2">
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-4 shadow-soft">
-                <h2 className="mb-3 text-sm font-semibold tracking-wide text-white/80">Run Task</h2>
-                <div className="flex gap-2">
-                  <input className="flex-1 rounded-xl border border-white/10 bg-black/30 px-3 py-2 outline-none ring-white/10 focus:ring"
-                    placeholder="Describe your task… (e.g., 'research pricing for a reservation app')"
-                    value={task} onChange={(e)=>setTask(e.target.value)}
-                    onKeyDown={(e)=>{ if(e.key==="Enter" && (e.metaKey||e.ctrlKey)) run(); }}/>
-                  <button onClick={run} disabled={!selected || !task.trim() || isRunning}
-                    className={cls("rounded-2xl px-4 py-2 text-sm font-semibold transition", isRunning ? "bg-white/20 text-white/60" : "bg-white text-black hover:scale-[1.02] hover:bg-white/90")}>
-                    {isRunning ? "Running…" : "Run ⏎"}
-                  </button>
-                </div>
-                <div className="mt-2 text-xs text-white/50">Tip: ⌘/Ctrl + Enter to start</div>
-              </div>
-
-              <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-0 shadow-soft">
-                <div className="border-b border-white/10 bg-black/20 px-4 py-2 text-sm text-white/80">Execution Trace</div>
-                <div className="max-h-[52vh] overflow-auto space-y-2 px-4 py-3">
-                  {/* Steps */}
-                  { /* We'll render from state */ }
-                  {/* Placeholder – content filled below */}
-                  <Trace steps={runSteps}/>
-                </div>
-              </div>
-
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-4 shadow-soft">
-                <h3 className="mb-2 text-sm font-semibold tracking-wide text-white/80">Next steps (upgrade path)</h3>
-                <ol className="list-decimal space-y-1 pl-5 text-sm text-white/80">
-                  <li>Add a secure Server API (Next.js/FastAPI) to call real LLMs.</li>
-                  <li>Stripe: per‑run billing + optional subscription.</li>
-                  <li>Visual workflow builder (nodes: Input → Tools → LLM → Output).</li>
-                  <li>OAuth integrations: Gmail, Sheets, Notion, WhatsApp.</li>
-                  <li>Deployment docs: Vercel/Fly.io/Render + Docker.</li>
-                </ol>
-              </div>
-            </section>
-          </main>
-
-          <footer className="mx-auto max-w-7xl px-4 pb-10 pt-4 text-center text-xs text-white/50">
-            © {new Date().getFullYear()} SPEC88 – Self‑hostable Agent Platform (MVP). Demo runs locally without external API calls.
-          </footer>
+          </div>
+          <div class="glass rounded-xl p-3">
+            <div class="text-xs uppercase tracking-wide text-white/60 mb-2">Outputs</div>
+            <div class="flex flex-wrap gap-2 text-sm">
+              <label class="inline-flex items-center gap-2"><input type="checkbox" class="accent-teal-300" checked id="out_form"/><span>Form</span></label>
+              <label class="inline-flex items-center gap-2"><input type="checkbox" class="accent-teal-300" checked id="out_emails"/><span>Email Sequence</span></label>
+              <label class="inline-flex items-center gap-2"><input type="checkbox" class="accent-teal-300" id="out_page"/><span>Landing Page</span></label>
+            </div>
+          </div>
         </div>
-      );
-    }
 
-    function Trace({steps}){
-      if(!steps || steps.length===0)
-        return <div className="text-sm text-white/60">No runs yet. Start a task to see steps.</div>;
-      return steps.map(s=>(
-        <div key={s.id} className="text-sm">
-          <span className={
-            [
-              "mr-2 rounded-md px-2 py-0.5 text-xs",
-              s.type==="thought" ? "bg-indigo-500/20" :
-              s.type==="action" ? "bg-amber-500/20" :
-              s.type==="observation" ? "bg-emerald-500/20" :
-              s.type==="error" ? "bg-red-500/30" : "bg-white/10"
-            ].join(" ")
-          }>{s.type}</span>
-          <span className="whitespace-pre-wrap text-white/90">{s.content}</span>
-          <div className="text-[10px] text-white/50">{new Date(s.ts).toLocaleTimeString()}</div>
+        <div class="flex flex-wrap items-center gap-3">
+          <button id="generate" class="accent-grad rounded-xl px-4 py-2 font-semibold hover:opacity-90 transition">Generate Preview</button>
+          <span id="status" class="text-sm muted"></span>
         </div>
-      ));
-    }
 
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(<AgentStudio/>);
+        <!-- Preview -->
+        <div id="preview" class="hidden mt-3 grid gap-3">
+          <div class="glass rounded-xl p-4">
+            <div class="text-sm font-semibold text-white/80 mb-2">Agent Summary</div>
+            <div id="sum" class="text-sm whitespace-pre-wrap"></div>
+          </div>
+          <div class="glass rounded-xl p-4">
+            <div class="text-sm font-semibold text-white/80 mb-2">Planned Steps</div>
+            <ol id="steps" class="list-decimal pl-5 text-sm"></ol>
+          </div>
+          <div class="glass rounded-xl p-4">
+            <div class="text-sm font-semibold text-white/80 mb-2">Sample Output (Email #1)</div>
+            <div id="sample" class="text-sm"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Guidance -->
+    <aside class="md:col-span-2 grid gap-6">
+      <section class="glass soft rounded-2xl p-5">
+        <h3 class="text-lg font-semibold text-white/90">How to write a great Agent Prompt</h3>
+        <p class="muted mt-2">Bau deinen Prompt wie ein Mini‑Briefing. Nutze dieses Format:</p>
+        <div class="mt-3 glass rounded-xl p-3 code text-sm">
+{ "goal": "What should the agent achieve?",
+  "inputs": ["What data will the user provide?"],
+  "rules": ["Constraints, tone, brand voice"],
+  "outputs": ["What should be produced (form, emails, page)"] }
+        </div>
+        <p class="muted mt-3">
+          <b>Shortcut:</b> Wenn du unsicher bist, bitte kurz <u>ChatGPT</u>, dir so einen Prompt zu schreiben.
+          Formuliere nur dein Ziel & Kontext – kopiere das Ergebnis hier rein. Fertig.
+        </p>
+      </section>
+
+      <section class="glass soft rounded-2xl p-5">
+        <h3 class="text-lg font-semibold text-white/90">Prompt Examples (click to use)</h3>
+        <div class="mt-3 grid gap-3">
+          <button class="ex glass rounded-xl p-3 text-left hover:bg-white/10 transition text-sm" data-text="Build a reservation agent for a 12-table café (10:00–22:00). Collect name, party size, date/time, phone. Confirm by email with friendly tone. Show available slots and prevent double bookings. Outputs: form + 3 email sequence.">
+            ☕ Café Reservations
+          </button>
+          <button class="ex glass rounded-xl p-3 text-left hover:bg-white/10 transition text-sm" data-text="Create a website helper agent for a home services business. Gather service type, ZIP, preferred date, phone. Reply with a clean quote and a follow-up email. Outputs: form + landing hero copy + 2 emails.">
+            🏠 Service Website Helper
+          </button>
+          <button class="ex glass rounded-xl p-3 text-left hover:bg-white/10 transition text-sm" data-text="Lead qualification agent for a B2B agency. Ask budget range, team size, timeline, pain points. Score lead (A/B/C) and prepare a tailored intro email. Outputs: form + spreadsheet stub + intro email.">
+            🧭 Lead Qualification
+          </button>
+          <button class="ex glass rounded-xl p-3 text-left hover:bg-white/10 transition text-sm" data-text="Email follow‑up agent for an online course. Detect which lesson the user stopped at, send gentle reminder, include 3 bullet benefits, and a single CTA. Outputs: 3‑step email sequence.">
+            ✉️ Email Follow‑ups
+          </button>
+        </div>
+      </section>
+    </aside>
+  </main>
+
+  <!-- Footer -->
+  <footer class="mx-auto max-w-7xl px-4 pb-10 text-center text-xs text-white/60">
+    © <span id="year"></span> SPEC88 – Agents. Designed in the SPEC88 style.
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Fill textarea from example buttons
+    document.querySelectorAll('.ex').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        document.getElementById('prompt').value = btn.dataset.text || '';
+        document.getElementById('prompt').focus();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    // Tiny local preview (no API calls)
+    const $ = (id)=>document.getElementById(id);
+    $('generate').addEventListener('click', ()=>{
+      const prompt = $('prompt').value.trim();
+      const goal   = $('goal').value;
+      const model  = $('model').value;
+      const tone   = $('tone').value;
+
+      if(!prompt){
+        $('status').textContent = 'Please add a prompt first.';
+        $('status').classList.add('text-red-300'); return;
+      }
+      $('status').classList.remove('text-red-300');
+      $('status').textContent = 'Generating preview…';
+
+      const tools = [
+        $('tool_web').checked && 'Web Search',
+        $('tool_http').checked && 'HTTP/API',
+        $('tool_email').checked && 'Email Draft',
+        $('tool_sheet').checked && 'Spreadsheet'
+      ].filter(Boolean);
+
+      const outs = [
+        $('out_form').checked && 'Form',
+        $('out_emails').checked && 'Email Sequence',
+        $('out_page').checked && 'Landing Page'
+      ].filter(Boolean);
+
+      // Summary
+      $('sum').textContent =
+        `Goal: ${goal}\nModel: ${model} • Tone: ${tone}\nTools: ${tools.join(', ')||'(none)'}\nOutputs: ${outs.join(', ')||'(none)'}\n—\nPrompt:\n${prompt}`;
+
+      // Steps (mock plan)
+      const steps = [
+        `Parse intent & entities from prompt`,
+        tools.includes('Web Search') ? `Do scoped research (sources summary)` : null,
+        outs.includes('Form') ? `Draft form fields & validations` : null,
+        outs.includes('Email Sequence') ? `Generate 3‑step email sequence (${tone})` : null,
+        outs.includes('Landing Page') ? `Compose hero copy & sections` : null,
+        `Assemble deliverables & show preview`
+      ].filter(Boolean);
+
+      const list = $('steps'); list.innerHTML = '';
+      steps.forEach(s=>{
+        const li = document.createElement('li'); li.textContent = s; list.appendChild(li);
+      });
+
+      // Sample email
+      $('sample').innerHTML =
+        `<div class="glass rounded-lg p-3">
+           <div class="text-white/80 font-semibold mb-1">Subject:</div>
+           <div class="mb-2">Welcome to your new ${goal} agent 🎉</div>
+           <div class="text-white/80 font-semibold mb-1">Body:</div>
+           <div class="leading-relaxed">
+             Hi there,<br/>
+             your agent is set up to handle <b>${goal}</b> with a <i>${tone.toLowerCase()}</i> tone.
+             We’ll collect the right inputs, automate responses, and keep everything tidy.
+             <br/><br/>Ready to test? Add a sample request and watch the flow.
+             <br/><br/>— SPEC88
+           </div>
+         </div>`;
+
+      $('preview').classList.remove('hidden');
+      $('status').textContent = 'Preview ready.';
+    });
   </script>
 </body>
 </html>
