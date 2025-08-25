@@ -3,46 +3,29 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>SPEC88 • Agents</title>
-
-  <!-- Tailwind (CDN, läuft auf GitHub Pages) -->
+  <title>SPEC88 • Universal Agent Builder</title>
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-
   <style>
     :root { --bg:#090E16; --bg2:#0A2540; --accent:#2EF7D0; --muted:rgba(255,255,255,.70); }
-    *{box-sizing:border-box}
-    body{font-family:'Inter',system-ui,Arial;background:radial-gradient(1300px 900px at 10% -10%,#112B4E,var(--bg2)) no-repeat,var(--bg);color:#fff}
+    *{box-sizing:border-box} body{font-family:'Inter',system-ui,Arial;background:
+    radial-gradient(1300px 900px at 10% -10%,#112B4E,var(--bg2)) no-repeat,var(--bg);color:#fff}
     .glass{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter:saturate(160%) blur(10px)}
-    .soft{box-shadow:0 10px 40px rgba(0,0,0,.35)}
-    .accent-grad{background:linear-gradient(135deg,var(--accent),#86FFE8); color:#071523}
-    .muted{color:var(--muted)}
-    .badge{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14)}
-    .code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
-    .copy{cursor:pointer}
+    .soft{box-shadow:0 10px 40px rgba(0,0,0,.35)} .accent{background:linear-gradient(135deg,var(--accent),#86FFE8); color:#071523}
+    .muted{color:var(--muted)} .code{font-family:ui-monospace,Menlo,Consolas,monospace} .copy{cursor:pointer}
   </style>
 </head>
 <body>
-
   <!-- Header -->
   <header class="sticky top-0 z-30 border-b border-white/10 bg-black/30 backdrop-blur">
     <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
       <div class="flex items-center gap-3">
-        <div class="h-9 w-9 rounded-2xl accent-grad grid place-items-center font-extrabold">S</div>
-        <div class="text-lg font-semibold tracking-tight">SPEC88 • Agents</div>
-        <div class="hidden md:flex items-center gap-2">
-          <span class="badge rounded-full px-2.5 py-1 text-xs text-white/80">No code</span>
-          <span class="badge rounded-full px-2.5 py-1 text-xs text-white/80">Self‑hostable ready</span>
-          <span class="badge rounded-full px-2.5 py-1 text-xs text-white/80">Export HTML/JSON</span>
-        </div>
+        <div class="h-9 w-9 rounded-2xl accent grid place-items-center font-extrabold">S</div>
+        <div class="text-lg font-semibold tracking-tight">SPEC88 • Universal Agents</div>
+        <span class="hidden md:inline text-xs rounded-full border border-white/10 bg-white/10 px-2.5 py-1 ml-2">No pre-set tools. Fully generic.</span>
       </div>
-      <nav class="flex items-center gap-2">
-        <a href="./" class="glass rounded-xl px-3 py-1.5 text-sm hover:bg-white/10">← Back to landing</a>
-      </nav>
+      <a href="./" class="glass rounded-xl px-3 py-1.5 text-sm hover:bg-white/10">← Back to landing</a>
     </div>
   </header>
 
@@ -51,32 +34,22 @@
     <div class="grid gap-6 md:grid-cols-5">
       <div class="md:col-span-3">
         <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">
-          Build <span class="text-[var(--accent)]">AI Agents</span> for your business in minutes
+          Build <span class="text-[var(--accent)]">AI Agents</span> in any direction
         </h1>
         <p class="muted mt-3 max-w-2xl">
-          Describe what your agent should do — SPEC88 assembles the workflow, draft copy and UI.
-          Great for reservations, lead qualification, email follow‑ups, website helpers & more.
+          Describe your goal once. SPEC88 plans capabilities, constraints and deliverables — from research to UIs, workflows and messaging. No single‑tool limits.
         </p>
-        <div class="mt-4 flex flex-wrap gap-2">
-          <span class="badge rounded-full px-2.5 py-1 text-xs text-white/80">Reservations</span>
-          <span class="badge rounded-full px-2.5 py-1 text-xs text-white/80">Websites</span>
-          <span class="badge rounded-full px-2.5 py-1 text-xs text-white/80">CRM</span>
-          <span class="badge rounded-full px-2.5 py-1 text-xs text-white/80">Email</span>
-        </div>
       </div>
-      <!-- Prompt Coach -->
       <div class="md:col-span-2 glass soft rounded-2xl p-4">
         <div class="text-sm font-semibold text-white/80 mb-2">Prompt Coach</div>
         <div class="text-sm">
           <div class="border-l-4 border-[var(--accent)] pl-3">
-            <p class="mb-2"><b>1)</b> Ziel klar nennen (Was soll passieren?).</p>
-            <p class="mb-2"><b>2)</b> Inputs & Regeln (Daten, Grenzen, Ton, Marke).</p>
-            <p class="mb-0"><b>3)</b> Outputs definieren (Form, E‑Mails, Seite, Chat‑Flow).</p>
+            <p class="mb-2"><b>1)</b> <u>Outcome</u>: Was soll konkret passieren?</p>
+            <p class="mb-2"><b>2)</b> <u>Capabilities</u>: Welche Fähigkeiten braucht der Agent (frei beschreiben)?</p>
+            <p class="mb-2"><b>3)</b> <u>Constraints</u>: Regeln, Compliance, Ton, Limits.</p>
+            <p class="mb-0"><b>4)</b> <u>Deliverables</u>: Welche Ergebnisse möchtest du sehen (frei: UIs, Docs, Flows, APIs, Mails …)?</p>
           </div>
-          <p class="muted mt-3">
-            Tipp: Wenn dir Formulierungen schwerfallen, hol dir in <b>ChatGPT</b> in 30 Sekunden einen präzisen Prompt (beschreibe kurz Ziel & Kontext),
-            kopiere ihn hier rein – fertig.
-          </p>
+          <p class="muted mt-3">Wenn dir Formulierungen schwerfallen, frag kurz <b>ChatGPT</b> um einen strukturierten Prompt – kopiere ihn hier rein.</p>
         </div>
       </div>
     </div>
@@ -86,105 +59,75 @@
   <main class="mx-auto max-w-7xl px-4 pb-12 grid gap-6 lg:grid-cols-5">
     <!-- Builder -->
     <section class="lg:col-span-3 glass soft rounded-2xl p-5">
-      <div class="flex items-center justify-between">
+      <div class="flex items-center justify-between mb-2">
         <h2 class="text-lg font-semibold text-white/80">Create your Agent</h2>
         <div class="text-xs muted">Local preview (no server calls)</div>
       </div>
 
-      <div class="mt-4 grid gap-4">
-        <!-- Blueprint -->
-        <div>
-          <label class="block text-xs uppercase tracking-wide text-white/60 mb-2">Blueprint</label>
-          <div class="grid sm:grid-cols-3 gap-2">
-            <button data-blue="Reservations" class="blue btn border border-white/10 rounded-xl px-3 py-2 text-left hover:bg-white/10">☕ Reservations</button>
-            <button data-blue="Website Helper" class="blue btn border border-white/10 rounded-xl px-3 py-2 text-left hover:bg-white/10">🖥 Website Helper</button>
-            <button data-blue="Lead Qualification" class="blue btn border border-white/10 rounded-xl px-3 py-2 text-left hover:bg-white/10">🧭 Lead Qualification</button>
-            <button data-blue="Email Follow-up" class="blue btn border border-white/10 rounded-xl px-3 py-2 text-left hover:bg-white/10">✉️ Email Follow‑up</button>
-            <button data-blue="Custom" class="blue btn border border-white/10 rounded-xl px-3 py-2 text-left hover:bg-white/10">🧩 Custom</button>
-          </div>
-        </div>
-
-        <!-- Business basics -->
+      <div class="grid gap-4">
+        <!-- Identity -->
         <div class="grid md:grid-cols-3 gap-3">
           <div>
-            <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Business name</label>
-            <input id="biz" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2" placeholder="e.g., Golden Bean Café"/>
+            <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Business / Project</label>
+            <input id="biz" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2" placeholder="e.g., SPEC88 Client A"/>
           </div>
           <div>
-            <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Industry</label>
-            <input id="industry" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2" placeholder="Café / Restaurant / Agency …"/>
+            <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Domain</label>
+            <input id="domain" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2" placeholder="any: fintech, retail, ops, hr, crm …"/>
           </div>
           <div>
-            <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Contact email</label>
+            <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Contact (optional)</label>
             <input id="email" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2" placeholder="you@business.com"/>
           </div>
         </div>
 
-        <!-- Prompt parts -->
+        <!-- Generic spec: no presets -->
+        <div>
+          <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Outcome (what must happen?)</label>
+          <textarea id="outcome" rows="3" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2"
+            placeholder="Example: Launch a reservation & waitlist system that confirms via email/SMS, prevents double-bookings and exports daily schedule."></textarea>
+        </div>
         <div class="grid md:grid-cols-2 gap-3">
           <div>
-            <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Goal</label>
-            <textarea id="goal" rows="3" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2"
-              placeholder="What should the agent achieve? (e.g., manage table reservations incl. email confirmation)"></textarea>
+            <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Capabilities (freeform)</label>
+            <textarea id="capabilities" rows="4" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2"
+              placeholder="understand intent • parse forms • call external APIs • summarize docs • generate UI • draft emails • schedule tasks"></textarea>
           </div>
           <div>
-            <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Inputs (one per line)</label>
-            <textarea id="inputs" rows="3" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2"
-              placeholder="name&#10;party size&#10;date/time&#10;phone"></textarea>
+            <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Constraints (rules & limits)</label>
+            <textarea id="constraints" rows="4" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2"
+              placeholder="GDPR‑compliant • no PII logging • professional & concise tone • fallback if API fails"></textarea>
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Deliverables (freeform)</label>
+          <textarea id="deliverables" rows="3" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2"
+            placeholder="UI mock (HTML snippet) • workflow plan • email sequence • API schema • deployment checklist"></textarea>
+        </div>
+
+        <!-- Model / Tone (display only) -->
+        <div class="grid md:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Model (display)</label>
+            <select id="model" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2">
+              <option>gpt-4.1-mini</option><option>gpt-4.1</option><option>gpt-4o</option>
+              <option>mistral-large</option><option>llama-3.1</option>
+            </select>
           </div>
           <div>
-            <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Rules (one per line)</label>
-            <textarea id="rules" rows="3" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2"
-              placeholder="friendly & concise tone&#10;avoid double bookings&#10;respect opening hours 10:00–22:00"></textarea>
-          </div>
-          <div>
-            <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Outputs (tick)</label>
-            <div class="glass rounded-xl p-3 flex flex-wrap gap-3 text-sm">
-              <label class="inline-flex items-center gap-2"><input type="checkbox" id="out_form" class="accent-teal-300" checked><span>Form</span></label>
-              <label class="inline-flex items-center gap-2"><input type="checkbox" id="out_emails" class="accent-teal-300" checked><span>Email sequence</span></label>
-              <label class="inline-flex items-center gap-2"><input type="checkbox" id="out_page" class="accent-teal-300"><span>Landing page</span></label>
-              <label class="inline-flex items-center gap-2"><input type="checkbox" id="out_chat" class="accent-teal-300"><span>Chat script</span></label>
-              <label class="inline-flex items-center gap-2"><input type="checkbox" id="out_sheet" class="accent-teal-300"><span>Spreadsheet stub</span></label>
-            </div>
+            <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Tone</label>
+            <select id="tone" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2">
+              <option>Professional</option><option>Friendly</option><option>Concise</option><option>Technical</option>
+            </select>
           </div>
         </div>
 
-        <!-- Tools / model -->
-        <div class="grid md:grid-cols-2 gap-3">
-          <div class="glass rounded-xl p-3">
-            <div class="text-xs uppercase tracking-wide text-white/60 mb-2">Tools</div>
-            <div class="flex flex-wrap gap-3 text-sm">
-              <label class="inline-flex items-center gap-2"><input type="checkbox" id="tool_web" class="accent-teal-300" checked><span>Web search</span></label>
-              <label class="inline-flex items-center gap-2"><input type="checkbox" id="tool_http" class="accent-teal-300"><span>HTTP/API</span></label>
-              <label class="inline-flex items-center gap-2"><input type="checkbox" id="tool_email" class="accent-teal-300"><span>Email draft</span></label>
-              <label class="inline-flex items-center gap-2"><input type="checkbox" id="tool_sheet" class="accent-teal-300"><span>Spreadsheet</span></label>
-            </div>
-          </div>
-          <div class="glass rounded-xl p-3">
-            <div class="grid md:grid-cols-2 gap-3">
-              <div>
-                <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Model (display)</label>
-                <select id="model" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2">
-                  <option>gpt-4.1-mini</option><option>gpt-4.1</option><option>gpt-4o</option>
-                  <option>mistral-large</option><option>llama-3.1</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-xs uppercase tracking-wide text-white/60 mb-1">Tone</label>
-                <select id="tone" class="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2">
-                  <option>Professional</option><option>Friendly</option><option>Concise</option><option>Salesy</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Prompt compose -->
+        <!-- Compose / Preview -->
         <div class="grid md:grid-cols-2 gap-3">
           <div>
-            <button id="compose" class="accent-grad rounded-xl px-4 py-2 font-semibold hover:opacity-90 transition">Compose Prompt</button>
+            <button id="compose" class="accent rounded-xl px-4 py-2 font-semibold hover:opacity-90 transition">Compose Prompt</button>
             <span id="status" class="ml-3 text-sm muted"></span>
-            <textarea id="prompt" rows="8" class="mt-2 w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2 code"
+            <textarea id="prompt" rows="10" class="mt-2 w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2 code"
               placeholder='Structured prompt will appear here…'></textarea>
             <div class="mt-2 flex gap-2">
               <button data-copy="#prompt" class="copy glass rounded-xl px-3 py-1.5 text-sm hover:bg-white/10">Copy Prompt</button>
@@ -192,7 +135,7 @@
             </div>
           </div>
           <div>
-            <button id="previewBtn" class="accent-grad rounded-xl px-4 py-2 font-semibold hover:opacity-90 transition">Generate Preview</button>
+            <button id="previewBtn" class="accent rounded-xl px-4 py-2 font-semibold hover:opacity-90 transition">Generate Preview</button>
             <div id="saveLoad" class="mt-2 flex flex-wrap gap-2">
               <button id="save" class="glass rounded-xl px-3 py-1.5 text-sm hover:bg-white/10">Save Agent</button>
               <button id="exportJson" class="glass rounded-xl px-3 py-1.5 text-sm hover:bg-white/10">Export JSON</button>
@@ -205,48 +148,35 @@
         <div id="preview" class="hidden mt-4 grid gap-4">
           <div class="glass rounded-2xl p-4">
             <div class="flex items-center justify-between">
-              <div class="text-sm font-semibold text-white/80">Agent Summary</div>
+              <div class="text-sm font-semibold text-white/80">Agent Plan (Summary)</div>
               <button data-copy="#sum" class="copy glass rounded-md px-2 py-1 text-xs hover:bg-white/10">Copy</button>
             </div>
             <pre id="sum" class="code text-sm whitespace-pre-wrap"></pre>
           </div>
 
           <div class="glass rounded-2xl p-4">
-            <div class="text-sm font-semibold text-white/80 mb-2">Planned Steps</div>
+            <div class="text-sm font-semibold text-white/80 mb-2">Phases & Steps</div>
             <ol id="steps" class="list-decimal pl-5 text-sm"></ol>
           </div>
 
-          <div id="formWrap" class="hidden glass rounded-2xl p-4">
+          <div id="uiWrap" class="glass rounded-2xl p-4">
             <div class="flex items-center justify-between">
-              <div class="text-sm font-semibold text-white/80">Generated Form (HTML)</div>
-              <button data-copy="#formHtml" class="copy glass rounded-md px-2 py-1 text-xs hover:bg-white/10">Copy HTML</button>
+              <div class="text-sm font-semibold text-white/80">UI Snippet (HTML)</div>
+              <button data-copy="#uiHtml" class="copy glass rounded-md px-2 py-1 text-xs hover:bg-white/10">Copy</button>
             </div>
-            <div id="formMount" class="mt-3"></div>
-            <textarea id="formHtml" class="mt-3 w-full code text-xs rounded-xl border border-white/10 bg-black/30 p-2" rows="6" readonly></textarea>
+            <div id="uiMount" class="mt-3"></div>
+            <textarea id="uiHtml" class="mt-3 w-full code text-xs rounded-xl border border-white/10 bg-black/30 p-2" rows="6" readonly></textarea>
           </div>
 
-          <div id="emailsWrap" class="hidden glass rounded-2xl p-4">
-            <div class="flex items-center justify-between">
-              <div class="text-sm font-semibold text-white/80">Email Sequence (3)</div>
-              <button data-copy="#emailsHtml" class="copy glass rounded-md px-2 py-1 text-xs hover:bg-white/10">Copy</button>
-            </div>
-            <div id="emails" class="mt-2 grid md:grid-cols-3 gap-3"></div>
-            <textarea id="emailsHtml" class="mt-3 w-full code text-xs rounded-xl border border-white/10 bg-black/30 p-2" rows="8" readonly></textarea>
-          </div>
-
-          <div id="pageWrap" class="hidden glass rounded-2xl p-4">
-            <div class="flex items-center justify-between">
-              <div class="text-sm font-semibold text-white/80">Landing Hero (snippet)</div>
-              <button data-copy="#pageHtml" class="copy glass rounded-md px-2 py-1 text-xs hover:bg-white/10">Copy</button>
-            </div>
-            <div id="pageMount" class="mt-2"></div>
-            <textarea id="pageHtml" class="mt-3 w-full code text-xs rounded-xl border border-white/10 bg-black/30 p-2" rows="6" readonly></textarea>
+          <div id="docWrap" class="glass rounded-2xl p-4">
+            <div class="text-sm font-semibold text-white/80 mb-2">Documentation Draft</div>
+            <div id="doc" class="text-sm leading-relaxed"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Saved Agents + Examples -->
+    <!-- Saved / Examples -->
     <aside class="lg:col-span-2 grid gap-6">
       <section class="glass soft rounded-2xl p-5">
         <div class="flex items-center justify-between">
@@ -257,328 +187,156 @@
       </section>
 
       <section class="glass soft rounded-2xl p-5">
-        <h3 class="text-lg font-semibold text-white/90">Prompt Examples (click to use)</h3>
-        <div class="mt-3 grid gap-3">
-          <button class="ex glass rounded-xl p-3 text-left hover:bg-white/10 transition text-sm"
-            data-text="Build a reservation agent for a 12-table café (10:00–22:00). Collect name, party size, date/time, phone. Confirm by email with friendly tone. Show available slots and prevent double bookings. Outputs: form + 3 email sequence.">
-            ☕ Café Reservations
-          </button>
-          <button class="ex glass rounded-xl p-3 text-left hover:bg-white/10 transition text-sm"
-            data-text="Create a website helper agent for a home services business. Gather service type, ZIP, preferred date, phone. Reply with a clean quote and a follow-up email. Outputs: form + landing hero + 2 emails.">
-            🏠 Service Website Helper
-          </button>
-          <button class="ex glass rounded-xl p-3 text-left hover:bg-white/10 transition text-sm"
-            data-text="Lead qualification agent for a B2B agency. Ask budget range, team size, timeline, pain points. Score lead (A/B/C) and prepare a tailored intro email. Outputs: form + spreadsheet stub + intro email.">
-            🧭 Lead Qualification
-          </button>
-          <button class="ex glass rounded-xl p-3 text-left hover:bg-white/10 transition text-sm"
-            data-text="Email follow‑up agent for an online course. Detect which lesson the user stopped at, send gentle reminder, include 3 bullet benefits, and a single CTA. Outputs: 3‑step email sequence.">
-            ✉️ Email Follow‑ups
-          </button>
-        </div>
+        <h3 class="text-lg font-semibold text-white/90">Example (universal)</h3>
+        <button id="example" class="mt-3 glass rounded-xl p-3 text-left hover:bg-white/10 transition text-sm">
+          Create a cross‑channel growth agent that researches competitors, drafts landing copy, generates a contact form, and prepares a 3‑email sequence. Respect GDPR, keep tone concise & professional. Deliverables: HTML UI snippet, workflow plan, email drafts, deploy checklist.
+        </button>
       </section>
     </aside>
   </main>
 
-  <!-- Footer -->
   <footer class="mx-auto max-w-7xl px-4 pb-10 text-center text-xs text-white/60">
-    © <span id="year"></span> SPEC88 – Agents. Designed in the SPEC88 style.
+    © <span id="year"></span> SPEC88 – Universal Agents.
   </footer>
 
   <script>
-    // Utils
-    const $ = (sel)=> document.querySelector(sel);
-    const $$ = (sel)=> Array.from(document.querySelectorAll(sel));
-    const val = (id)=> document.getElementById(id).value.trim();
-    const lines = (id)=> val(id).split('\n').map(s=>s.trim()).filter(Boolean);
-    const setHtml = (el, html)=> { el.innerHTML = html; };
-    const setText = (el, text)=> { el.textContent = text; };
-    const dl = (filename, text) => {
-      const blob = new Blob([text], {type: 'text/plain'});
-      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = filename; a.click();
-      setTimeout(()=>URL.revokeObjectURL(a.href), 1000);
-    };
-    const uid = ()=> Math.random().toString(36).slice(2,10);
+    const $ = (s)=>document.querySelector(s); const $$=(s)=>Array.from(document.querySelectorAll(s));
+    const val=(id)=>document.getElementById(id).value.trim(); const set=(el,txt)=>el.textContent=txt;
+    const html=(el,txt)=>el.innerHTML=txt; const uid=()=>Math.random().toString(36).slice(2,10);
+    const dl=(name,txt)=>{const b=new Blob([txt],{type:'text/plain'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);};
+    document.getElementById('year').textContent=new Date().getFullYear();
 
-    // Year
-    $('#year').textContent = new Date().getFullYear();
-
-    // Blueprint quick fill
-    $$('.blue').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const b = btn.dataset.blue;
-        if(b==='Reservations'){
-          $('#goal').value = 'Manage table reservations incl. confirmation emails and slot control.';
-          $('#inputs').value = 'name\nparty size\ndate/time\nphone';
-          $('#rules').value = 'friendly & concise tone\navoid double bookings\nrespect opening hours 10:00–22:00';
-          $('#out_form').checked = true; $('#out_emails').checked = true; $('#out_page').checked = false; $('#out_chat').checked=false; $('#out_sheet').checked=false;
-        } else if(b==='Website Helper'){
-          $('#goal').value = 'Collect service requests and generate quotes with follow-up email.';
-          $('#inputs').value = 'name\nservice type\nZIP\npreferred date\nphone';
-          $('#rules').value = 'professional tone\nclear pricing ranges\nask clarifying questions if data is missing';
-          $('#out_form').checked = true; $('#out_emails').checked = true; $('#out_page').checked = true;
-        } else if(b==='Lead Qualification'){
-          $('#goal').value = 'Qualify B2B leads by budget, team size, timeline, pain points; output score.';
-          $('#inputs').value = 'name\ncompany\nbudget range\nteam size\ntimeline\npain points';
-          $('#rules').value = 'concise tone\nno jargon\nscore A/B/C based on readiness';
-          $('#out_form').checked = true; $('#out_emails').checked = true; $('#out_sheet').checked = true;
-        } else if(b==='Email Follow-up'){
-          $('#goal').value = 'Send a 3‑step email sequence to re‑engage users who paused a course.';
-          $('#inputs').value = 'name\nlast lesson\nemail';
-          $('#rules').value = 'friendly, encouraging tone\none CTA per email\n3 bullet benefits per message';
-          $('#out_emails').checked = true; $('#out_form').checked = false; $('#out_page').checked = false; $('#out_sheet').checked=false; $('#out_chat').checked=false;
-        } else {
-          // Custom – leave as is
-        }
-      });
+    // Example fills the freeform fields
+    $('#example').addEventListener('click', ()=>{
+      $('#outcome').value='Drive leads from research → copy → UI → email. Must be GDPR‑compliant and measurable.';
+      $('#capabilities').value='competitive research • summarize findings • generate UI • draft emails • outline workflow • propose KPIs';
+      $('#constraints').value='concise tone • GDPR compliant • no PII storage • graceful fallback if source missing';
+      $('#deliverables').value='UI snippet • workflow plan • 3 email drafts • deploy checklist';
+      window.scrollTo({top:0,behavior:'smooth'});
     });
 
-    // Fill from examples
-    $$('.ex').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        $('#prompt').value = btn.dataset.text || '';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+    // Compose Prompt
+    $('#compose').addEventListener('click', ()=>{
+      const data={
+        business:{ name:val('biz')||'Project', domain:val('domain')||'general', contact:val('email')||'' },
+        outcome:val('outcome')||'Define the concrete outcome.',
+        capabilities:val('capabilities')||'freeform abilities',
+        constraints:val('constraints')||'rules & limits',
+        deliverables:val('deliverables')||'freeform outputs',
+        model:$('#model').value, tone:$('#tone').value
+      };
+      const txt=JSON.stringify(data,null,2);
+      $('#prompt').value=txt; set($('#status'),'Prompt composed.');
+      const q=encodeURIComponent("Turn this into a perfect universal agent instruction:\n\n"+txt);
+      $('#openChat').href="https://chat.openai.com/?q="+q;
     });
 
     // Copy buttons
-    document.addEventListener('click', (e)=>{
-      const btn = e.target.closest('.copy');
-      if(!btn) return;
-      const target = btn.getAttribute('data-copy');
-      const el = document.querySelector(target);
-      navigator.clipboard.writeText(el.value || el.textContent || '').then(()=>{
-        btn.textContent = 'Copied!';
-        setTimeout(()=> btn.textContent = 'Copy' , 1200);
+    document.addEventListener('click',(e)=>{
+      const btn=e.target.closest('.copy'); if(!btn) return;
+      const target=document.querySelector(btn.getAttribute('data-copy'));
+      navigator.clipboard.writeText(target.value||target.textContent||'').then(()=>{
+        const old=btn.textContent; btn.textContent='Copied!'; setTimeout(()=>btn.textContent=old,1200);
       });
     });
 
-    // Compose prompt
-    $('#compose').addEventListener('click', ()=>{
-      const prompt = JSON.stringify({
-        business: { name: val('biz') || 'Business', industry: val('industry') || 'General', contact: val('email') || '' },
-        goal: val('goal') || 'Describe the business goal here',
-        inputs: lines('inputs'),
-        rules: lines('rules'),
-        outputs: {
-          form: $('#out_form').checked,
-          emails: $('#out_emails').checked,
-          page: $('#out_page').checked,
-          chat: $('#out_chat').checked,
-          sheet: $('#out_sheet').checked
-        },
-        tools: {
-          web_search: $('#tool_web').checked,
-          http_request: $('#tool_http').checked,
-          email_draft: $('#tool_email').checked,
-          spreadsheet: $('#tool_sheet').checked
-        },
-        model: $('#model').value,
-        tone: $('#tone').value
-      }, null, 2);
-
-      $('#prompt').value = prompt;
-      $('#status').textContent = 'Prompt composed.';
-      const q = encodeURIComponent("Turn this into a perfect agent instruction:\n\n"+prompt);
-      $('#openChat').href = "https://chat.openai.com/?q="+q;
-    });
-
-    // Generate Preview (deterministisch, lokal)
+    // Preview (deterministic, no APIs)
     $('#previewBtn').addEventListener('click', ()=>{
-      const biz = val('biz') || 'Your Business';
-      const goal = val('goal') || 'Business goal';
-      const model = $('#model').value;
-      const tone = $('#tone').value;
-      const inputs = lines('inputs');
-      const rules = lines('rules');
+      const biz=val('biz')||'Business', domain=val('domain')||'general';
+      const outcome=val('outcome')||'Outcome', cap=val('capabilities')||'', cons=val('constraints')||'', del=val('deliverables')||'';
+      const model=$('#model').value, tone=$('#tone').value;
+
+      set($('#status'),'Generating preview…');
 
       // Summary
-      const tools = [
-        $('#tool_web').checked && 'Web Search',
-        $('#tool_http').checked && 'HTTP/API',
-        $('#tool_email').checked && 'Email Draft',
-        $('#tool_sheet').checked && 'Spreadsheet'
-      ].filter(Boolean);
-
-      const outs = [
-        $('#out_form').checked && 'Form',
-        $('#out_emails').checked && 'Email Sequence',
-        $('#out_page').checked && 'Landing Page',
-        $('#out_chat').checked && 'Chat Script',
-        $('#out_sheet').checked && 'Spreadsheet Stub'
-      ].filter(Boolean);
-
-      setText($('#sum'),
-`Business: ${biz}
-Goal: ${goal}
+      set($('#sum'),`Business: ${biz} (${domain})
+Outcome: ${outcome}
 Model: ${model} • Tone: ${tone}
-Tools: ${tools.join(', ')||'(none)'}
-Outputs: ${outs.join(', ')||'(none)'}
-Rules: ${rules.join(' | ')||'(none)'}
-Inputs: ${inputs.join(', ')||'(none)'}
+Capabilities: ${cap||'(freeform)'}
+Constraints: ${cons||'(none)'}
+Deliverables: ${del||'(freeform)'}
 — Preview is locally generated (no external calls).`);
 
-      // Steps
-      const steps = [
-        'Parse intent & entities',
-        inputs.length ? `Map inputs (${inputs.join(', ')}) to fields & validation` : null,
-        $('#tool_web').checked ? 'Scoped research (sources summary)' : null,
-        $('#out_form').checked ? 'Draft form + confirm email' : null,
-        $('#out_emails').checked ? `Generate 3‑step email sequence (${tone})` : null,
-        $('#out_page').checked ? 'Compose hero & sections' : null,
-        $('#out_chat').checked ? 'Outline chat intents & responses' : null,
-        $('#out_sheet').checked ? 'Create sheet schema (CSV/JSON stub)' : null,
-        'Assemble deliverables & show preview'
-      ].filter(Boolean);
+      // Steps (universal phases)
+      const phases=[
+        'Intent parsing & entity extraction',
+        'Capability mapping → sub‑tasks',
+        'Risk/constraint checks (compliance, fallbacks)',
+        'Draft deliverables (UI/Flows/Docs/Mails)',
+        'Review & iterate',
+        'Export/Deploy'
+      ];
+      const stepsEl=$('#steps'); stepsEl.innerHTML='';
+      phases.forEach(s=>{ const li=document.createElement('li'); li.textContent=s; stepsEl.appendChild(li); });
 
-      const stepsEl = $('#steps'); stepsEl.innerHTML = '';
-      steps.forEach(s=>{ const li=document.createElement('li'); li.textContent=s; stepsEl.appendChild(li); });
+      // UI snippet (generic)
+      const ui=`
+<div class="p-4 rounded-xl border border-white/10 bg-black/20">
+  <div class="text-2xl font-extrabold mb-1">${biz} — Agent</div>
+  <p class="text-white/70 mb-3">${outcome}</p>
+  <form class="grid gap-2">
+    <input class="rounded-lg border border-white/10 bg-black/30 px-3 py-2" placeholder="Your request"/>
+    <button class="inline-block rounded-lg px-4 py-2 font-semibold" style="background:linear-gradient(135deg,#2EF7D0,#86FFE8);color:#071523">Run Agent</button>
+  </form>
+</div>`;
+      html($('#uiMount'),ui); $('#uiHtml').value=ui;
 
-      // Form
-      const formFields = inputs.map(name=>{
-        const id = name.toLowerCase().replace(/[^a-z0-9]+/g,'_');
-        return `<label class="block text-sm mb-1">${name}</label>
-<input class="w-full rounded-lg border border-white/10 bg-black/30 px-3 py-2 mb-2" name="${id}" placeholder="${name}"/>`;
-      }).join('\n');
-
-      const formHtml = `<form class="glass rounded-xl p-3">
-${formFields}
-<button class="accent-grad rounded-lg px-3 py-2 font-semibold">Submit</button>
-</form>`;
-
-      if($('#out_form').checked){
-        $('#formWrap').classList.remove('hidden');
-        setHtml($('#formMount'), formHtml);
-        $('#formHtml').value = formHtml;
-      } else {
-        $('#formWrap').classList.add('hidden');
-      }
-
-      // Emails
-      if($('#out_emails').checked){
-        $('#emailsWrap').classList.remove('hidden');
-        const subjects = [
-          `Welcome to ${biz} — your agent is ready`,
-          `${biz}: Next steps to get value fast`,
-          `Quick check: is your ${biz} agent delivering?`
-        ];
-        const emails = subjects.map((sub,i)=>`
-<div class="glass rounded-lg p-3">
-  <div class="text-white/80 font-semibold mb-1">Subject:</div>
-  <div class="mb-2">${sub}</div>
-  <div class="text-white/80 font-semibold mb-1">Body:</div>
-  <div class="leading-relaxed text-sm">
-    Hi,<br/>we set up your agent to handle <b>${goal}</b> with a <i>${tone.toLowerCase()}</i> tone.
-    ${i===0?'You can start by submitting a sample request.':'Here are two ways to get value today.'}
-    <br/><br/>— SPEC88
-  </div>
-</div>`).join('\n');
-
-        setHtml($('#emails'), emails);
-        $('#emailsHtml').value = emails.replace(/<br\/>/g,'\n');
-      } else {
-        $('#emailsWrap').classList.add('hidden');
-      }
-
-      // Landing hero
-      if($('#out_page').checked){
-        $('#pageWrap').classList.remove('hidden');
-        const hero = `
-<div class="text-3xl font-extrabold mb-2">${biz} — AI Agent</div>
-<p class="muted mb-3">From idea to workflow in minutes. ${goal}</p>
-<a class="inline-block accent-grad rounded-lg px-4 py-2 font-semibold">Try now</a>`;
-        setHtml($('#pageMount'), hero);
-        $('#pageHtml').value = hero;
-      } else {
-        $('#pageWrap').classList.add('hidden');
-      }
+      // Doc draft
+      html($('#doc'),`
+<p><b>Purpose:</b> ${outcome}</p>
+<p><b>Capabilities:</b> ${cap||'—'}</p>
+<p><b>Constraints:</b> ${cons||'—'}</p>
+<p><b>Deliverables:</b> ${del||'—'}</p>
+<p><b>Review:</b> Validate inputs, handle fallbacks, log key events without storing PII.</p>`);
 
       $('#preview').classList.remove('hidden');
-      $('#status').textContent = 'Preview ready.';
+      set($('#status'),'Preview ready.');
     });
 
-    // Save / Load
-    const STORAGE = 'spec88_agents_v1';
-    const loadAll = ()=> { try{ return JSON.parse(localStorage.getItem(STORAGE)||'[]'); } catch { return []; } };
-    const saveAll = (arr)=> localStorage.setItem(STORAGE, JSON.stringify(arr));
-
-    function repaintSaved(){
-      const list = loadAll();
-      const wrap = $('#saved'); wrap.innerHTML = '';
-      if(list.length===0){ wrap.innerHTML = '<div class="text-sm muted">No agents saved yet.</div>'; return; }
+    // Save/Load
+    const KEY='spec88_universal_agents_v1';
+    const load=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch{return[]}};
+    const save=(a)=>localStorage.setItem(KEY,JSON.stringify(a));
+    function paintSaved(){
+      const list=load(); const wrap=$('#saved'); wrap.innerHTML='';
+      if(list.length===0){ wrap.innerHTML='<div class="text-sm muted">No agents saved yet.</div>'; return;}
       list.forEach(a=>{
-        const card = document.createElement('div');
-        card.className = 'glass rounded-xl p-3';
-        card.innerHTML = `
-<div class="flex items-start justify-between gap-2">
-  <div>
-    <div class="font-semibold">${a.name}</div>
-    <div class="text-xs muted">${a.model} • ${a.tone} • ${new Date(a.ts).toLocaleString()}</div>
-  </div>
-  <div class="flex gap-2">
-    <button data-id="${a.id}" class="load glass rounded-md px-2 py-1 text-xs hover:bg-white/10">Load</button>
-    <button data-id="${a.id}" class="del glass rounded-md px-2 py-1 text-xs hover:bg-white/10">Delete</button>
-  </div>
-</div>
-<div class="mt-2 text-xs muted line-clamp-3">${(a.prompt||'').slice(0,200)}…</div>`;
+        const card=document.createElement('div'); card.className='glass rounded-xl p-3';
+        card.innerHTML=`<div class="flex items-start justify-between gap-2">
+          <div><div class="font-semibold">${a.name}</div><div class="text-xs muted">${a.model} • ${a.tone} • ${new Date(a.ts).toLocaleString()}</div></div>
+          <div class="flex gap-2">
+            <button data-id="${a.id}" class="load glass rounded-md px-2 py-1 text-xs hover:bg-white/10">Load</button>
+            <button data-id="${a.id}" class="del glass rounded-md px-2 py-1 text-xs hover:bg-white/10">Delete</button>
+          </div></div>
+          <div class="mt-2 text-xs muted line-clamp-3">${(a.prompt||'').slice(0,220)}…</div>`;
         wrap.appendChild(card);
       });
     }
-
     $('#save').addEventListener('click', ()=>{
-      const name = (val('biz') || 'Agent') + ' • ' + ($('#model').value);
-      const item = {
-        id: uid(), ts: Date.now(),
-        name, model: $('#model').value, tone: $('#tone').value,
-        prompt: $('#prompt').value
-      };
-      const arr = loadAll(); arr.unshift(item); saveAll(arr); repaintSaved();
+      const name=(val('biz')||'Agent')+' • '+($('#model').value);
+      const item={id:uid(),ts:Date.now(),name,model:$('#model').value,tone:$('#tone').value,prompt:$('#prompt').value};
+      const arr=load(); arr.unshift(item); save(arr); paintSaved();
     });
-
-    document.addEventListener('click', (e)=>{
-      if(e.target.matches('.del')){
-        const id = e.target.getAttribute('data-id');
-        const arr = loadAll().filter(x=>x.id!==id); saveAll(arr); repaintSaved();
-      }
-      if(e.target.matches('.load')){
-        const id = e.target.getAttribute('data-id');
-        const a = loadAll().find(x=>x.id===id); if(!a) return;
-        $('#prompt').value = a.prompt || '';
-        window.scrollTo({top:0,behavior:'smooth'});
-      }
+    document.addEventListener('click',(e)=>{
+      if(e.target.matches('.del')){ const id=e.target.getAttribute('data-id'); save(load().filter(x=>x.id!==id)); paintSaved(); }
+      if(e.target.matches('.load')){ const id=e.target.getAttribute('data-id'); const a=load().find(x=>x.id===id); if(a){ $('#prompt').value=a.prompt||''; window.scrollTo({top:0,behavior:'smooth'});} }
     });
-
-    $('#clearAll').addEventListener('click', ()=>{ saveAll([]); repaintSaved(); });
+    $('#clearAll').addEventListener('click', ()=>{ save([]); paintSaved(); });
 
     // Export
     $('#exportJson').addEventListener('click', ()=>{
-      const data = {
-        business: val('biz'), industry: val('industry'), contact: val('email'),
-        goal: val('goal'), inputs: lines('inputs'), rules: lines('rules'),
-        outputs: { form: $('#out_form').checked, emails: $('#out_emails').checked, page: $('#out_page').checked, chat: $('#out_chat').checked, sheet: $('#out_sheet').checked },
-        tools: { web_search: $('#tool_web').checked, http_request: $('#tool_http').checked, email_draft: $('#tool_email').checked, spreadsheet: $('#tool_sheet').checked },
-        model: $('#model').value, tone: $('#tone').value,
-        prompt: $('#prompt').value
-      };
-      dl('spec88_agent.json', JSON.stringify(data, null, 2));
+      const data={ business:val('biz'), domain:val('domain'), contact:val('email'),
+        outcome:val('outcome'), capabilities:val('capabilities'), constraints:val('constraints'), deliverables:val('deliverables'),
+        model:$('#model').value, tone:$('#tone').value, prompt:$('#prompt').value };
+      dl('spec88_universal_agent.json', JSON.stringify(data,null,2));
     });
-
     $('#exportHtml').addEventListener('click', ()=>{
-      const bundle = `
-<!-- FORM -->
-${$('#formHtml').value || '<!-- no form selected -->'}
-
-<!-- EMAILS -->
-${$('#emailsHtml').value || '<!-- no emails selected -->'}
-
-<!-- HERO -->
-${$('#pageHtml').value || '<!-- no hero selected -->'}
-`;
-      dl('spec88_outputs.html', bundle);
+      const bundle=`<!-- UI -->\n${$('#uiHtml').value||'<!-- no ui -->'}\n\n<!-- PLAN -->\n${$('#sum').textContent||''}`;
+      dl('spec88_universal_outputs.html', bundle);
     });
 
     // init
-    repaintSaved();
+    paintSaved();
   </script>
 </body>
 </html>
