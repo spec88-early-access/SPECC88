@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>SPEC88 • Agents (MVP)</title>
+
+  <!-- Tailwind für das Styling aus deinem Design -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- React 18 + Babel (damit JSX direkt im Browser funktioniert) -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Grund-Background wie auf der Landing -->
+  <style>
+    body{background:linear-gradient(135deg,#0A2540,#090E16);color:#fff}
+    .shadow-soft{box-shadow:0 8px 30px rgba(0,0,0,.25)}
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- Deine Agent-App (browserfreundlich, ohne Imports/TypeScript) -->
+  <script type="text/babel">
+    const { useEffect, useMemo, useRef, useState } = React;
+
+    // ---------- Utils ----------
+    const uid = () => Math.random().toString(36).slice(2,10);
+    const now = () => new Date().toISOString();
+    const cls = (...v) => v.filter(Boolean).join(" ");
+    const STORAGE_KEY = "spec88_agents_state_v1";
+    const delay = (ms) => new Promise(r=>setTimeout(r,ms));
+
+    const loadPersist = () => {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{"agents":[]}'); }
+      catch { return { agents: [] }; }
+    };
+    const savePersist = (data) => { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch {} };
+
+    // ---------- Tool Stubs (safe im Browser) ----------
+    async function toolInvoke(id, input){
+      await delay(400);
+      if(id==="web_search") return `WebSearch Results for "${input.query}":\n- (demo) Result A\n- (demo) Result B`;
+      if(id==="http_request") return `HTTP (demo) GET ${input.url} → 200 OK (stub body)`;
+      if(id==="email_stub") return `Email drafted (demo) to ${input.to||"user@example.com"} with subject "${input.subject||"Hi"}".`;
+      if(id==="spreadsheet_stub") return `Spreadsheet (demo) created with ${input.rows?.length||0} rows.`;
+      return "(unknown tool)";
+    }
+
+    // ---------- Runner (deterministischer Mock) ----------
+    async function runAgentTask(agent, prompt, onStep){
+      onStep({ id: uid(), type: "message", content: `Starting run at ${now()}…`, ts: Date.now() });
+      onStep({ id: uid(), type: "thought", content: `Goal: ${agent.objective}`, ts: Date.now() });
+      onStep({ id: uid(), type: "thought", content: `User prompt: ${prompt}`, ts: Date.now() });
+
+      if(agent.tools.includes("web_search") && /research|find|suche|recherch/i.test(prompt)){
+        onStep({ id: uid(), type: "action", content: "web_search(query)", ts: Date.now() });
+        const obs = await toolInvoke("web_search", { query: prompt });
+        onStep({ id: uid(), type: "observation", content: obs, ts: Date.now() });
+      }
+
+      if(agent.tools.includes("http_request") && /(http|fetch|api)/i.test(prompt)){
+        onStep({ id: uid(), type: "action", content: "http_request(url)", ts: Date.now() });
+        const obs = await toolInvoke("http_request", { url: "https://api.example.com/demo" });
+        onStep({ id: uid(), type: "observation", content: obs, ts: Date.now() });
+      }
+
+      const summary = `\nModel: ${agent.model} · Temp: ${agent.temperature}\nTools used: ${agent.tools.join(", ") || "(none)"}\n—\nBased on the above, here is a concise plan:\n1) Clarify requirements.\n2) Draft outputs.\n3) Deliver assets.\n`;
+      await delay(250);
+      onStep({ id: uid(), type: "message", content: summary, ts: Date.now() });
+    }
+
+    // ---------- UI Primitives ----------
+    const Pill = ({children}) => <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-white/80">{children}</span>;
+    const Label = ({children}) => <label className="text-xs uppercase tracking-wide text-white/60">{children}</label>;
+    const Field = ({children}) => <div className="space-y-1">{children}</div>;
+
+    // ---------- App ----------
+    function AgentStudio(){
+      const [agents,setAgents] = useState(()=>loadPersist().agents);
+      const [selectedId,setSelectedId] = useState(agents[0]?.id ?? null);
+      const [runSteps,setRunSteps] = useState([]);
+      const [task,setTask] = useState("");
+      const [isRunning,setIsRunning] = useState(false);
+
+      useEffect(()=>{ savePersist({agents}); },[agents]);
+      useEffect(()=>{ if(!selectedId && agents[0]) setSelectedId(agents[0].id); },[agents,selectedId]);
+
+      function addAgent(){
+        const a = {
+          id: uid(),
+          name: `Agent ${agents.length + 1}`,
+          objective: "Build & automate business workflows (SPEC88)",
+          model: "gpt-4.1-mini",
+          temperature: 0.2,
+          tools: ["web_search"]
+        };
+        setAgents(prev=>[a,...prev]);
+        setSelectedId(a.id);
+      }
+      function removeAgent(id){
+        setAgents(prev=>prev.filter(x=>x.id!==id));
+        if(selectedId===id) setSelectedId(null);
+      }
+      function updateAgent(id,patch){
+        setAgents(prev=>prev.map(a => a.id===id ? {...a,...patch} : a));
+      }
+      const selected = useMemo(()=>agents.find(a=>a.id===selectedId)||null,[agents,selectedId]);
+
+      async function run(){
+        if(!selected || !task.trim()) return;
+        setIsRunning(true);
+        setRunSteps([]);
+        const push = (s)=>setRunSteps(prev=>[...prev,s]);
+        try{ await runAgentTask(selected, task.trim(), push); }
+        catch(e){ push({ id: uid(), type:"error", content:String(e?.message||e), ts: Date.now() }); }
+        finally{ setIsRunning(false); }
+      }
+
+      return (
+        <div className="min-h-screen w-full bg-gradient-to-br from-[#0A2540] to-[#090E16] text-white">
+          <header className="sticky top-0 z-20 border-b border-white/10 bg-black/30 backdrop-blur">
+            <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
+              <div className="flex items-center gap-3">
+                <div className="h-9 w-9 rounded-2xl bg-white/10"></div>
+                <div className="text-xl font-semibold tracking-tight">SPEC88 • Agents</div>
+                <div className="hidden items-center gap-2 sm:flex">
+                  <Pill>Lifetime License ready</Pill>
+                  <Pill>No vendor lock‑in</Pill>
+                  <Pill>Self‑hostable</Pill>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <a href="./" className="rounded-2xl border border-white/10 bg-white/5 px-3 py-1.5 text-sm">← Back</a>
+                <button onClick={addAgent} className="rounded-2xl bg-white px-3 py-1.5 text-sm font-semibold text-black transition hover:scale-[1.02] hover:bg-white/90">+ New Agent</button>
+              </div>
+            </div>
+          </header>
+
+          <main className="mx-auto grid max-w-7xl gap-4 px-4 py-6 md:grid-cols-3">
+            {/* Left: Agents */}
+            <section className="space-y-3 md:col-span-1">
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-4 shadow-soft">
+                <h2 className="mb-2 text-sm font-semibold tracking-wide text-white/80">Your Agents</h2>
+                <div className="space-y-2">
+                  {agents.length===0 && <div className="text-sm text-white/60">No agents yet. Create one to get started.</div>}
+                  {agents.map(a=>(
+                    <button key={a.id} onClick={()=>setSelectedId(a.id)}
+                      className={cls("w-full rounded-xl border px-3 py-2 text-left", selectedId===a.id ? "border-white/40 bg-white/10" : "border-white/10 hover:bg-white/5")}>
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <div className="font-medium">{a.name}</div>
+                          <div className="text-xs text-white/60">{a.model} • {a.tools.length} tools</div>
+                        </div>
+                        <button onClick={(e)=>{e.stopPropagation(); removeAgent(a.id);}}
+                          className="rounded-lg px-2 py-1 text-xs text-white/60 hover:bg-white/10 hover:text-white/90">Delete</button>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {selected && (
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-4 shadow-soft">
+                  <h3 className="mb-3 text-sm font-semibold tracking-wide text-white/80">Agent Settings</h3>
+                  <div className="space-y-3">
+                    <Field>
+                      <Label>Name</Label>
+                      <input className="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2 outline-none ring-white/10 focus:ring"
+                        value={selected.name} onChange={(e)=>updateAgent(selected.id,{name:e.target.value})}/>
+                    </Field>
+                    <Field>
+                      <Label>Objective</Label>
+                      <textarea rows={3} className="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2 outline-none ring-white/10 focus:ring"
+                        value={selected.objective} onChange={(e)=>updateAgent(selected.id,{objective:e.target.value})}/>
+                    </Field>
+                    <div className="grid grid-cols-2 gap-3">
+                      <Field>
+                        <Label>Model</Label>
+                        <select className="w-full rounded-xl border border-white/10 bg.black/30 px-3 py-2 bg-black/30"
+                          value={selected.model} onChange={(e)=>updateAgent(selected.id,{model:e.target.value})}>
+                          <option value="gpt-4o">gpt-4o</option>
+                          <option value="gpt-4.1">gpt-4.1</option>
+                          <option value="gpt-4.1-mini">gpt-4.1-mini</option>
+                          <option value="llama-3.1">llama-3.1</option>
+                          <option value="mistral-large">mistral-large</option>
+                        </select>
+                      </Field>
+                      <Field>
+                        <Label>Temperature</Label>
+                        <input type="range" min={0} max={1} step={0.05} value={selected.temperature}
+                          onChange={(e)=>updateAgent(selected.id,{temperature:Number(e.target.value)})} className="w-full"/>
+                        <div className="text-xs text-white/60">{Number(selected.temperature).toFixed(2)}</div>
+                      </Field>
+                    </div>
+                    <Field>
+                      <Label>Tools</Label>
+                      <div className="flex flex-wrap gap-2">
+                        {["web_search","http_request","email_stub","spreadsheet_stub"].map(t=>{
+                          const active = selected.tools.includes(t);
+                          return (
+                            <button key={t} onClick={()=>{
+                              const set = new Set(selected.tools);
+                              active ? set.delete(t) : set.add(t);
+                              updateAgent(selected.id, { tools: Array.from(set) });
+                            }} className={cls("rounded-full border px-3 py-1 text-xs", active ? "border-white/40 bg-white/10" : "border-white/10 hover:bg-white/5")} title={t}>
+                              {t}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </Field>
+                  </div>
+                </div>
+              )}
+            </section>
+
+            {/* Right: Runner */}
+            <section className="space-y-3 md:col-span-2">
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-4 shadow-soft">
+                <h2 className="mb-3 text-sm font-semibold tracking-wide text-white/80">Run Task</h2>
+                <div className="flex gap-2">
+                  <input className="flex-1 rounded-xl border border-white/10 bg-black/30 px-3 py-2 outline-none ring-white/10 focus:ring"
+                    placeholder="Describe your task… (e.g., 'research pricing for a reservation app')"
+                    value={task} onChange={(e)=>setTask(e.target.value)}
+                    onKeyDown={(e)=>{ if(e.key==="Enter" && (e.metaKey||e.ctrlKey)) run(); }}/>
+                  <button onClick={run} disabled={!selected || !task.trim() || isRunning}
+                    className={cls("rounded-2xl px-4 py-2 text-sm font-semibold transition", isRunning ? "bg-white/20 text-white/60" : "bg-white text-black hover:scale-[1.02] hover:bg-white/90")}>
+                    {isRunning ? "Running…" : "Run ⏎"}
+                  </button>
+                </div>
+                <div className="mt-2 text-xs text-white/50">Tip: ⌘/Ctrl + Enter to start</div>
+              </div>
+
+              <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-0 shadow-soft">
+                <div className="border-b border-white/10 bg-black/20 px-4 py-2 text-sm text-white/80">Execution Trace</div>
+                <div className="max-h-[52vh] overflow-auto space-y-2 px-4 py-3">
+                  {/* Steps */}
+                  { /* We'll render from state */ }
+                  {/* Placeholder – content filled below */}
+                  <Trace steps={runSteps}/>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-4 shadow-soft">
+                <h3 className="mb-2 text-sm font-semibold tracking-wide text-white/80">Next steps (upgrade path)</h3>
+                <ol className="list-decimal space-y-1 pl-5 text-sm text-white/80">
+                  <li>Add a secure Server API (Next.js/FastAPI) to call real LLMs.</li>
+                  <li>Stripe: per‑run billing + optional subscription.</li>
+                  <li>Visual workflow builder (nodes: Input → Tools → LLM → Output).</li>
+                  <li>OAuth integrations: Gmail, Sheets, Notion, WhatsApp.</li>
+                  <li>Deployment docs: Vercel/Fly.io/Render + Docker.</li>
+                </ol>
+              </div>
+            </section>
+          </main>
+
+          <footer className="mx-auto max-w-7xl px-4 pb-10 pt-4 text-center text-xs text-white/50">
+            © {new Date().getFullYear()} SPEC88 – Self‑hostable Agent Platform (MVP). Demo runs locally without external API calls.
+          </footer>
+        </div>
+      );
+    }
+
+    function Trace({steps}){
+      if(!steps || steps.length===0)
+        return <div className="text-sm text-white/60">No runs yet. Start a task to see steps.</div>;
+      return steps.map(s=>(
+        <div key={s.id} className="text-sm">
+          <span className={
+            [
+              "mr-2 rounded-md px-2 py-0.5 text-xs",
+              s.type==="thought" ? "bg-indigo-500/20" :
+              s.type==="action" ? "bg-amber-500/20" :
+              s.type==="observation" ? "bg-emerald-500/20" :
+              s.type==="error" ? "bg-red-500/30" : "bg-white/10"
+            ].join(" ")
+          }>{s.type}</span>
+          <span className="whitespace-pre-wrap text-white/90">{s.content}</span>
+          <div className="text-[10px] text-white/50">{new Date(s.ts).toLocaleTimeString()}</div>
+        </div>
+      ));
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<AgentStudio/>);
+  </script>
+</body>
+</html>
