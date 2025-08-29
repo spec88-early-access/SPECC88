@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "SPEC88 ToolSpec",
+  "type": "object",
+  "required": ["toolType", "brand", "content"],
+  "properties": {
+    "toolType": { "type": "string", "enum": ["landing", "lead", "reservation"] },
+    "brand": {
+      "type": "object",
+      "required": ["name", "primaryColor"],
+      "properties": {
+        "name": { "type": "string" },
+        "primaryColor": { "type": "string" }
+      }
+    },
+    "capture": {
+      "type": "object",
+      "properties": {
+        "provider": { "type": "string", "default": "formspree" },
+        "endpoint": { "type": "string" }
+      }
+    },
+    "content": {
+      "type": "object",
+      "required": ["headline", "subline", "ctaText"],
+      "properties": {
+        "headline": { "type": "string" },
+        "subline": { "type": "string" },
+        "ctaText": { "type": "string" }
+      }
+    }
+  }
+}
