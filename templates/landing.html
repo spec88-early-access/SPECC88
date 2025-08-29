@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>{{brand.name}} – {{content.headline}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./landing.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="logo" style="background: {{brand.primaryColor}};">S</div>
+    <div class="brand">{{brand.name}}</div>
+  </header>
+
+  <main class="hero">
+    <h1>{{content.headline}}</h1>
+    <p class="sub">{{content.subline}}</p>
+    <form class="email" action="{{capture.endpoint}}" method="POST">
+      <input type="email" name="email" placeholder="you@example.com" required>
+      <button type="submit" class="btn">{{content.ctaText}}</button>
+    </form>
+  </main>
+
+  <footer class="foot">© {{year}} {{brand.name}}</footer>
+</body>
+</html>
