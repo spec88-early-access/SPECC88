@@ -1,27 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
   <!-- Primary SEO -->
   <title>SPEC88 – Generate AI Tools for your Business in Minutes</title>
   <meta name="description" content="From reservation apps to websites — SPEC88 builds what you need. No code. No agency.">
 
-  <!-- Open Graph -->
+  <!-- Open Graph / Twitter (Social Preview) -->
+  <meta property="og:type" content="website">
   <meta property="og:title" content="SPEC88 – Generate AI Tools for your Business in Minutes">
   <meta property="og:description" content="From reservation apps to websites — SPEC88 builds what you need. No code. No agency.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://spec88-early-access.github.io/SPECC88-Beta/">
-  <meta property="og:image" content="https://spec88-early-access.github.io/SPECC88-Beta/preview.png">
+  <meta property="og:image" content="preview.png?v=2">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="SPEC88 – Generate AI Tools for your Business in Minutes">
-  <meta name="twitter:description" content="From reservation apps to websites — SPEC88 builds what you need. No code. No agency.">
-  <meta name="twitter:image" content="https://spec88-early-access.github.io/SPECC88-Beta/preview.png">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,7 +24,7 @@
 
   <!-- Styles -->
   <style>
-    :root { --bg:#0A2540; --bg-dark:#090E16; --accent:#2EF7D0; --text:#F9FAFB; --muted:#C7CBD1; }
+    :root { --bg:#0A2540; --bg-dark:#090E16; --accent:#2EF7D0; --text:#F9FAFB; --muted:#C7CBD1; --border:rgba(255,255,255,.10); }
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:'Inter',system-ui,Arial;background:radial-gradient(1200px 800px at 20% -10%,#112B4E,var(--bg)) no-repeat,var(--bg-dark);color:var(--text);line-height:1.6}
     a{color:#BEEFF0;text-decoration:none} a:hover{text-decoration:underline}
@@ -39,13 +33,13 @@
     .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
     .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px}
     .badge-logo{width:28px;height:28px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7CF9E6);display:inline-flex;align-items:center;justify-content:center;color:#0b1b2f;font-weight:800;box-shadow:0 8px 30px rgba(46,247,208,.4)}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.06);color:var(--text);font-weight:600;transition:.2s ease;cursor:pointer}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.06);color:var(--text);font-weight:600;transition:.2s ease;cursor:pointer}
     .btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.12)}
     .btn-accent{background:linear-gradient(135deg,var(--accent),#7CF9E6);color:#081524;border:none;box-shadow:0 10px 40px rgba(46,247,208,.5)}
     .hero{padding:72px 0 40px;text-align:center}
     .title{font-size:clamp(32px,5vw,56px);line-height:1.05;font-weight:800;margin:10px 0 10px}
     .subtitle{font-size:clamp(16px,2.6vw,20px);color:#D6D9DE;max-width:780px;margin:0 auto 26px}
-    .badge-row{display:flex;align-items:center;justify-content:center;gap:10px;margin:8px 0 0}
+    .badge-row{display:flex;align-items:center;justify-content:center;gap:10px;margin:8px 0 0;flex-wrap:wrap}
     .badge{font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:#CFD5DD}
     .section{padding:44px 0}
     .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -62,10 +56,12 @@
     .row input{flex:1}
     .muted{color:var(--muted);font-size:14px}
     footer{padding:28px 0;color:#B9C0C8;font-size:14px;border-top:1px solid rgba(255,255,255,.06);margin-top:40px}
+    footer .fnav a{color:#B9C0C8;margin-left:10px}
     @media(max-width:900px){.cards,.steps{grid-template-columns:1fr}.row{flex-direction:column}}
   </style>
 </head>
 <body>
+  <!-- ====== Header ====== -->
   <header>
     <div class="container nav">
       <div class="brand">
@@ -73,156 +69,156 @@
       </div>
       <div style="display:flex;gap:10px;align-items:center">
         <a class="btn" href="#how" data-i18n="nav_how">How it works</a>
-        <a class="btn" href="#early" data-i18n="nav_early">Early access</a>
-        <a class="btn" href="agents.html" data-i18n="nav_agents">🤖 Try Agents</a>
+        <a class="btn" href="agents.html" data-i18n="nav_agents">Try Agents</a>
         <div style="display:flex;align-items:center;gap:8px">
           <label for="langSel" class="muted" id="langLabel">Language</label>
           <select id="langSel" aria-label="Language selector">
             <option value="en">English</option>
             <option value="de">Deutsch</option>
-            <option value="es">Español</option>
-            <option value="fr">Français</option>
-            <option value="zh">中文</option>
-            <option value="ru">Русский</option>
           </select>
         </div>
       </div>
     </div>
   </header>
 
+  <!-- ====== Hero ====== -->
   <main class="container">
     <section class="hero">
       <div class="badge-row">
         <span class="badge" data-i18n="badge_ssl">SSL secured</span>
-        <span class="badge" data-i18n="badge_multi">Multilingual</span>
         <span class="badge" data-i18n="badge_waitlist">10,000+ on waitlist (placeholder)</span>
+        <span class="badge" data-i18n="badge_multi">Multilingual</span>
       </div>
       <h1 class="title" data-i18n="hero_title">Generate AI Tools for your Business in Minutes</h1>
       <p class="subtitle" data-i18n="hero_subtitle">From reservation apps to websites — SPEC88 builds what you need.</p>
       <div style="display:flex;gap:12px;justify-content:center">
-        <a class="btn btn-accent" href="agents.html" data-i18n="cta_primary">🤖 Try the first tool</a>
+        <a class="btn btn-accent" href="agents.html" data-i18n="cta_primary">🚀 Try the first tool</a>
         <a class="btn" href="#how" data-i18n="cta_secondary">How it works</a>
       </div>
     </section>
 
-    <section class="section">
-      <div class="cards" id="featureCards"></div>
+    <!-- ====== Features ====== -->
+    <section class="section" id="features">
+      <div class="cards">
+        <div class="card">
+          <h3 data-i18n="f1_t">No tech hassle</h3>
+          <p data-i18n="f1_d">SPEC88 generates copy, images & forms — you click “Publish”.</p>
+        </div>
+        <div class="card">
+          <h3 data-i18n="f2_t">Fast to revenue</h3>
+          <p data-i18n="f2_d">From idea to testable page in minutes, not weeks.</p>
+        </div>
+        <div class="card">
+          <h3 data-i18n="f3_t">Global ready</h3>
+          <p data-i18n="f3_d">Multi-language content with one click.</p>
+        </div>
+      </div>
     </section>
 
+    <!-- ====== How it works ====== -->
     <section id="how" class="section">
       <h2 style="text-align:center;margin:0 0 16px;font-size:28px" data-i18n="how_title">How it works</h2>
-      <div class="steps" id="howSteps"></div>
+      <div class="steps" id="howSteps">
+        <div class="step">
+          <strong data-i18n="step1_t">1) Describe outcome</strong>
+          <p data-i18n="step1_d">Tell us what you need (e.g., “restaurant reservations”).</p>
+        </div>
+        <div class="step">
+          <strong data-i18n="step2_t">2) Generate</strong>
+          <p data-i18n="step2_d">SPEC88 builds the tool (landing / lead / workflow).</p>
+        </div>
+        <div class="step">
+          <strong data-i18n="step3_t">3) Launch</strong>
+          <p data-i18n="step3_d">Publish & start collecting sign-ups.</p>
+        </div>
+      </div>
     </section>
 
+    <!-- ====== Email Capture ====== -->
     <section id="early" class="section">
       <h2 style="text-align:center;margin:0 0 8px;font-size:28px" data-i18n="early_title">Get Early Access</h2>
-      <p class="muted" style="text-align:center;margin:0 0 16px" id="early_desc">Enter your email — we’ll invite you to the beta.</p>
-      <form class="email" action="https://formspree.io/f/mvgqewzy" method="POST" onsubmit="return onSubmit(this)">
-        <input type="hidden" name="source" value="spec88-landing-multilang">
+      <p class="muted" style="text-align:center;margin:0 0 16px" id="early_desc" data-i18n="early_desc">Enter your email — we’ll invite you to the beta.</p>
+      <form class="email" action="https://formspree.io/f/mvgqewzy" method="POST">
+        <input type="hidden" name="_redirect" value="thanks.html">
+        <input type="hidden" name="_subject" value="SPEC88 – New signup">
+        <input type="text" name="_gotcha" style="display:none">
         <div class="row">
           <input type="email" name="email" id="emailInput" placeholder="you@example.com" required>
-          <button class="btn btn-accent" type="submit" id="submitBtn" data-i18n="submit">Get Early Access</button>
+          <button class="btn btn-accent" type="submit" id="submitBtn" data-i18n="cta_submit">Get Early Access</button>
         </div>
         <p class="muted" style="margin-top:10px" id="consent">
-          <label><input type="checkbox" required> I agree to receive emails about the beta.</label>
+          <label><input type="checkbox" required> <span data-i18n="consent">I agree to receive emails about the beta. No spam.</span></label>
         </p>
       </form>
     </section>
   </main>
 
+  <!-- ====== Footer ====== -->
   <footer>
-    <div class="container" style="display:flex;align-items:center;justify-content:space-between">
-      <div>© 2025 SPEC88</div>
-      <div id="footerLinks"><a href="#how">How it works</a> · <a href="#early">Early access</a> · <a href="agents.html">Agents</a></div>
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+      <div>© <span id="yr"></span> SPEC88</div>
+      <div class="fnav">
+        <a href="agents.html" data-i18n="nav_agents">Agents</a> ·
+        <a href="#" onclick="alert('Coming soon');return false;">Privacy</a> ·
+        <a href="#" onclick="alert('Coming soon');return false;">Imprint</a>
+      </div>
     </div>
   </footer>
 
+  <!-- ====== Language (i18n) ====== -->
   <script>
-    function onSubmit(form){const b=form.querySelector('button[type="submit"]');b.disabled=true;b.textContent='…';return true;}
+    document.getElementById('yr').textContent = new Date().getFullYear();
 
-    const t={
-      en:{langLabel:"Language",nav_how:"How it works",nav_early:"Early access",nav_agents:"🤖 Try Agents",
-        badge_ssl:"SSL secured",badge_multi:"Multilingual",badge_waitlist:"10,000+ on waitlist (placeholder)",
+    const dict = {
+      en: {
+        nav_how:"How it works", nav_agents:"Try Agents",
+        badge_ssl:"SSL secured", badge_waitlist:"10,000+ on waitlist (placeholder)", badge_multi:"Multilingual",
         hero_title:"Generate AI Tools for your Business in Minutes",
         hero_subtitle:"From reservation apps to websites — SPEC88 builds what you need.",
-        cta_primary:"🤖 Try the first tool",cta_secondary:"How it works",
-        features:[["No code, no agency","SPEC88 assembles components and copy for you — ready to publish."],
-                  ["Fast to value","From idea to a working tool in minutes — test, learn, iterate."],
-                  ["Flexible outputs","Landing pages, booking forms, email sequences — starting set."]],
+        cta_primary:"🚀 Try the first tool", cta_secondary:"How it works", cta_submit:"Get Early Access",
+        f1_t:"No tech hassle", f1_d:"SPEC88 generates copy, images & forms — you click “Publish”.",
+        f2_t:"Fast to revenue", f2_d:"From idea to testable page in minutes, not weeks.",
+        f3_t:"Global ready", f3_d:"Multi-language content with one click.",
         how_title:"How it works",
-        steps:[["1) Tell SPEC88 your goal","Describe the tool you need (e.g., reservations, website, emails)."],
-               ["2) AI assembles the tool","SPEC88 generates layout, copy and the basic workflow."],
-               ["3) Use & iterate","Get a live preview, export or deploy — then refine."]],
-        early_title:"Get Early Access",early_desc:"Enter your email — we’ll invite you to the beta.",
-        email_placeholder:"you@example.com",submit:"Get Early Access",consent:"I agree to receive emails about the beta.",
-        footer:"How it works · Early access · Agents"},
-      de:{langLabel:"Sprache",nav_how:"So funktioniert’s",nav_early:"Frühzugang",nav_agents:"🤖 Agents testen",
-        badge_ssl:"SSL geschützt",badge_multi:"Mehrsprachig",badge_waitlist:"10.000+ auf Warteliste (Platzhalter)",
-        hero_title:"Erzeuge KI‑Tools für dein Business in Minuten",
-        hero_subtitle:"Von Reservierungs‑Apps bis Websites – SPEC88 baut, was du brauchst.",
-        cta_primary:"🤖 Erstes Tool testen",cta_secondary:"So funktioniert’s",
-        features:[["Kein Code, keine Agentur","SPEC88 setzt Komponenten & Texte zusammen – publish‑ready."],
-                  ["Schnell nutzbar","Von der Idee zum funktionierenden Tool in Minuten – testen & iterieren."],
-                  ["Flexibel","Landingpages, Buchungsformulare, E‑Mail‑Sequenzen – Start‑Set."]],
+        step1_t:"1) Describe outcome", step1_d:"Tell us what you need (e.g., “restaurant reservations”).",
+        step2_t:"2) Generate", step2_d:"SPEC88 builds the tool (landing / lead / workflow).",
+        step3_t:"3) Launch", step3_d:"Publish & start collecting sign-ups.",
+        early_title:"Get Early Access", early_desc:"Enter your email — we’ll invite you to the beta.",
+        consent:"I agree to receive emails about the beta. No spam."
+      },
+      de: {
+        nav_how:"So funktioniert’s", nav_agents:"Agents testen",
+        badge_ssl:"SSL geschützt", badge_waitlist:"10.000+ auf der Warteliste (Platzhalter)", badge_multi:"Mehrsprachig",
+        hero_title:"Erzeuge KI-Tools für dein Business in Minuten",
+        hero_subtitle:"Von Reservierungs-Apps bis Websites — SPEC88 baut, was du brauchst.",
+        cta_primary:"🚀 Erstes Tool testen", cta_secondary:"So funktioniert’s", cta_submit:"Frühzugang holen",
+        f1_t:"Kein Technik-Stress", f1_d:"SPEC88 generiert Texte, Bilder & Formulare – du klickst nur „Veröffentlichen“. ",
+        f2_t:"Schnell zu Umsatz", f2_d:"Von der Idee zur testbaren Seite in Minuten statt Wochen.",
+        f3_t:"Weltweit bereit", f3_d:"Mehrsprachiger Content mit einem Klick.",
         how_title:"So funktioniert’s",
-        steps:[["1) Ziel beschreiben","Sag, welches Tool du brauchst (z. B. Reservierungen, Website, E‑Mails)."],
-               ["2) KI baut das Tool","SPEC88 generiert Layout, Texte und Grund‑Workflow."],
-               ["3) Nutzen & verfeinern","Live‑Vorschau, Export oder Deploy – danach iterieren."]],
-        early_title:"Frühzugang sichern",early_desc:"E‑Mail eintragen – wir laden dich in die Beta ein.",
-        email_placeholder:"deine@email.de",submit:"Frühzugang sichern",consent:"Ich stimme E‑Mails zur Beta zu.",
-        footer:"So funktioniert’s · Frühzugang · Agents"}
-      /* (Weitere Sprachen kannst du später ergänzen) */
+        step1_t:"1) Ergebnis beschreiben", step1_d:"Sag uns, was du brauchst (z. B. „Restaurant-Reservierungen“).",
+        step2_t:"2) Generieren", step2_d:"SPEC88 baut das Tool (Landing / Lead / Workflow).",
+        step3_t:"3) Starten", step3_d:"Veröffentlichen & Anmeldungen sammeln.",
+        early_title:"Frühzugang", early_desc:"E-Mail eintragen — wir laden dich zur Beta ein.",
+        consent:"Ich stimme zu, E-Mails zur Beta zu erhalten. Kein Spam."
+      }
     };
 
-    function applyLang(lang){
-      const L=t[lang]||t.en;
-      document.documentElement.lang=lang;
-      // Header/Nav
-      document.getElementById('langLabel').textContent=L.langLabel;
-      document.querySelector('[data-i18n="nav_how"]').textContent=L.nav_how;
-      document.querySelector('[data-i18n="nav_early"]').textContent=L.nav_early;
-      document.querySelector('[data-i18n="nav_agents"]').textContent=L.nav_agents;
-      // Badges + Hero
-      document.querySelector('[data-i18n="badge_ssl"]').textContent=L.badge_ssl;
-      document.querySelector('[data-i18n="badge_multi"]').textContent=L.badge_multi;
-      document.querySelector('[data-i18n="badge_waitlist"]').textContent=L.badge_waitlist;
-      document.querySelector('[data-i18n="hero_title"]').textContent=L.hero_title;
-      document.querySelector('[data-i18n="hero_subtitle"]').textContent=L.hero_subtitle;
-      document.querySelector('[data-i18n="cta_primary"]').textContent=L.cta_primary;
-      document.querySelector('[data-i18n="cta_secondary"]').textContent=L.cta_secondary;
-      // Features
-      const fc=document.getElementById('featureCards'); fc.innerHTML='';
-      L.features.forEach(([h,p])=>{const d=document.createElement('div');d.className='card';d.innerHTML=`<h3>${h}</h3><p>${p}</p>`;fc.appendChild(d);});
-      // Steps
-      document.querySelector('[data-i18n="how_title"]').textContent=L.how_title;
-      const hs=document.getElementById('howSteps'); hs.innerHTML='';
-      L.steps.forEach(([h,p])=>{const d=document.createElement('div');d.className='step';d.innerHTML=`<strong>${h}</strong><p>${p}</p>`;hs.appendChild(d);});
-      // Early access
-      document.querySelector('[data-i18n="early_title"]').textContent=L.early_title;
-      document.getElementById('early_desc').textContent=L.early_desc;
-      document.getElementById('emailInput').placeholder=L.email_placeholder;
-      document.getElementById('submitBtn').textContent=L.submit;
-      document.getElementById('consent').innerHTML=`<label><input type="checkbox" required> ${L.consent}</label>`;
-      // Footer
-      const [f1,f2,f3]=L.footer.split('·').map(s=>s.trim());
-      document.getElementById('footerLinks').innerHTML = `<a href="#how">${f1}</a> · <a href="#early">${f2}</a> · <a href="agents.html">${f3}</a>`;
-    }
-
-    (function(){
-      const sel=document.getElementById('langSel');
-      const url=new URL(window.location.href);
-      const param=url.searchParams.get('lang');
-      const stored=localStorage.getItem('spec88_lang');
-      const sys=(navigator.language||'en').slice(0,2).toLowerCase();
-      const pick=param||stored||(t[sys]?sys:'en');
-      sel.value=pick;
-      applyLang(pick);
-      sel.addEventListener('change',e=>{
-        const lang=e.target.value;
-        localStorage.setItem('spec88_lang',lang);
-        const u=new URL(window.location.href); u.searchParams.set('lang',lang); history.replaceState(null,'',u.toString());
-        applyLang(lang);
+    const sel = document.getElementById('langSel');
+    function applyLang(l) {
+      const d = dict[l] || dict.en;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (d[key]) el.textContent = d[key];
       });
+      localStorage.setItem('lang', l);
+      document.documentElement.lang = l;
+    }
+    sel.addEventListener('change', () => applyLang(sel.value));
+    (function initLang(){
+      const saved = localStorage.getItem('lang') || 'en';
+      sel.value = saved;
+      applyLang(saved);
     })();
   </script>
 </body>
