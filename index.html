@@ -1,41 +1,30 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
-  <!-- Primary SEO -->
-  <title>SPEC88 – Generate AI Tools for your Business in Minutes</title>
-  <meta name="description" content="From reservation apps to websites — SPEC88 builds what you need. No code. No agency.">
-
-  <!-- Open Graph / Twitter (Social Preview) -->
+  <title>SPEC88 – Maßgeschneiderte AI-Tools (Starter & Pro)</title>
+  <meta name="description" content="SPEC88 baut und betreibt maßgeschneiderte AI-Automations-Tools. Fixe Pakete (Starter/Pro) oder Festpreis-Kauf. Pflicht-Termin buchen.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="SPEC88 – Generate AI Tools for your Business in Minutes">
-  <meta property="og:description" content="From reservation apps to websites — SPEC88 builds what you need. No code. No agency.">
-  <meta property="og:image" content="preview.png?v=2">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  <meta property="og:title" content="SPEC88 – Maßgeschneiderte AI-Tools (Starter & Pro)">
+  <meta property="og:description" content="Analyse → Umsetzung → Betrieb. Wir liefern schlüsselfertige AI-Tools.">
   <meta name="twitter:card" content="summary_large_image">
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
   <style>
-    :root { --bg:#0A2540; --bg-dark:#090E16; --accent:#2EF7D0; --text:#F9FAFB; --muted:#C7CBD1; --border:rgba(255,255,255,.10); }
+    :root{--bg:#0A2540;--bg2:#090E16;--text:#F5F7FA;--muted:#B9C0C8;--accent:#2EF7D0;--border:rgba(255,255,255,.12)}
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Inter',system-ui,Arial;background:radial-gradient(1200px 800px at 20% -10%,#112B4E,var(--bg)) no-repeat,var(--bg-dark);color:var(--text);line-height:1.6}
-    a{color:#BEEFF0;text-decoration:none} a:hover{text-decoration:underline}
+    html,body{background:radial-gradient(1200px 800px at 20% -10%,#112B4E,var(--bg)) no-repeat,var(--bg2);color:var(--text);font-family:Inter,system-ui,Arial;line-height:1.6}
+    a{color:#CFFCF3;text-decoration:none} a:hover{text-decoration:underline}
     .container{max-width:1100px;margin:0 auto;padding:0 20px}
     header{position:sticky;top:0;z-index:40;background:rgba(9,14,22,.75);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid rgba(255,255,255,.06)}
     .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.4px}
     .badge-logo{width:28px;height:28px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7CF9E6);display:inline-flex;align-items:center;justify-content:center;color:#0b1b2f;font-weight:800;box-shadow:0 8px 30px rgba(46,247,208,.4)}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.06);color:var(--text);font-weight:600;transition:.2s ease;cursor:pointer}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.06);color:var(--text);font-weight:600;transition:.2s;cursor:pointer}
     .btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.12)}
-    .btn-accent{background:linear-gradient(135deg,var(--accent),#7CF9E6);color:#081524;border:none;box-shadow:0 10px 40px rgba(46,247,208,.5)}
+    .btn-accent{background:linear-gradient(135deg,var(--accent),#7CF9E6);color:#09121E;border:none;box-shadow:0 10px 40px rgba(46,247,208,.45)}
     .hero{padding:72px 0 40px;text-align:center}
     .title{font-size:clamp(32px,5vw,56px);line-height:1.05;font-weight:800;margin:10px 0 10px}
     .subtitle{font-size:clamp(16px,2.6vw,20px);color:#D6D9DE;max-width:780px;margin:0 auto 26px}
@@ -48,16 +37,17 @@
     .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     .step{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:18px}
     .step strong{font-size:18px;display:block;margin-bottom:6px}
-    .email{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:20px;max-width:640px;margin:0 auto}
-    input[type="email"]{width:100%;padding:14px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:rgba(0,0,0,.25);color:var(--text);font-size:16px;outline:none}
-    input[type="checkbox"]{transform:scale(1.1);margin-right:8px}
-    .row{display:flex;gap:10px;margin-top:12px}
-    .row .btn{flex:0 0 auto;padding-inline:20px}
-    .row input{flex:1}
-    .muted{color:var(--muted);font-size:14px}
+    .pricing{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .price{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:22px}
+    .price h3{margin-bottom:6px}
+    .price .tag{font-size:12px;color:#A7AFB7;margin-bottom:6px}
+    .price .big{font-size:32px;font-weight:800}
+    .price ul{margin:10px 0 12px 16px;color:#D7DBE2}
+    .notice{font-size:14px;color:var(--muted)}
+    .legal{font-size:14px;color:#D7DBE2}
     footer{padding:28px 0;color:#B9C0C8;font-size:14px;border-top:1px solid rgba(255,255,255,.06);margin-top:40px}
     footer .fnav a{color:#B9C0C8;margin-left:10px}
-    @media(max-width:900px){.cards,.steps{grid-template-columns:1fr}.row{flex-direction:column}}
+    @media(max-width:960px){.cards,.steps,.pricing{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -68,158 +58,186 @@
         <div class="badge-logo">S</div><div>SPEC88</div>
       </div>
       <div style="display:flex;gap:10px;align-items:center">
-        <a class="btn" href="#how" data-i18n="nav_how">How it works</a>
-        <a class="btn" href="agents.html" data-i18n="nav_agents">Try Agents</a>
-        <div style="display:flex;align-items:center;gap:8px">
-          <label for="langSel" class="muted" id="langLabel">Language</label>
-          <select id="langSel" aria-label="Language selector">
-            <option value="en">English</option>
-            <option value="de">Deutsch</option>
-          </select>
-        </div>
+        <a class="btn" href="#how">So funktioniert’s</a>
+        <a class="btn" href="#pricing">Preise</a>
+        <a class="btn btn-accent" href="https://calendly.com/davidyurko28/gesprach" target="_blank" rel="noopener">Termin buchen</a>
       </div>
     </div>
   </header>
 
-  <!-- ====== Hero ====== -->
   <main class="container">
+    <!-- ====== HERO ====== -->
     <section class="hero">
       <div class="badge-row">
-        <span class="badge" data-i18n="badge_ssl">SSL secured</span>
-        <span class="badge" data-i18n="badge_waitlist">10,000+ on waitlist (placeholder)</span>
-        <span class="badge" data-i18n="badge_multi">Multilingual</span>
+        <span class="badge">DSGVO-konform</span>
+        <span class="badge">Lieferung in 7–14 Tagen</span>
+        <span class="badge">Schlüsselfertig & dokumentiert</span>
       </div>
-      <h1 class="title" data-i18n="hero_title">Generate AI Tools for your Business in Minutes</h1>
-      <p class="subtitle" data-i18n="hero_subtitle">From reservation apps to websites — SPEC88 builds what you need.</p>
+      <h1 class="title">Wir bauen maßgeschneiderte AI-Tools. Kein Baukasten, kein Service-Abo.</h1>
+      <p class="subtitle">
+        Sie beschreiben Ihr Ziel – wir liefern das Tool schlüsselfertig: <strong>Analyse → Umsetzung → Betrieb</strong>.
+        Fixe Pakete (Starter/Pro) und individuelles Angebot je nach Komplexität.
+        <br>Hinweis: <strong>Ohne Gespräch kein Projekt</strong> (Pflicht-Termin).
+      </p>
       <div style="display:flex;gap:12px;justify-content:center">
-        <a class="btn btn-accent" href="agents.html" data-i18n="cta_primary">🚀 Try the first tool</a>
-        <a class="btn" href="#how" data-i18n="cta_secondary">How it works</a>
+        <a class="btn btn-accent" href="https://calendly.com/davidyurko28/gesprach" target="_blank" rel="noopener">🚀 Pflicht-Termin buchen</a>
+        <a class="btn" href="#pricing">Pakete ansehen</a>
       </div>
     </section>
 
-    <!-- ====== Features ====== -->
-    <section class="section" id="features">
+    <!-- ====== WHAT WE DO ====== -->
+    <section id="features" class="section">
       <div class="cards">
         <div class="card">
-          <h3 data-i18n="f1_t">No tech hassle</h3>
-          <p data-i18n="f1_d">SPEC88 generates copy, images & forms — you click “Publish”.</p>
+          <h3>Automatisierte Anfragen</h3>
+          <p>FAQs sofort beantworten, Leads qualifizieren, Termine auslösen – für echte Zeit- & Umsatzgewinne.</p>
         </div>
         <div class="card">
-          <h3 data-i18n="f2_t">Fast to revenue</h3>
-          <p data-i18n="f2_d">From idea to testable page in minutes, not weeks.</p>
+          <h3>Workflows & Integrationen</h3>
+          <p>Kalender, CRM, E-Mail, WhatsApp/Voice, Zapier/Make u. a. – sauber angebunden, dokumentiert.</p>
         </div>
         <div class="card">
-          <h3 data-i18n="f3_t">Global ready</h3>
-          <p data-i18n="f3_d">Multi-language content with one click.</p>
+          <h3>Betrieb & Wartung</h3>
+          <p>Wir betreiben Ihr Tool zuverlässig: Monitoring, Updates, Reports, Support. Optional Festpreis-Kauf.</p>
         </div>
       </div>
     </section>
 
-    <!-- ====== How it works ====== -->
+    <!-- ====== HOW WE WORK ====== -->
     <section id="how" class="section">
-      <h2 style="text-align:center;margin:0 0 16px;font-size:28px" data-i18n="how_title">How it works</h2>
-      <div class="steps" id="howSteps">
+      <h2 style="text-align:center;margin:0 0 16px;font-size:28px">So arbeiten wir</h2>
+      <div class="steps">
         <div class="step">
-          <strong data-i18n="step1_t">1) Describe outcome</strong>
-          <p data-i18n="step1_d">Tell us what you need (e.g., “restaurant reservations”).</p>
+          <strong>1) Bedarfsgespräch (Pflicht)</strong>
+          <p>Ziele, Prozesse, Datenschutz. Danach erhalten Sie eine klare Aufwand- & Kostenschätzung.</p>
         </div>
         <div class="step">
-          <strong data-i18n="step2_t">2) Generate</strong>
-          <p data-i18n="step2_d">SPEC88 builds the tool (landing / lead / workflow).</p>
+          <strong>2) Bau & Übergabe</strong>
+          <p>7–14 Tage bis zur ersten Version – schlüsselfertig, getestet, dokumentiert.</p>
         </div>
         <div class="step">
-          <strong data-i18n="step3_t">3) Launch</strong>
-          <p data-i18n="step3_d">Publish & start collecting sign-ups.</p>
+          <strong>3) Betrieb</strong>
+          <p>Monatliche Miete inkl. Wartung/Monitoring – oder Kauf + optionaler Support.</p>
         </div>
       </div>
     </section>
 
-    <!-- ====== Email Capture ====== -->
-    <section id="early" class="section">
-      <h2 style="text-align:center;margin:0 0 8px;font-size:28px" data-i18n="early_title">Get Early Access</h2>
-      <p class="muted" style="text-align:center;margin:0 0 16px" id="early_desc" data-i18n="early_desc">Enter your email — we’ll invite you to the beta.</p>
-      <form class="email" action="https://formspree.io/f/mvgqewzy" method="POST">
-        <input type="hidden" name="_redirect" value="thanks.html">
-        <input type="hidden" name="_subject" value="SPEC88 – New signup">
-        <input type="text" name="_gotcha" style="display:none">
-        <div class="row">
-          <input type="email" name="email" id="emailInput" placeholder="you@example.com" required>
-          <button class="btn btn-accent" type="submit" id="submitBtn" data-i18n="cta_submit">Get Early Access</button>
+    <!-- ====== PRICING ====== -->
+    <section id="pricing" class="section">
+      <h2 style="text-align:center;margin:0 0 16px;font-size:28px">Pakete & Preise</h2>
+      <p class="subtitle" style="text-align:center;margin-top:-6px">
+        Transparente Pakete – finaler Preis nach Komplexität & Integrationen. Externe Plattformkosten (z. B. WhatsApp API, Twilio, Zapier/Make) separat.
+      </p>
+
+      <div class="pricing">
+        <div class="price">
+          <h3>Starter</h3>
+          <div class="tag">Für den schnellen Start</div>
+          <div class="big">Setup ab 499 € · 799 €/Monat</div>
+          <ul>
+            <li>1 AI-Automation (z. B. Anfragen → Termin/CRM)</li>
+            <li>Standard-Integrationen (Kalender, E-Mail, CRM-Webhook)</li>
+            <li>Wartung, Monitoring & Updates inkl.</li>
+          </ul>
+          <a class="btn btn-accent" href="https://calendly.com/davidyurko28/gesprach" target="_blank" rel="noopener">Starter anfragen</a>
         </div>
-        <p class="muted" style="margin-top:10px" id="consent">
-          <label><input type="checkbox" required> <span data-i18n="consent">I agree to receive emails about the beta. No spam.</span></label>
+
+        <div class="price">
+          <h3>Pro</h3>
+          <div class="tag">Für wachsende Teams</div>
+          <div class="big">Setup ab 799 € · 1.199 €/Monat</div>
+          <ul>
+            <li>2–3 Automations (z. B. Chat + Voice + CRM-Sync)</li>
+            <li>Erweiterte Integrationen (WhatsApp API, Zapier/Make, Drittsysteme)</li>
+            <li>Reports, Prior-Support & SLA</li>
+          </ul>
+          <a class="btn btn-accent" href="https://calendly.com/davidyurko28/gesprach" target="_blank" rel="noopener">Pro anfragen</a>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>Kauf (Festpreis)</h3>
+        <p class="notice">
+          Eigentum am Tool – ab 1.000 € (je nach Umfang). Übergabe & Dokumentation inklusive.
+          Optionaler Support ab 79 €/Monat.
         </p>
-      </form>
+      </div>
+    </section>
+
+    <!-- ====== TRUST & LEGAL TEASER ====== -->
+    <section class="section">
+      <div class="card">
+        <h3>Datenschutz & Rechtliches</h3>
+        <p class="legal">
+          Verarbeitung auf Basis Art. 6 Abs. 1 lit. b (Vertrag) und f (berechtigtes Interesse); bei Marketing auf Basis Einwilligung (a).
+          Auftragsverarbeitung (AVV) mit Drittanbietern; ggf. Drittlandübermittlung auf Basis Standardvertragsklauseln (SCC).
+          <br>Volltext: <a href="#impressum">Impressum</a> & <a href="#datenschutz">Datenschutz</a>.
+        </p>
+        <div class="badge-row" style="justify-content:flex-start">
+          <span class="badge">AVV & SCC</span>
+          <span class="badge">Rollen & Verantwortlichkeiten klar</span>
+          <span class="badge">Privacy by Design</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FINAL CTA ====== -->
+    <section class="section" style="text-align:center">
+      <h2 style="margin-bottom:8px">Ohne Gespräch kein Projekt.</h2>
+      <p class="notice" style="margin-bottom:14px">Der erste Schritt ist immer ein kurzes Bedarfsgespräch (15–30 Min.).</p>
+      <a class="btn btn-accent" href="https://calendly.com/davidyurko28/gesprach" target="_blank" rel="noopener">Jetzt Pflicht-Termin buchen</a>
+    </section>
+
+    <!-- ====== LEGAL ====== -->
+    <section id="impressum" class="section">
+      <div class="card">
+        <h3>Impressum</h3>
+        <p><strong>Dienstanbieter:</strong> SPEC88 – David Romanovic Joe Kommende</p>
+        <p><strong>Geschäftsadresse:</strong><br>Tulpenstraße 4, 63128 Dietzenbach, Deutschland</p>
+        <p><strong>Kontakt:</strong><br>Tel.: +49 15678 400627 · E-Mail: <a href="mailto:Davidyurko28@gmail.com">Davidyurko28@gmail.com</a></p>
+        <p><strong>USt-ID:</strong> wird nachträglich ergänzt (sofern vorhanden)</p>
+        <p><strong>Verantwortlich i.S.d. § 18 Abs. 2 MStV:</strong> David Romanovic Joe Kommende</p>
+      </div>
+    </section>
+
+    <section id="datenschutz" class="section">
+      <div class="card">
+        <h3>Datenschutz (Kurzfassung & Volltext-Skeleton)</h3>
+        <p class="legal">
+          <strong>Zwecke:</strong> Beantwortung von Anfragen, Angebotserstellung, Projektumsetzung, Betrieb & Wartung, Abrechnung, optional Marketing (mit Einwilligung).<br>
+          <strong>Rechtsgrundlagen:</strong> Art. 6 Abs. 1 lit. b (Vertrag), lit. f (berechtigtes Interesse), lit. a (Einwilligung, z. B. Newsletter/Marketing).<br>
+          <strong>Kategorien Daten:</strong> Stamm- und Kontaktdaten, Kommunikationsinhalte, technische Nutzungsdaten; projektbezogen auch Endkundendaten im Auftrag.<br>
+          <strong>Empfänger:</strong> Hosting-Provider; Kommunikations-/API-Dienste (z. B. WhatsApp Cloud API/Meta, Twilio/Voice, Calendly, Zapier/Make, ggf. CRM/Analytics nach Vereinbarung).<br>
+          <strong>Drittlandübermittlung:</strong> sofern Dienste außerhalb EU/EWR, Einsatz von Standardvertragsklauseln (SCC).<br>
+          <strong>Speicherdauer:</strong> projekt-/vertragsbezogen; gesetzliche Aufbewahrungspflichten bleiben unberührt.<br>
+          <strong>Rechte:</strong> Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerspruch; Beschwerde bei einer Aufsichtsbehörde.<br>
+          <strong>AVV:</strong> Wir schließen eine Auftragsverarbeitung (Art. 28 DSGVO), wenn wir Kundendaten im Auftrag verarbeiten; Verantwortlichkeiten werden vertraglich geregelt.<br>
+          <strong>Kontakt Datenschutz:</strong> per E-Mail an <a href="mailto:Davidyurko28@gmail.com">Davidyurko28@gmail.com</a>.
+        </p>
+      </div>
     </section>
   </main>
 
-  <!-- ====== Footer ====== -->
   <footer>
     <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
       <div>© <span id="yr"></span> SPEC88</div>
       <div class="fnav">
-        <a href="agents.html" data-i18n="nav_agents">Agents</a> ·
-        <a href="#" onclick="alert('Coming soon');return false;">Privacy</a> ·
-        <a href="#" onclick="alert('Coming soon');return false;">Imprint</a>
+        <a href="#pricing">Preise</a> ·
+        <a href="#impressum">Impressum</a> ·
+        <a href="#datenschutz">Datenschutz</a> ·
+        <a href="https://calendly.com/davidyurko28/gesprach" target="_blank" rel="noopener">Termin</a>
       </div>
     </div>
   </footer>
 
-  <!-- ====== Language (i18n) ====== -->
   <script>
+    // Jahr + smooth scroll
     document.getElementById('yr').textContent = new Date().getFullYear();
-
-    const dict = {
-      en: {
-        nav_how:"How it works", nav_agents:"Try Agents",
-        badge_ssl:"SSL secured", badge_waitlist:"10,000+ on waitlist (placeholder)", badge_multi:"Multilingual",
-        hero_title:"Generate AI Tools for your Business in Minutes",
-        hero_subtitle:"From reservation apps to websites — SPEC88 builds what you need.",
-        cta_primary:"🚀 Try the first tool", cta_secondary:"How it works", cta_submit:"Get Early Access",
-        f1_t:"No tech hassle", f1_d:"SPEC88 generates copy, images & forms — you click “Publish”.",
-        f2_t:"Fast to revenue", f2_d:"From idea to testable page in minutes, not weeks.",
-        f3_t:"Global ready", f3_d:"Multi-language content with one click.",
-        how_title:"How it works",
-        step1_t:"1) Describe outcome", step1_d:"Tell us what you need (e.g., “restaurant reservations”).",
-        step2_t:"2) Generate", step2_d:"SPEC88 builds the tool (landing / lead / workflow).",
-        step3_t:"3) Launch", step3_d:"Publish & start collecting sign-ups.",
-        early_title:"Get Early Access", early_desc:"Enter your email — we’ll invite you to the beta.",
-        consent:"I agree to receive emails about the beta. No spam."
-      },
-      de: {
-        nav_how:"So funktioniert’s", nav_agents:"Agents testen",
-        badge_ssl:"SSL geschützt", badge_waitlist:"10.000+ auf der Warteliste (Platzhalter)", badge_multi:"Mehrsprachig",
-        hero_title:"Erzeuge KI-Tools für dein Business in Minuten",
-        hero_subtitle:"Von Reservierungs-Apps bis Websites — SPEC88 baut, was du brauchst.",
-        cta_primary:"🚀 Erstes Tool testen", cta_secondary:"So funktioniert’s", cta_submit:"Frühzugang holen",
-        f1_t:"Kein Technik-Stress", f1_d:"SPEC88 generiert Texte, Bilder & Formulare – du klickst nur „Veröffentlichen“. ",
-        f2_t:"Schnell zu Umsatz", f2_d:"Von der Idee zur testbaren Seite in Minuten statt Wochen.",
-        f3_t:"Weltweit bereit", f3_d:"Mehrsprachiger Content mit einem Klick.",
-        how_title:"So funktioniert’s",
-        step1_t:"1) Ergebnis beschreiben", step1_d:"Sag uns, was du brauchst (z. B. „Restaurant-Reservierungen“).",
-        step2_t:"2) Generieren", step2_d:"SPEC88 baut das Tool (Landing / Lead / Workflow).",
-        step3_t:"3) Starten", step3_d:"Veröffentlichen & Anmeldungen sammeln.",
-        early_title:"Frühzugang", early_desc:"E-Mail eintragen — wir laden dich zur Beta ein.",
-        consent:"Ich stimme zu, E-Mails zur Beta zu erhalten. Kein Spam."
-      }
-    };
-
-    const sel = document.getElementById('langSel');
-    function applyLang(l) {
-      const d = dict[l] || dict.en;
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (d[key]) el.textContent = d[key];
-      });
-      localStorage.setItem('lang', l);
-      document.documentElement.lang = l;
-    }
-    sel.addEventListener('change', () => applyLang(sel.value));
-    (function initLang(){
-      const saved = localStorage.getItem('lang') || 'en';
-      sel.value = saved;
-      applyLang(saved);
-    })();
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a[href^="#"]'); if(!a) return;
+      const id = a.getAttribute('href').slice(1); const el = document.getElementById(id);
+      if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}) }
+    });
   </script>
 </body>
 </html>
