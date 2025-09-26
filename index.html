@@ -3,12 +3,22 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>SPEC88 – Maßgeschneiderte AI-Tools (Starter & Pro)</title>
-  <meta name="description" content="SPEC88 baut und betreibt maßgeschneiderte AI-Automations-Tools. Fixe Pakete (Starter/Pro) oder Festpreis-Kauf. Pflicht-Termin buchen.">
+  <title>SPEC88 – AI-Automationen für Unternehmen (Starter & Pro)</title>
+  <meta name="description" content="SPEC88 baut & betreibt maßgeschneiderte AI-Automationen. Fixe Pakete (Starter/Pro) oder Festpreis-Kauf. DSGVO-konform. 7–14 Tage bis zur Erstversion.">
+
+  <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="SPEC88 – Maßgeschneiderte AI-Tools (Starter & Pro)">
-  <meta property="og:description" content="Analyse → Umsetzung → Betrieb. Wir liefern schlüsselfertige AI-Tools.">
+  <meta property="og:title" content="SPEC88 – AI-Automationen für Unternehmen (Starter & Pro)">
+  <meta property="og:description" content="Analyse → Umsetzung → Betrieb. Wir liefern schlüsselfertige AI-Tools mit Wartung & Support.">
+  <meta property="og:image" content="preview.png?v=1">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
@@ -27,7 +37,7 @@
     .btn-accent{background:linear-gradient(135deg,var(--accent),#7CF9E6);color:#09121E;border:none;box-shadow:0 10px 40px rgba(46,247,208,.45)}
     .hero{padding:72px 0 40px;text-align:center}
     .title{font-size:clamp(32px,5vw,56px);line-height:1.05;font-weight:800;margin:10px 0 10px}
-    .subtitle{font-size:clamp(16px,2.6vw,20px);color:#D6D9DE;max-width:780px;margin:0 auto 26px}
+    .subtitle{font-size:clamp(16px,2.6vw,20px);color:#D6D9DE;max-width:820px;margin:0 auto 26px}
     .badge-row{display:flex;align-items:center;justify-content:center;gap:10px;margin:8px 0 0;flex-wrap:wrap}
     .badge{font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:#CFD5DD}
     .section{padding:44px 0}
@@ -45,174 +55,143 @@
     .price ul{margin:10px 0 12px 16px;color:#D7DBE2}
     .notice{font-size:14px;color:var(--muted)}
     .legal{font-size:14px;color:#D7DBE2}
+    .faq{max-width:800px;margin:0 auto}
+    .faq h3{margin:14px 0 6px}
     footer{padding:28px 0;color:#B9C0C8;font-size:14px;border-top:1px solid rgba(255,255,255,.06);margin-top:40px}
     footer .fnav a{color:#B9C0C8;margin-left:10px}
     @media(max-width:960px){.cards,.steps,.pricing{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
-  <!-- ====== Header ====== -->
+  <!-- Header -->
   <header>
     <div class="container nav">
-      <div class="brand">
-        <div class="badge-logo">S</div><div>SPEC88</div>
-      </div>
+      <div class="brand"><div class="badge-logo">S</div><div>SPEC88</div></div>
       <div style="display:flex;gap:10px;align-items:center">
         <a class="btn" href="#how">So funktioniert’s</a>
         <a class="btn" href="#pricing">Preise</a>
+        <a class="btn" href="#faq">FAQ</a>
         <a class="btn btn-accent" href="https://calendly.com/davidyurko28/gesprach" target="_blank" rel="noopener">Termin buchen</a>
       </div>
     </div>
   </header>
 
+  <!-- Hero -->
   <main class="container">
-    <!-- ====== HERO ====== -->
     <section class="hero">
       <div class="badge-row">
         <span class="badge">DSGVO-konform</span>
-        <span class="badge">Lieferung in 7–14 Tagen</span>
-        <span class="badge">Schlüsselfertig & dokumentiert</span>
+        <span class="badge">7–14 Tage zur Erstversion</span>
+        <span class="badge">Schlüsselfertig</span>
       </div>
-      <h1 class="title">Wir bauen maßgeschneiderte AI-Tools. Kein Baukasten, kein Service-Abo.</h1>
-      <p class="subtitle">
-        Sie beschreiben Ihr Ziel – wir liefern das Tool schlüsselfertig: <strong>Analyse → Umsetzung → Betrieb</strong>.
-        Fixe Pakete (Starter/Pro) und individuelles Angebot je nach Komplexität.
-        <br>Hinweis: <strong>Ohne Gespräch kein Projekt</strong> (Pflicht-Termin).
-      </p>
+      <h1 class="title">Wir bauen & betreiben maßgeschneiderte AI-Automationen.</h1>
+      <p class="subtitle">Sie beschreiben Ihr Ziel – wir liefern <strong>Analyse → Umsetzung → Betrieb</strong>. Starter & Pro Pakete oder individuelles Angebot. <strong>Ohne Gespräch kein Projekt.</strong></p>
       <div style="display:flex;gap:12px;justify-content:center">
-        <a class="btn btn-accent" href="https://calendly.com/davidyurko28/gesprach" target="_blank" rel="noopener">🚀 Pflicht-Termin buchen</a>
+        <a class="btn btn-accent" href="https://calendly.com/davidyurko28/gesprach" target="_blank" rel="noopener">🚀 Erstgespräch buchen</a>
         <a class="btn" href="#pricing">Pakete ansehen</a>
       </div>
     </section>
 
-    <!-- ====== WHAT WE DO ====== -->
+    <!-- Features -->
     <section id="features" class="section">
       <div class="cards">
-        <div class="card">
-          <h3>Automatisierte Anfragen</h3>
-          <p>FAQs sofort beantworten, Leads qualifizieren, Termine auslösen – für echte Zeit- & Umsatzgewinne.</p>
-        </div>
-        <div class="card">
-          <h3>Workflows & Integrationen</h3>
-          <p>Kalender, CRM, E-Mail, WhatsApp/Voice, Zapier/Make u. a. – sauber angebunden, dokumentiert.</p>
-        </div>
-        <div class="card">
-          <h3>Betrieb & Wartung</h3>
-          <p>Wir betreiben Ihr Tool zuverlässig: Monitoring, Updates, Reports, Support. Optional Festpreis-Kauf.</p>
-        </div>
+        <div class="card"><h3>Inquiry-to-Action</h3><p>Standardfragen beantworten, Leads qualifizieren und direkt Termine/CRM-Einträge auslösen (Web/WhatsApp/Voice).</p></div>
+        <div class="card"><h3>Status & Tickets</h3><p>Logistik/Immo: Statusabfragen & Schadentickets automatisieren; nur Sonderfälle ans Team – weniger Telefonlast.</p></div>
+        <div class="card"><h3>Lead-Qualifier & Docs</h3><p>Infos & Dateien einsammeln, priorisieren, Call buchen; Übergabe in CRM/E-Mail, klare Verantwortlichkeiten.</p></div>
       </div>
     </section>
 
-    <!-- ====== HOW WE WORK ====== -->
+    <!-- How -->
     <section id="how" class="section">
-      <h2 style="text-align:center;margin:0 0 16px;font-size:28px">So arbeiten wir</h2>
+      <h2 style="text-align:center">So arbeiten wir</h2>
       <div class="steps">
-        <div class="step">
-          <strong>1) Bedarfsgespräch (Pflicht)</strong>
-          <p>Ziele, Prozesse, Datenschutz. Danach erhalten Sie eine klare Aufwand- & Kostenschätzung.</p>
-        </div>
-        <div class="step">
-          <strong>2) Bau & Übergabe</strong>
-          <p>7–14 Tage bis zur ersten Version – schlüsselfertig, getestet, dokumentiert.</p>
-        </div>
-        <div class="step">
-          <strong>3) Betrieb</strong>
-          <p>Monatliche Miete inkl. Wartung/Monitoring – oder Kauf + optionaler Support.</p>
-        </div>
+        <div class="step"><strong>1) Bedarfsgespräch (Pflicht)</strong><p>Ziele, Prozesse, Datenschutz. Danach Aufwand & Kosten.</p></div>
+        <div class="step"><strong>2) Bau & Übergabe</strong><p>Erstversion in 7–14 Tagen – schlüsselfertig, getestet, dokumentiert.</p></div>
+        <div class="step"><strong>3) Betrieb</strong><p>Miete inkl. Wartung/Monitoring – oder Kauf + optionaler Support.</p></div>
       </div>
     </section>
 
-    <!-- ====== PRICING ====== -->
+    <!-- Pricing -->
     <section id="pricing" class="section">
-      <h2 style="text-align:center;margin:0 0 16px;font-size:28px">Pakete & Preise</h2>
-      <p class="subtitle" style="text-align:center;margin-top:-6px">
-        Transparente Pakete – finaler Preis nach Komplexität & Integrationen. Externe Plattformkosten (z. B. WhatsApp API, Twilio, Zapier/Make) separat.
-      </p>
-
+      <h2 style="text-align:center">Pakete & Preise</h2>
+      <p class="subtitle" style="text-align:center;margin-top:-6px">Finale Preise je nach Komplexität & Integrationen. Externe Plattformkosten (WhatsApp API, Twilio, Zapier/Make, Calendly) separat.</p>
       <div class="pricing">
         <div class="price">
           <h3>Starter</h3>
           <div class="tag">Für den schnellen Start</div>
-          <div class="big">Setup ab 499 € · 799 €/Monat</div>
-          <ul>
-            <li>1 AI-Automation (z. B. Anfragen → Termin/CRM)</li>
-            <li>Standard-Integrationen (Kalender, E-Mail, CRM-Webhook)</li>
-            <li>Wartung, Monitoring & Updates inkl.</li>
-          </ul>
+          <div class="big">ab 499 € Setup · 799 €/Monat</div>
+          <ul><li>1 AI-Automation (z. B. Anfragen → Termin/CRM)</li><li>Standard-Integrationen</li><li>Wartung, Monitoring & Updates inkl.</li></ul>
           <a class="btn btn-accent" href="https://calendly.com/davidyurko28/gesprach" target="_blank" rel="noopener">Starter anfragen</a>
         </div>
-
         <div class="price">
           <h3>Pro</h3>
           <div class="tag">Für wachsende Teams</div>
-          <div class="big">Setup ab 799 € · 1.199 €/Monat</div>
-          <ul>
-            <li>2–3 Automations (z. B. Chat + Voice + CRM-Sync)</li>
-            <li>Erweiterte Integrationen (WhatsApp API, Zapier/Make, Drittsysteme)</li>
-            <li>Reports, Prior-Support & SLA</li>
-          </ul>
+          <div class="big">ab 799 € Setup · 1.199 €/Monat</div>
+          <ul><li>2–3 Automationen (z. B. Chat + Voice + CRM-Sync)</li><li>Erweiterte Integrationen (WhatsApp API, Zapier/Make, Drittsysteme)</li><li>Reports, Prior-Support & SLA</li></ul>
           <a class="btn btn-accent" href="https://calendly.com/davidyurko28/gesprach" target="_blank" rel="noopener">Pro anfragen</a>
         </div>
       </div>
 
       <div class="card" style="margin-top:16px">
         <h3>Kauf (Festpreis)</h3>
-        <p class="notice">
-          Eigentum am Tool – ab 1.000 € (je nach Umfang). Übergabe & Dokumentation inklusive.
-          Optionaler Support ab 79 €/Monat.
-        </p>
+        <p class="notice">Eigentum am Tool – ab 1.000 € (je nach Umfang). Übergabe & Dokumentation inklusive. Optionaler Support ab 79 €/Monat.</p>
       </div>
     </section>
 
-    <!-- ====== TRUST & LEGAL TEASER ====== -->
+    <!-- FAQ -->
+    <section id="faq" class="section faq">
+      <h2 style="text-align:center">FAQ</h2>
+      <h3>Wie schnell ist ein Projekt fertig?</h3><p>Die Erstversion liefern wir in 7–14 Tagen. Komplexere Projekte brauchen länger.</p>
+      <h3>Was kostet ein Projekt wirklich?</h3><p>Starter ab 799 €/Monat, Pro ab 1.199 €/Monat. Kaufoption ab 1.000 € einmalig.</p>
+      <h3>Welche Integrationen sind möglich?</h3><p>Kalender, E-Mail, WhatsApp API, CRM-Systeme, Zapier/Make, Voice via Twilio u. v. m.</p>
+      <h3>Ist alles DSGVO-konform?</h3><p>Ja. Wir schließen AV-Verträge, nutzen Sub-Prozessoren mit Standardvertragsklauseln (SCC) und dokumentieren Verantwortlichkeiten.</p>
+    </section>
+
+    <!-- Trust & Legal Teaser -->
     <section class="section">
       <div class="card">
         <h3>Datenschutz & Rechtliches</h3>
         <p class="legal">
-          Verarbeitung auf Basis Art. 6 Abs. 1 lit. b (Vertrag) und f (berechtigtes Interesse); bei Marketing auf Basis Einwilligung (a).
-          Auftragsverarbeitung (AVV) mit Drittanbietern; ggf. Drittlandübermittlung auf Basis Standardvertragsklauseln (SCC).
-          <br>Volltext: <a href="#impressum">Impressum</a> & <a href="#datenschutz">Datenschutz</a>.
+          Verarbeitung auf Basis Art. 6 Abs. 1 lit. b (Vertrag) und lit. f (berechtigtes Interesse); Marketing ggf. lit. a (Einwilligung).
+          Auftragsverarbeitung (AVV) mit Sub-Prozessoren; mögliche Drittlandübermittlung auf Basis Standardvertragsklauseln (SCC).
+          <br><strong>Typische Sub-Prozessoren:</strong> Meta/WhatsApp Cloud API (Messenger), Twilio (Voice/SMS), Calendly (Kalender), Zapier/Make (Automatisierung), Hosting-Provider.
+          <br>Volltexte: <a href="#impressum">Impressum</a> & <a href="#datenschutz">Datenschutz</a>.
         </p>
-        <div class="badge-row" style="justify-content:flex-start">
-          <span class="badge">AVV & SCC</span>
-          <span class="badge">Rollen & Verantwortlichkeiten klar</span>
-          <span class="badge">Privacy by Design</span>
-        </div>
       </div>
     </section>
 
-    <!-- ====== FINAL CTA ====== -->
+    <!-- Final CTA -->
     <section class="section" style="text-align:center">
       <h2 style="margin-bottom:8px">Ohne Gespräch kein Projekt.</h2>
-      <p class="notice" style="margin-bottom:14px">Der erste Schritt ist immer ein kurzes Bedarfsgespräch (15–30 Min.).</p>
-      <a class="btn btn-accent" href="https://calendly.com/davidyurko28/gesprach" target="_blank" rel="noopener">Jetzt Pflicht-Termin buchen</a>
+      <p class="notice" style="margin-bottom:14px">Erstgespräch (15–30 Min.) – Ziele, Scope, Zeitplan & Kosten.</p>
+      <a class="btn btn-accent" href="https://calendly.com/davidyurko28/gesprach" target="_blank" rel="noopener">Jetzt Termin buchen</a>
     </section>
 
-    <!-- ====== LEGAL ====== -->
+    <!-- LEGAL -->
     <section id="impressum" class="section">
       <div class="card">
         <h3>Impressum</h3>
-        <p><strong>Dienstanbieter:</strong> SPEC88 – David Romanovic Joe Kommende</p>
+        <p><strong>Dienstanbieter:</strong> SPEC88 – David Romanovic Yurko</p>
         <p><strong>Geschäftsadresse:</strong><br>Tulpenstraße 4, 63128 Dietzenbach, Deutschland</p>
-        <p><strong>Kontakt:</strong><br>Tel.: +49 15678 400627 · E-Mail: <a href="mailto:Davidyurko28@gmail.com">Davidyurko28@gmail.com</a></p>
+        <p><strong>Kontakt:</strong><br>E-Mail: <a href="mailto:Davidyurko28@gmail.com">Davidyurko28@gmail.com</a></p>
         <p><strong>USt-ID:</strong> wird nachträglich ergänzt (sofern vorhanden)</p>
-        <p><strong>Verantwortlich i.S.d. § 18 Abs. 2 MStV:</strong> David Romanovic Joe Kommende</p>
+        <p><strong>Verantwortlich i. S. d. § 18 Abs. 2 MStV:</strong> David Romanovic Yurko</p>
       </div>
     </section>
 
     <section id="datenschutz" class="section">
       <div class="card">
-        <h3>Datenschutz (Kurzfassung & Volltext-Skeleton)</h3>
+        <h3>Datenschutzerklärung (Kurzfassung)</h3>
         <p class="legal">
-          <strong>Zwecke:</strong> Beantwortung von Anfragen, Angebotserstellung, Projektumsetzung, Betrieb & Wartung, Abrechnung, optional Marketing (mit Einwilligung).<br>
-          <strong>Rechtsgrundlagen:</strong> Art. 6 Abs. 1 lit. b (Vertrag), lit. f (berechtigtes Interesse), lit. a (Einwilligung, z. B. Newsletter/Marketing).<br>
-          <strong>Kategorien Daten:</strong> Stamm- und Kontaktdaten, Kommunikationsinhalte, technische Nutzungsdaten; projektbezogen auch Endkundendaten im Auftrag.<br>
-          <strong>Empfänger:</strong> Hosting-Provider; Kommunikations-/API-Dienste (z. B. WhatsApp Cloud API/Meta, Twilio/Voice, Calendly, Zapier/Make, ggf. CRM/Analytics nach Vereinbarung).<br>
-          <strong>Drittlandübermittlung:</strong> sofern Dienste außerhalb EU/EWR, Einsatz von Standardvertragsklauseln (SCC).<br>
-          <strong>Speicherdauer:</strong> projekt-/vertragsbezogen; gesetzliche Aufbewahrungspflichten bleiben unberührt.<br>
-          <strong>Rechte:</strong> Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerspruch; Beschwerde bei einer Aufsichtsbehörde.<br>
-          <strong>AVV:</strong> Wir schließen eine Auftragsverarbeitung (Art. 28 DSGVO), wenn wir Kundendaten im Auftrag verarbeiten; Verantwortlichkeiten werden vertraglich geregelt.<br>
-          <strong>Kontakt Datenschutz:</strong> per E-Mail an <a href="mailto:Davidyurko28@gmail.com">Davidyurko28@gmail.com</a>.
+          <strong>Zwecke:</strong> Anfragebearbeitung, Angebot/Vertrag, Umsetzung, Betrieb & Wartung, Abrechnung; optional Marketing (mit Einwilligung).<br>
+          <strong>Rechtsgrundlagen:</strong> Art. 6 (1) b, f; bei Marketing Art. 6 (1) a DSGVO.<br>
+          <strong>Datenkategorien:</strong> Kontakt- & Kommunikationsdaten, Nutzungsdaten; ggf. projektbezogene Endkundendaten im Auftrag.<br>
+          <strong>Empfänger/Sub-Prozessoren:</strong> WhatsApp Cloud API (Meta), Twilio, Calendly, Zapier/Make, Hosting; Details in AVV/Vertrag.<br>
+          <strong>Drittland:</strong> Übermittlung ggf. mit SCC; Risiko- und Schutzmaßnahmen dokumentiert.<br>
+          <strong>Speicherdauer:</strong> projekt-/vertragsbezogen; gesetzliche Aufbewahrung bleibt unberührt.<br>
+          <strong>Betroffenenrechte:</strong> Auskunft, Berichtigung, Löschung, Einschränkung, Übertragbarkeit, Widerspruch; Beschwerde bei einer Aufsichtsbehörde.<br>
+          <strong>Kontakt Datenschutz:</strong> <a href="mailto:Davidyurko28@gmail.com">Davidyurko28@gmail.com</a>.<br>
+          <em>Hinweis:</em> Bei Verarbeitung im Auftrag schließen wir eine AV-Vereinbarung (Art. 28 DSGVO); Verantwortlichkeiten und TOMs werden vertraglich geregelt.
         </p>
       </div>
     </section>
@@ -223,16 +202,17 @@
       <div>© <span id="yr"></span> SPEC88</div>
       <div class="fnav">
         <a href="#pricing">Preise</a> ·
+        <a href="#faq">FAQ</a> ·
         <a href="#impressum">Impressum</a> ·
         <a href="#datenschutz">Datenschutz</a> ·
-        <a href="https://calendly.com/davidyurko28/gesprach" target="_blank" rel="noopener">Termin</a>
+        <a href="thanks.html">Buchungsbestätigung</a>
       </div>
     </div>
   </footer>
 
   <script>
-    // Jahr + smooth scroll
     document.getElementById('yr').textContent = new Date().getFullYear();
+    // Smooth scroll
     document.addEventListener('click', (e) => {
       const a = e.target.closest('a[href^="#"]'); if(!a) return;
       const id = a.getAttribute('href').slice(1); const el = document.getElementById(id);
